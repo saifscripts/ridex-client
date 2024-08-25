@@ -17,7 +17,7 @@ import {
 } from '@radix-ui/react-icons';
 import Logo from './Logo';
 import navLinks from './navLinks';
-import SidebarItem from './sidebarItem';
+import SidebarItem from './SidebarItem';
 
 export default function Sidebar() {
   const isLoggedIn = true;

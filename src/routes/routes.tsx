@@ -1,6 +1,10 @@
+import DashboardLayout from '@/components/layout/DashboardLayout/DashboardLayout';
 import { MainLayout } from '@/components/layout/MainLayout';
 import AboutUs from '@/pages/AboutUs';
-import Dashboard from '@/pages/Dashboard';
+import Bikes from '@/pages/dashboard/Bikes';
+import Bookings from '@/pages/dashboard/Bookings';
+import DashboardHome from '@/pages/dashboard/DashboardHome';
+import Profile from '@/pages/dashboard/Profile';
 import Home from '@/pages/Home';
 import { createBrowserRouter } from 'react-router-dom';
 
@@ -19,7 +23,25 @@ const router = createBrowserRouter([
       },
       {
         path: 'dashboard',
-        element: <Dashboard />,
+        element: <DashboardLayout />,
+        children: [
+          {
+            index: true,
+            element: <DashboardHome />,
+          },
+          {
+            path: 'profile',
+            element: <Profile />,
+          },
+          {
+            path: 'bikes',
+            element: <Bikes />,
+          },
+          {
+            path: 'bookings',
+            element: <Bookings />,
+          },
+        ],
       },
     ],
   },
