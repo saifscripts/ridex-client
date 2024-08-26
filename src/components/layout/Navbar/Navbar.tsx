@@ -1,14 +1,15 @@
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { ExitIcon } from '@radix-ui/react-icons';
+import { useAppSelector } from '@/redux/hooks';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
+import Logout from './Logout';
 import NavItem from './NavItem';
 import navLinks from './navLinks';
 import Sidebar from './Sidebar';
 
 const Navbar = () => {
-  const isLoggedIn = false;
+  const isLoggedIn = useAppSelector((state) => state.auth.token);
 
   return (
     <div className="h-16 border-b flex justify-between items-center px-6">
@@ -22,12 +23,7 @@ const Navbar = () => {
       </div>
       <div className="hidden md:flex gap-2 items-center">
         {isLoggedIn ? (
-          <>
-            <Button className="text-primary-foreground gap-1" variant="link">
-              <ExitIcon />
-              <span>Logout</span>
-            </Button>
-          </>
+          <Logout />
         ) : (
           <>
             <Link to="/login">

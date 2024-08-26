@@ -1,5 +1,7 @@
 import DashboardLayout from '@/components/layout/DashboardLayout/DashboardLayout';
 import { MainLayout } from '@/components/layout/MainLayout';
+import ProtectedRoute from '@/components/layout/ProtectedRoute';
+import PublicRoute from '@/components/layout/PublicRoute';
 import AboutUs from '@/pages/AboutUs';
 import Bikes from '@/pages/dashboard/Bikes';
 import Bookings from '@/pages/dashboard/Bookings';
@@ -24,34 +26,46 @@ const router = createBrowserRouter([
         element: <AboutUs />,
       },
       {
-        path: 'dashboard',
-        element: <DashboardLayout />,
-        children: [
-          {
-            index: true,
-            element: <DashboardHome />,
-          },
-          {
-            path: 'profile',
-            element: <Profile />,
-          },
-          {
-            path: 'bikes',
-            element: <Bikes />,
-          },
-          {
-            path: 'bookings',
-            element: <Bookings />,
-          },
-        ],
-      },
-      {
         path: 'login',
-        element: <Login />,
+        element: (
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        ),
       },
       {
         path: 'signup',
-        element: <Signup />,
+        element: (
+          <PublicRoute>
+            <Signup />
+          </PublicRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: '/dashboard',
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: <DashboardHome />,
+      },
+      {
+        path: 'profile',
+        element: <Profile />,
+      },
+      {
+        path: 'bikes',
+        element: <Bikes />,
+      },
+      {
+        path: 'bookings',
+        element: <Bookings />,
       },
     ],
   },

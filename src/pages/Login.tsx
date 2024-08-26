@@ -15,10 +15,11 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/use-toast';
+import { IErrorResponse } from '@/interfaces';
 import { useLoginMutation } from '@/redux/features/auth/authApi';
 import { setUser } from '@/redux/features/auth/authSlice';
 import { useAppDispatch } from '@/redux/hooks';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const FormSchema = z.object({
   email: z
@@ -37,6 +38,7 @@ export default function Login() {
   const [login] = useLoginMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -44,13 +46,19 @@ export default function Login() {
 
   async function onSubmit(credentials: z.infer<typeof FormSchema>) {
     const result = await login(credentials);
+    console.log(result);
 
-    if (result.data.success) {
+    if (result?.data?.success) {
       const { token, data: user } = result.data;
       dispatch(setUser({ token, user }));
-      navigate('/');
+      navigate(state?.pathname || '/');
       toast({
         title: 'Login successful!',
+      });
+    } else {
+      toast({
+        title: (result as IErrorResponse)?.error?.data?.message,
+        variant: 'destructive',
       });
     }
   }

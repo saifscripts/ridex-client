@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/use-toast';
+import { IErrorResponse } from '@/interfaces';
 import { useSignupMutation } from '@/redux/features/auth/authApi';
 import { useNavigate } from 'react-router-dom';
 
@@ -55,10 +56,15 @@ export default function Signup() {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     const result = await signup(data);
 
-    if (result.data.success) {
+    if (result?.data?.success) {
       navigate('/login');
       toast({
         title: 'Account created successful!',
+      });
+    } else {
+      toast({
+        title: (result as IErrorResponse)?.error?.data?.message,
+        variant: 'destructive',
       });
     }
   }

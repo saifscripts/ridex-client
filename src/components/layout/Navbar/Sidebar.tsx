@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import {
   Sheet,
@@ -8,19 +7,20 @@ import {
   SheetHeader,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import { useAppSelector } from '@/redux/hooks';
 import {
   Cross2Icon,
   EnterIcon,
-  ExitIcon,
   HamburgerMenuIcon,
   ImageIcon,
 } from '@radix-ui/react-icons';
 import Logo from './Logo';
+import Logout from './Logout';
 import navLinks from './navLinks';
 import SidebarItem from './SidebarItem';
 
 export default function Sidebar() {
-  const isLoggedIn = false;
+  const isLoggedIn = useAppSelector((state) => state.auth.token);
 
   return (
     <Sheet>
@@ -57,12 +57,7 @@ export default function Sidebar() {
           </div>
         </SheetHeader>
         <SheetFooter className="flex-row justify-end">
-          {isLoggedIn && (
-            <Button className="text-primary-foreground gap-1" variant="link">
-              <ExitIcon />
-              <span>Logout</span>
-            </Button>
-          )}
+          {isLoggedIn && <Logout />}
         </SheetFooter>
       </SheetContent>
     </Sheet>
