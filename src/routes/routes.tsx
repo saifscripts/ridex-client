@@ -6,6 +6,8 @@ import Bookings from '@/pages/dashboard/Bookings';
 import DashboardHome from '@/pages/dashboard/DashboardHome';
 import Profile from '@/pages/dashboard/Profile';
 import Home from '@/pages/Home';
+import Login from '@/pages/Login';
+import Signup from '@/pages/Signup';
 import { createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -42,6 +44,14 @@ const router = createBrowserRouter([
             element: <Bookings />,
           },
         ],
+      },
+      {
+        path: 'login',
+        element: <Login />,
+      },
+      {
+        path: 'signup',
+        element: <Signup />,
       },
     ],
   },

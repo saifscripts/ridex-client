@@ -1,6 +1,6 @@
 const refreshToken = async () => {
   const res = await fetch(
-    `${import.meta.env.BASE_URL}/api/v1/auth/refresh-token`,
+    `${import.meta.env.VITE_BASE_URL}/api/v1/auth/refresh-token`,
     {
       method: 'POST',
       credentials: 'include',

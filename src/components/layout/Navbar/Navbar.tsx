@@ -1,13 +1,14 @@
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { ExitIcon } from '@radix-ui/react-icons';
+import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import NavItem from './NavItem';
 import navLinks from './navLinks';
 import Sidebar from './Sidebar';
 
 const Navbar = () => {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   return (
     <div className="h-16 border-b flex justify-between items-center px-6">
@@ -29,9 +30,13 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <Button variant="outline">Login</Button>
+            <Link to="/login">
+              <Button variant="outline">Login</Button>
+            </Link>
             <Separator orientation="vertical" className="h-10" />
-            <Button className="text-gray-900">Signup</Button>
+            <Link to="/signup">
+              <Button className="text-gray-900">Signup</Button>
+            </Link>
           </>
         )}
       </div>

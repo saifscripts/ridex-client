@@ -1,3 +1,4 @@
+import { Toaster } from '@/components/ui/toaster';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
@@ -14,5 +15,6 @@ createRoot(document.getElementById('root')!).render(
         <RouterProvider router={router} />
       </PersistGate>
     </Provider>
+    <Toaster />
   </StrictMode>
 );

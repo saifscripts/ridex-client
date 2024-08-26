@@ -5,7 +5,9 @@ const MainLayout = () => {
   return (
     <>
       <Navbar />
-      <Outlet />
+      <main className="h-[calc(100vh-64px)] overflow-y-scroll container">
+        <Outlet />
+      </main>
     </>
   );
 };

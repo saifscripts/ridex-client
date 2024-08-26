@@ -8,7 +8,7 @@ import { RootState } from '../store';
 import refreshToken from './refreshToken';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: `${import.meta.env.BASE_URL}/api/v1`,
+  baseUrl: `${import.meta.env.VITE_BASE_URL}/api/v1`,
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;

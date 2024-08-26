@@ -20,7 +20,7 @@ import navLinks from './navLinks';
 import SidebarItem from './SidebarItem';
 
 export default function Sidebar() {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   return (
     <Sheet>
