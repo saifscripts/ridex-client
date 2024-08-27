@@ -14,7 +14,7 @@ export default function DashboardLayout() {
   };
 
   useEffect(() => {
-    if (screenSize.width < 768) {
+    if (screenSize.width < 1024) {
       setIsSidebarOpen(false);
     }
   }, [screenSize]);

@@ -25,9 +25,10 @@ export default function EditProfileInfo() {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     const result = (await updateProfile(data)) as IResponse<IUser>;
     showToast(result, 'Profile updated successfully!');
+    return result?.data?.success; // if returned true the form will be reset
   }
 
-  if (isLoading) return <FormSkeleton numberOfInputs={4} />;
+  if (isLoading) return <FormSkeleton totalInputs={4} />;
 
   return (
     <div className="p-6 border rounded-lg">

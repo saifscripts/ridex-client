@@ -17,7 +17,7 @@ export default function Profile() {
         </h1>
         <Separator className="my-6" />
 
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-8">
           <div className="space-y-8">
             <EditAvatar user={user} />
             <ChangePassword />

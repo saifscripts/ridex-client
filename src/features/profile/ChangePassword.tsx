@@ -19,12 +19,18 @@ const FormSchema = z.object({
     .min(6, 'Password must be at least 6 characters long'),
 });
 
+const defaultValues = {
+  currentPassword: '',
+  newPassword: '',
+};
+
 export default function ChangePassword() {
   const [changePassword] = useChangePasswordMutation();
 
   async function onSubmit(data: FieldValues) {
     const result = (await changePassword(data)) as IResponse<null>;
-    return showToast(result, 'Password Updated');
+    showToast(result, 'Password Updated!');
+    return result?.data?.success; // if returned true the form will be reset
   }
 
   return (
@@ -33,7 +39,11 @@ export default function ChangePassword() {
         Change Password
       </h2>
 
-      <AppForm onSubmit={onSubmit} schema={FormSchema}>
+      <AppForm
+        onSubmit={onSubmit}
+        schema={FormSchema}
+        defaultValues={defaultValues}
+      >
         <AppInput
           name="currentPassword"
           label="Current Password"

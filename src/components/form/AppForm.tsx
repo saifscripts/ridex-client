@@ -12,7 +12,7 @@ interface AppFormProps {
   onSubmit: SubmitHandler<FieldValues>;
   className?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  defaultValues?: Record<string, any>;
+  defaultValues: Record<string, any> | undefined;
 }
 
 export default function AppForm({
@@ -29,12 +29,9 @@ export default function AppForm({
 
   const submitHandler: SubmitHandler<FieldValues> = async (data) => {
     const shouldReset = await onSubmit(data);
-    console.log({ shouldReset, defaultValues });
+
     if (shouldReset) {
-      form.reset({
-        currentPassword: '',
-        newPassword: '',
-      });
+      form.reset();
     }
   };
 

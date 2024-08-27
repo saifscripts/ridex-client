@@ -15,6 +15,5 @@ export function showToast(result: IResponse<unknown>, title: string) {
     });
   } else {
     toast({ title });
-    return true;
   }
 }
