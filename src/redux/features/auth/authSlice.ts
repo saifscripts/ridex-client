@@ -1,8 +1,8 @@
-import { IDecodedUser } from '@/interfaces';
+import { IUser } from '@/interfaces';
 import { createSlice } from '@reduxjs/toolkit';
 
 export interface IAuthState {
-  user: null | IDecodedUser;
+  user: null | IUser;
   token: null | string;
 }
 

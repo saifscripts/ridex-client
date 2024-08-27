@@ -1,5 +1,3 @@
-'use client';
-
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -46,12 +44,11 @@ export default function Login() {
 
   async function onSubmit(credentials: z.infer<typeof FormSchema>) {
     const result = await login(credentials);
-    console.log(result);
 
     if (result?.data?.success) {
       const { token, data: user } = result.data;
-      dispatch(setUser({ token, user }));
-      navigate(state?.pathname || '/');
+      await dispatch(setUser({ token, user }));
+      navigate(state?.pathname || '/dashboard');
       toast({
         title: 'Login successful!',
       });

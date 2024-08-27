@@ -27,7 +27,7 @@ export default function DashboardLayout() {
           toggleSidebar={toggleSidebar}
           isOpen={isSidebarOpen}
         />
-        <div className="bg-secondary p-6 w-full h-[calc(100vh-64px)]">
+        <div className="bg-secondary p-6 w-full h-[calc(100vh-64px)] overflow-y-scroll">
           <Outlet />
         </div>
       </div>

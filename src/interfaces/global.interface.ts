@@ -19,3 +19,15 @@ export interface ISuccessResponse<T> {
   message: string;
   data: T;
 }
+
+export interface IResponse<T> {
+  error?: {
+    data: {
+      success: boolean;
+      message: string;
+      errorSources: IErrorMessage[];
+    };
+    status: number;
+  };
+  data?: ISuccessResponse<T>;
+}
