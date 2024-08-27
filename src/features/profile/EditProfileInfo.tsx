@@ -33,12 +33,7 @@ export default function EditProfileInfo() {
     <div className="p-6 border rounded-lg">
       <h2 className="text-xl sm:text-xl font-bold text-center">Edit Profile</h2>
 
-      <AppForm
-        schema={FormSchema}
-        defaultValues={user}
-        onSubmit={onSubmit}
-        className="w-full space-y-6"
-      >
+      <AppForm schema={FormSchema} defaultValues={user} onSubmit={onSubmit}>
         <AppInput name="name" label="Full Name" placeholder="Enter your name" />
         <AppInput name="email" label="Email" placeholder="Enter your email" />
         <AppInput

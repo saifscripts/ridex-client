@@ -1,17 +1,12 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import AppForm from '@/components/form/AppForm';
+import AppInput from '@/components/form/AppInput';
 import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+import { IResponse } from '@/interfaces';
+import { showToast } from '@/lib/utils';
+import { useChangePasswordMutation } from '@/redux/features/auth/authApi';
+import { FieldValues } from 'react-hook-form';
 
 const FormSchema = z.object({
   currentPassword: z.string({
@@ -25,12 +20,11 @@ const FormSchema = z.object({
 });
 
 export default function ChangePassword() {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-  });
+  const [changePassword] = useChangePasswordMutation();
 
-  async function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data);
+  async function onSubmit(data: FieldValues) {
+    const result = (await changePassword(data)) as IResponse<null>;
+    return showToast(result, 'Password Updated');
   }
 
   return (
@@ -39,70 +33,24 @@ export default function ChangePassword() {
         Change Password
       </h2>
 
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="w-full space-y-6"
-        >
-          <FormField
-            control={form.control}
-            name="oldPassword"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Current Password</FormLabel>
-                <FormControl>
-                  <Input
-                    type="password"
-                    placeholder="Enter current password"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+      <AppForm onSubmit={onSubmit} schema={FormSchema}>
+        <AppInput
+          name="currentPassword"
+          label="Current Password"
+          type="password"
+          placeholder="Enter current password"
+        />
+        <AppInput
+          name="newPassword"
+          label="New Password"
+          type="password"
+          placeholder="Enter new password"
+        />
 
-          <FormField
-            control={form.control}
-            name="newPassword"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>New Password</FormLabel>
-                <FormControl>
-                  <Input
-                    type="password"
-                    placeholder="Enter new password"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {/* <FormField
-            control={form.control}
-            name="confirmNewPassword"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Confirm Password</FormLabel>
-                <FormControl>
-                  <Input
-                    type="password"
-                    placeholder="Confirm new password"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          /> */}
-
-          <Button type="submit" variant="destructive" className="w-full">
-            Change Password
-          </Button>
-        </form>
-      </Form>
+        <Button type="submit" variant="destructive" className="w-full">
+          Change Password
+        </Button>
+      </AppForm>
     </div>
   );
 }
