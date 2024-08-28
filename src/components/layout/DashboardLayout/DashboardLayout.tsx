@@ -20,17 +20,17 @@ export default function DashboardLayout() {
   }, [screenSize]);
 
   return (
-    <>
+    <div className="h-screen overflow-y-hidden">
       <Navbar />
       <div className={cn('flex h-[calc(100vh-64px)]')}>
         <DashboardSidebar
           toggleSidebar={toggleSidebar}
           isOpen={isSidebarOpen}
         />
-        <div className="bg-secondary p-6 w-full h-[calc(100vh-64px)] overflow-y-scroll">
+        <div className="bg-secondary p-6 w-full h-full overflow-y-scroll">
           <Outlet />
         </div>
       </div>
-    </>
+    </div>
   );
 }

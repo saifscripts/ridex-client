@@ -20,7 +20,7 @@ export default function DashboardSidebar({
   return (
     <div
       className={cn(
-        'bg-white h-[calc(100vh-64px)] border-r py-4 transition-width duration-150 flex flex-col items-center relative',
+        'bg-white h-full border-r py-4 transition-width duration-150 flex flex-col items-center relative',
         {
           'w-[256px] block px-4': isOpen,
           'w-16 sm:w-20': !isOpen,
