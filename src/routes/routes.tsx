@@ -3,7 +3,7 @@ import { MainLayout } from '@/components/layout/MainLayout';
 import ProtectedRoute from '@/components/layout/ProtectedRoute';
 import PublicRoute from '@/components/layout/PublicRoute';
 import AboutUs from '@/pages/AboutUs';
-import Bikes from '@/pages/dashboard/Bikes';
+import Bikes from '@/pages/Bikes';
 import Bookings from '@/pages/dashboard/Bookings';
 import DashboardHome from '@/pages/dashboard/DashboardHome';
 import Profile from '@/pages/dashboard/Profile';
@@ -20,6 +20,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: 'bikes',
+        element: <Bikes />,
       },
       {
         path: 'about-us',

@@ -7,6 +7,11 @@ const navLinks = [
     icon: <HomeIcon />,
   },
   {
+    path: '/bikes',
+    text: 'Bikes',
+    icon: <HomeIcon />,
+  },
+  {
     path: '/about-us',
     text: 'About Us',
     icon: <RowsIcon />,
