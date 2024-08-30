@@ -1,1 +1,2 @@
-export * from './global';
+export * from './bike.constants';
+export * from './global.constants';
