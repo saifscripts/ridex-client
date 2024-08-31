@@ -4,7 +4,6 @@ import {
   DoubleArrowLeftIcon,
   DoubleArrowRightIcon,
 } from '@radix-ui/react-icons';
-import { Table } from '@tanstack/react-table';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -14,31 +13,31 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import useAppSearchParams from '@/hooks/useAppSearchParams';
+import { IMetaData } from '@/interfaces';
 
-interface DataTablePaginationProps<TData> {
-  table: Table<TData>;
-}
+export function DataTablePagination({ metaData }: { metaData: IMetaData }) {
+  const { searchParams, appendSearchParams } = useAppSearchParams();
 
-export function DataTablePagination<TData>({
-  table,
-}: DataTablePaginationProps<TData>) {
   return (
-    <div className="flex items-center justify-between p-3 bg-white rounded-md border">
-      <div className="flex-1 text-sm text-muted-foreground">
-        {table.getFilteredSelectedRowModel().rows.length} of{' '}
-        {table.getFilteredRowModel().rows.length} row(s) selected.
+    <div className="flex items-center justify-end sm:justify-between p-3 bg-white rounded-md border container">
+      <div className="flex-1 text-sm text-muted-foreground hidden sm:block">
+        Total Results: {metaData?.total}
       </div>
       <div className="flex items-center space-x-6 lg:space-x-8">
         <div className="flex items-center space-x-2">
-          <p className="text-sm font-medium">Rows per page</p>
+          <p className="text-sm font-medium hidden xs:block">Rows per page</p>
           <Select
-            value={`${table.getState().pagination.pageSize}`}
+            value={searchParams.get('limit') || '10'}
             onValueChange={(value) => {
-              table.setPageSize(Number(value));
+              appendSearchParams(
+                { limit: value, page: '1' },
+                { replace: true }
+              );
             }}
           >
             <SelectTrigger className="h-8 w-[70px]">
-              <SelectValue placeholder={table.getState().pagination.pageSize} />
+              <SelectValue placeholder={searchParams.get('limit') || '10'} />
             </SelectTrigger>
             <SelectContent side="top">
               {[10, 20, 30, 40, 50].map((pageSize) => (
@@ -49,16 +48,17 @@ export function DataTablePagination<TData>({
             </SelectContent>
           </Select>
         </div>
-        <div className="flex w-[100px] items-center justify-center text-sm font-medium">
-          Page {table.getState().pagination.pageIndex + 1} of{' '}
-          {table.getPageCount()}
+        <div className="hidden mn:flex w-[100px] items-center justify-center text-sm font-medium">
+          Page {metaData?.page} of {metaData?.totalPage}
         </div>
         <div className="flex items-center space-x-2">
           <Button
             variant="outline"
             className="hidden h-8 w-8 p-0 lg:flex"
-            onClick={() => table.setPageIndex(0)}
-            disabled={!table.getCanPreviousPage()}
+            onClick={() => {
+              appendSearchParams({ page: '1' }, { replace: true });
+            }}
+            disabled={metaData?.page === 1}
           >
             <span className="sr-only">Go to first page</span>
             <DoubleArrowLeftIcon className="h-4 w-4" />
@@ -66,8 +66,13 @@ export function DataTablePagination<TData>({
           <Button
             variant="outline"
             className="h-8 w-8 p-0"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
+            onClick={() => {
+              appendSearchParams(
+                { page: String(metaData?.page - 1) },
+                { replace: true }
+              );
+            }}
+            disabled={metaData?.page === 1}
           >
             <span className="sr-only">Go to previous page</span>
             <ChevronLeftIcon className="h-4 w-4" />
@@ -75,8 +80,13 @@ export function DataTablePagination<TData>({
           <Button
             variant="outline"
             className="h-8 w-8 p-0"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
+            onClick={() => {
+              appendSearchParams(
+                { page: String(metaData?.page + 1) },
+                { replace: true }
+              );
+            }}
+            disabled={metaData?.page === metaData?.totalPage}
           >
             <span className="sr-only">Go to next page</span>
             <ChevronRightIcon className="h-4 w-4" />
@@ -84,8 +94,13 @@ export function DataTablePagination<TData>({
           <Button
             variant="outline"
             className="hidden h-8 w-8 p-0 lg:flex"
-            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-            disabled={!table.getCanNextPage()}
+            onClick={() => {
+              appendSearchParams(
+                { page: String(metaData?.totalPage) },
+                { replace: true }
+              );
+            }}
+            disabled={metaData?.page === metaData?.totalPage}
           >
             <span className="sr-only">Go to last page</span>
             <DoubleArrowRightIcon className="h-4 w-4" />

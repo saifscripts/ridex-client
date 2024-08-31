@@ -1,20 +1,10 @@
 import { ColumnDef } from '@tanstack/react-table';
 
 import { Badge } from '@/components/ui/badge';
+import { BIKE_BRANDS } from '@/constants';
 import { IBike } from '@/interfaces';
+import { CheckboxFilter, RadioButtonFilter } from '../table';
 import { DataTableColumnHeader } from '../table/DataTableColumnHeader';
-
-// export interface IBike {
-//     _id: string;
-//     name: string;
-//     description: string;
-//     pricePerHour: number;
-//     isAvailable: boolean;
-//     cc: number;
-//     year: number;
-//     model: string;
-//     brand: string;
-//   }
 
 export const columns: ColumnDef<IBike>[] = [
   {
@@ -31,10 +21,18 @@ export const columns: ColumnDef<IBike>[] = [
       ' . . .',
   },
   {
-    accessorKey: 'cc',
+    accessorKey: 'brand',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="CC" />
+      <CheckboxFilter
+        columnId={column.id}
+        title="Brand"
+        filters={BIKE_BRANDS.map((item) => ({ value: item, label: item }))}
+      />
     ),
+  },
+  {
+    accessorKey: 'model',
+    header: 'Model',
   },
   {
     accessorKey: 'year',
@@ -43,21 +41,32 @@ export const columns: ColumnDef<IBike>[] = [
     ),
   },
   {
-    accessorKey: 'model',
-    header: 'Model',
-  },
-  {
-    accessorKey: 'brand',
-    header: 'Brand',
+    accessorKey: 'cc',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="CC" />
+    ),
   },
   {
     accessorKey: 'isAvailable',
-    header: 'Status',
+    header: ({ column }) => (
+      <RadioButtonFilter
+        columnId={column.id}
+        title="Availability"
+        filters={[
+          { value: true, label: 'Available' },
+          { value: false, label: 'Not Available' },
+        ]}
+      />
+    ),
+
     cell: ({ row }) => {
       const isAvailable = row.getValue('isAvailable');
 
       return (
-        <Badge variant={isAvailable ? 'default' : 'destructive'}>
+        <Badge
+          className="w-[100px] text-center inline-block"
+          variant={isAvailable ? 'default' : 'destructive'}
+        >
           {isAvailable ? 'Available' : 'Not Available'}
         </Badge>
       );

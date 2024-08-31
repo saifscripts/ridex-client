@@ -1,13 +1,11 @@
 import {
   ColumnDef,
   ColumnFiltersState,
-  Table as ITable,
   SortingState,
   VisibilityState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
-  getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
@@ -21,32 +19,33 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { ReactNode, useState } from 'react';
-import { DataTablePagination } from './DataTablePagination';
+import DataTableSkeleton from './DataTableSkeleton';
 import { DataTableViewOptions } from './DataTableViewOptions';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data?: TData[];
-  filters?: (table: ITable<TData>) => ReactNode;
+  search?: ReactNode;
+  filters?: ReactNode;
+  isLoading?: boolean;
 }
 
 export default function DataTable<TData, TValue>({
   columns,
   data = [],
+  search,
   filters,
+  isLoading,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = useState({});
 
-  console.log({ columnFilters });
-
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
     onColumnFiltersChange: setColumnFilters,
@@ -62,12 +61,13 @@ export default function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between rounded-md p-3 bg-white border">
-        {filters && filters(table)}
+    <div className="space-y-4 relative">
+      <div className="flex items-center justify-between gap-2 p-3 bg-white border rounded-md">
+        {search}
         <DataTableViewOptions table={table} />
       </div>
-      <div className="rounded-md border bg-white p-2">
+      {filters}
+      <div className="rounded-md border bg-white p-2 container">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -87,37 +87,41 @@ export default function DataTable<TData, TValue>({
               </TableRow>
             ))}
           </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && 'selected'}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
+
+          {isLoading ? (
+            <DataTableSkeleton colSpan={columns.length} />
+          ) : (
+            <TableBody>
+              {table.getRowModel().rows?.length ? (
+                table.getRowModel().rows.map((row) => (
+                  <TableRow
+                    key={row.id}
+                    data-state={row.getIsSelected() && 'selected'}
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell
+                    colSpan={columns.length}
+                    className="h-24 text-center"
+                  >
+                    No data.
+                  </TableCell>
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
+              )}
+            </TableBody>
+          )}
         </Table>
       </div>
-      <DataTablePagination table={table} />
     </div>
   );
 }

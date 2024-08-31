@@ -1,37 +1,64 @@
-import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import { BIKE_BRANDS } from '@/constants';
-import { Table } from '@tanstack/react-table';
+import useAppSearchParams from '@/hooks/useAppSearchParams';
+import { FilterXIcon, XIcon } from 'lucide-react';
 
-import { DataTableFilter } from '../table';
+const uniqueFields = ['sort', 'limit', 'page', 'fields'];
 
-export default function BikeFilters<TData>({ table }: { table: Table<TData> }) {
+const BIKE_BRANDS_MAPPER: Record<string, string> = {};
+
+BIKE_BRANDS.forEach((brand) => {
+  BIKE_BRANDS_MAPPER[brand] = brand;
+});
+
+const AVAILABILITY_MAPPER: Record<string, string> = {
+  true: 'Available',
+  false: 'Not Available',
+};
+
+export default function BikeFilters() {
+  const { searchParams, deleteSearchParam, setSearchParams } =
+    useAppSearchParams();
+
+  const filters = [...searchParams].filter(
+    ([key]) => !uniqueFields.includes(key)
+  );
+
+  if (!filters?.length) return;
+
   return (
-    <div className="flex space-x-2">
-      <Input
-        placeholder="Search by name..."
-        value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
-        onChange={(event) =>
-          table.getColumn('name')?.setFilterValue(event.target.value)
-        }
-        className="w-72"
-      />
+    <div className="flex gap-2 p-3 bg-white border rounded-md flex-wrap">
+      {filters?.map(([key, value]) => (
+        <Button
+          variant="ghost"
+          key={value}
+          className="flex gap-2 items-center bg-gray-50 rounded-full"
+          onClick={() => deleteSearchParam({ key, value })}
+        >
+          {key === 'brand'
+            ? BIKE_BRANDS_MAPPER[value]
+            : key === 'isAvailable'
+            ? AVAILABILITY_MAPPER[String(value)]
+            : value}
+          <XIcon className="size-4" />
+        </Button>
+      ))}
 
-      <DataTableFilter
-        table={table}
-        filters={BIKE_BRANDS.map((item) => ({ value: item, label: item }))}
-        column="brand"
-        columnHeader="Brands"
-      />
+      <Button
+        className="flex gap-2 items-center bg-orange-100 rounded-full"
+        onClick={() => {
+          const others = [...searchParams].filter(([key]) =>
+            uniqueFields.includes(key)
+          );
 
-      <DataTableFilter
-        table={table}
-        filters={[
-          { value: true, label: 'Available' },
-          { value: false, label: 'Not Available' },
-        ]}
-        column="isAvailable"
-        columnHeader="Status"
-      />
+          const params = new URLSearchParams(others);
+
+          setSearchParams(params);
+        }}
+      >
+        <FilterXIcon className="size-4" />
+        Clear Filters
+      </Button>
     </div>
   );
 }

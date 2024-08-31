@@ -11,7 +11,12 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: '2rem',
+      padding: {
+        DEFAULT: '1rem',
+        lg: '2rem',
+        xl: '3rem',
+        '2xl': '4rem',
+      },
       screens: {
         '2xl': '1400px',
       },
@@ -73,6 +78,11 @@ module.exports = {
       },
       transitionProperty: {
         width: 'width',
+      },
+      screens: {
+        mn: '400px',
+        xs: '500px',
+        '2xl': '1400px',
       },
     },
     fontFamily: {

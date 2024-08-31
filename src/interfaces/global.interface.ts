@@ -1,3 +1,10 @@
+export interface IMetaData {
+  page: number;
+  limit: number;
+  total: number;
+  totalPage: number;
+}
+
 export interface IErrorMessage {
   path: string | number;
   message: string;
@@ -18,6 +25,7 @@ export interface ISuccessResponse<T> {
   success: boolean;
   message: string;
   data: T;
+  meta?: IMetaData;
 }
 
 export interface IResponse<T> {
@@ -30,4 +38,9 @@ export interface IResponse<T> {
     status: number;
   };
   data?: ISuccessResponse<T>;
+}
+
+export interface IQueryParam {
+  key: string;
+  value: string | number;
 }
