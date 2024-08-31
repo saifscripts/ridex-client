@@ -1,8 +1,11 @@
 import { ColumnDef } from '@tanstack/react-table';
 
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { BIKE_BRANDS } from '@/constants';
 import { IBike } from '@/interfaces';
+import { ChartNoAxesGantt } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { CheckboxFilter, RadioButtonFilter } from '../table';
 import { DataTableColumnHeader } from '../table/DataTableColumnHeader';
 
@@ -91,32 +94,18 @@ export const columns: ColumnDef<IBike>[] = [
       return <div className="text-right font-medium mr-4">{formatted}</div>;
     },
   },
-  //   {
-  //     id: 'actions',
-  //     cell: ({ row }) => {
-  //       const payment = row.original;
-
-  //       return (
-  //         <DropdownMenu>
-  //           <DropdownMenuTrigger asChild>
-  //             <Button variant="ghost" className="h-8 w-8 p-0">
-  //               <span className="sr-only">Open menu</span>
-  //               <MoreHorizontal className="h-4 w-4" />
-  //             </Button>
-  //           </DropdownMenuTrigger>
-  //           <DropdownMenuContent align="end">
-  //             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-  //             <DropdownMenuItem
-  //               onClick={() => navigator.clipboard.writeText(payment.id)}
-  //             >
-  //               Copy payment ID
-  //             </DropdownMenuItem>
-  //             <DropdownMenuSeparator />
-  //             <DropdownMenuItem>View customer</DropdownMenuItem>
-  //             <DropdownMenuItem>View payment details</DropdownMenuItem>
-  //           </DropdownMenuContent>
-  //         </DropdownMenu>
-  //       );
-  //     },
-  //   },
+  {
+    id: 'actions',
+    header: () => <div className="text-center">Action</div>,
+    cell: ({ row }) => {
+      return (
+        <Link to={`/bike/${row.original._id}`}>
+          <Button variant="outline" size="sm" className="flex gap-2">
+            <ChartNoAxesGantt className="size-4" />
+            View Details
+          </Button>
+        </Link>
+      );
+    },
+  },
 ];
