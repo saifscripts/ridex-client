@@ -57,44 +57,44 @@ export default function BikeDetails() {
             </Badge>
 
             <Separator className="w-full mb-4" />
-            <div className="flex gap-8 overflow-hidden">
+            <div className="flex gap-4 sm:gap-6 lg:gap-8 overflow-hidden">
               <div className="flex-shrink-0">
                 <p className="text-gray-500 text-xs xs:text-base">brand</p>
                 <p className="text-gray-600 xs:text-xl sm:text-2xl">
                   {bikeData.name}
                 </p>
               </div>
-              <Separator orientation="vertical" className="h-16" />
+              <Separator orientation="vertical" className="h-10 xs:h-16" />
               <div className="flex-shrink-0">
                 <p className="text-gray-500 text-xs xs:text-base">model</p>
                 <p className="text-gray-600 xs:text-xl sm:text-2xl">
                   {bikeData.model}
                 </p>
               </div>
-              <Separator orientation="vertical" className="h-16" />
+              <Separator orientation="vertical" className="h-10 xs:h-16" />
               <div className="flex-shrink-0">
                 <p className="text-gray-500 text-xs xs:text-base">year</p>
                 <p className="text-gray-600 xs:text-xl sm:text-2xl">
                   {bikeData.year}
                 </p>
               </div>
-              <Separator orientation="vertical" className="h-16" />
+              <Separator orientation="vertical" className="h-10 xs:h-16" />
               <div className="flex-shrink-0">
                 <p className="text-gray-500 text-xs xs:text-base">cc</p>
                 <p className="text-gray-600 xs:text-xl sm:text-2xl">
                   {bikeData.cc}
                 </p>
               </div>
-              <Separator orientation="vertical" className="h-16" />
-              <Separator orientation="vertical" className="h-16" />
-              <Separator orientation="vertical" className="h-16" />
-              <Separator orientation="vertical" className="h-16" />
-              <Separator orientation="vertical" className="h-16" />
-              <Separator orientation="vertical" className="h-16" />
-              <Separator orientation="vertical" className="h-16" />
-              <Separator orientation="vertical" className="h-16" />
-              <Separator orientation="vertical" className="h-16" />
-              <Separator orientation="vertical" className="h-16" />
+              <Separator orientation="vertical" className="h-10 xs:h-16" />
+              <Separator orientation="vertical" className="h-10 xs:h-16" />
+              <Separator orientation="vertical" className="h-10 xs:h-16" />
+              <Separator orientation="vertical" className="h-10 xs:h-16" />
+              <Separator orientation="vertical" className="h-10 xs:h-16" />
+              <Separator orientation="vertical" className="h-10 xs:h-16" />
+              <Separator orientation="vertical" className="h-10 xs:h-16" />
+              <Separator orientation="vertical" className="h-10 xs:h-16" />
+              <Separator orientation="vertical" className="h-10 xs:h-16" />
+              <Separator orientation="vertical" className="h-10 xs:h-16" />
               {/* <div>
                 <p className="text-gray-500 text-xs xs:text-base">availability</p>
                 <p className="text-gray-600 xs:text-xl sm:text-2xl">
