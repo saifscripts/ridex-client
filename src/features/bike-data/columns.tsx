@@ -78,11 +78,7 @@ export const columns: ColumnDef<IBike>[] = [
   {
     accessorKey: 'pricePerHour',
     header: ({ column }) => (
-      <DataTableColumnHeader
-        className="justify-end"
-        column={column}
-        title="Price/Hour"
-      />
+      <DataTableColumnHeader className="" column={column} title="Price/Hour" />
     ),
     cell: ({ row }) => {
       const pricePerHour = parseFloat(row.getValue('pricePerHour'));
@@ -91,20 +87,22 @@ export const columns: ColumnDef<IBike>[] = [
         currency: 'USD',
       }).format(pricePerHour);
 
-      return <div className="text-right font-medium mr-4">{formatted}</div>;
+      return <div className="">{formatted}</div>;
     },
   },
   {
     id: 'actions',
-    header: () => <div className="text-center">Action</div>,
+    header: () => <div className="text-right mr-2">Action</div>,
     cell: ({ row }) => {
       return (
-        <Link to={`/bike/${row.original._id}`}>
-          <Button variant="outline" size="sm" className="flex gap-2">
-            <ChartNoAxesGantt className="size-4" />
-            View Details
-          </Button>
-        </Link>
+        <div className="flex justify-end">
+          <Link to={`/bike/${row.original._id}`}>
+            <Button variant="outline" size="sm" className="flex gap-2">
+              <ChartNoAxesGantt className="size-4" />
+              View Details
+            </Button>
+          </Link>
+        </div>
       );
     },
   },
