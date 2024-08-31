@@ -3,6 +3,7 @@ import { MainLayout } from '@/components/layout/MainLayout';
 import ProtectedRoute from '@/components/layout/ProtectedRoute';
 import PublicRoute from '@/components/layout/PublicRoute';
 import AboutUs from '@/pages/AboutUs';
+import BikeDetails from '@/pages/BikeDetails';
 import Bikes from '@/pages/Bikes';
 import Bookings from '@/pages/dashboard/Bookings';
 import DashboardHome from '@/pages/dashboard/DashboardHome';
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: 'bikes',
         element: <Bikes />,
+      },
+      {
+        path: 'bike/:bikeId',
+        element: <BikeDetails />,
       },
       {
         path: 'about-us',
