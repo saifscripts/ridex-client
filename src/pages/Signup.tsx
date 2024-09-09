@@ -69,7 +69,7 @@ export default function Signup() {
 
   return (
     <div className="h-full flex justify-center items-center">
-      <div className="max-w-sm w-full border p-6 rounded-lg">
+      <div className="max-w-sm w-full border p-6 rounded-lg bg-white">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
