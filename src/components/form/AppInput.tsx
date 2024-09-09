@@ -22,6 +22,7 @@ export default function AppInput({
   type,
 }: AppInputProps) {
   const form = useFormContext();
+
   return (
     <FormField
       control={form.control}
