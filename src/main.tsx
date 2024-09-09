@@ -1,4 +1,6 @@
 import { Toaster } from '@/components/ui/toaster';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
@@ -12,7 +14,9 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <RouterProvider router={router} />
+        <LocalizationProvider dateAdapter={AdapterMoment}>
+          <RouterProvider router={router} />
+        </LocalizationProvider>
       </PersistGate>
     </Provider>
     <Toaster />

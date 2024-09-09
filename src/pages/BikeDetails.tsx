@@ -1,6 +1,6 @@
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { BookNowModal } from '@/features/booking';
 import { cn } from '@/lib/utils';
 import { useGetSingleBikeQuery } from '@/redux/features/bike/bikeApi';
 import { useParams } from 'react-router-dom';
@@ -105,13 +105,7 @@ export default function BikeDetails() {
             <Separator className="w-full mt-4 mb-8" />
 
             <div className="text-center lg:text-left">
-              <Button
-                className="w-60"
-                size="lg"
-                disabled={!bikeData?.isAvailable}
-              >
-                Book Now
-              </Button>
+              <BookNowModal bike={bikeData} />
             </div>
           </div>
         </div>
