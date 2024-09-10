@@ -42,7 +42,7 @@ export default function BikeDetails() {
                 })}
               ></div>
               <p className="text-xs sm:text-base">
-                {bikeData?.isAvailable ? 'Available' : 'Not available'}
+                {bikeData?.isAvailable ? 'Available' : 'Unavailable'}
               </p>
             </div>
             <h1 className="font-semibold text-4xl md:text-5xl text-gray-700 mb-4">
@@ -98,7 +98,7 @@ export default function BikeDetails() {
               {/* <div>
                 <p className="text-gray-500 text-xs xs:text-base">availability</p>
                 <p className="text-gray-600 xs:text-xl sm:text-2xl">
-                  {bikeData.isAvailable ? 'available' : 'not available'}
+                  {bikeData.isAvailable ? 'available' : 'Unavailable'}
                 </p>
               </div> */}
             </div>

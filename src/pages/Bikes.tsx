@@ -23,6 +23,7 @@ export default function Bikes() {
         columns={columns}
         data={bikes?.data || []}
         search={<BikeSearch />}
+        viewOptions
         filters={<BikeFilters />}
         isLoading={isFetching}
       />

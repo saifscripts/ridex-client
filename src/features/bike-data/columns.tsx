@@ -3,11 +3,14 @@ import { ColumnDef } from '@tanstack/react-table';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { BIKE_BRANDS } from '@/constants';
+import {
+  CheckboxFilter,
+  DataTableColumnHeader,
+  RadioButtonFilter,
+} from '@/features/table';
 import { IBike } from '@/interfaces';
 import { ChartNoAxesGantt } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { CheckboxFilter, RadioButtonFilter } from '../table';
-import { DataTableColumnHeader } from '../table/DataTableColumnHeader';
 
 export const columns: ColumnDef<IBike>[] = [
   {
@@ -57,7 +60,7 @@ export const columns: ColumnDef<IBike>[] = [
         title="Availability"
         filters={[
           { value: true, label: 'Available' },
-          { value: false, label: 'Not Available' },
+          { value: false, label: 'Unavailable' },
         ]}
       />
     ),
@@ -70,7 +73,7 @@ export const columns: ColumnDef<IBike>[] = [
           className="w-[100px] text-center inline-block"
           variant={isAvailable ? 'default' : 'destructive'}
         >
-          {isAvailable ? 'Available' : 'Not Available'}
+          {isAvailable ? 'Available' : 'Unavailable'}
         </Badge>
       );
     },

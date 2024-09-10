@@ -13,7 +13,7 @@ BIKE_BRANDS.forEach((brand) => {
 
 const AVAILABILITY_MAPPER: Record<string, string> = {
   true: 'Available',
-  false: 'Not Available',
+  false: 'Unavailable',
 };
 
 export default function BikeFilters() {

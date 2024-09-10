@@ -14,6 +14,7 @@ import {
 import { IBike } from '@/interfaces';
 import { useCreateBookingMutation } from '@/redux/features/booking/bookingApi';
 import moment from 'moment';
+import { useState } from 'react';
 import { FieldValues } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -36,12 +37,16 @@ interface BookNowModalProps {
 
 export function BookNowModal({ bike }: BookNowModalProps) {
   const [createBooking] = useCreateBookingMutation();
+  const [isLoading, setIsLoading] = useState(false);
 
   async function onSubmit(data: FieldValues) {
+    setIsLoading(true);
     data.bikeId = bike._id;
     const result = await createBooking(data);
     if (result?.data?.success) {
       window.location.href = result?.data?.data?.payment_url;
+    } else {
+      setIsLoading(false);
     }
   }
 
@@ -68,7 +73,9 @@ export function BookNowModal({ bike }: BookNowModalProps) {
             defaultValues={defaultValues}
           >
             <AppDateTimePicker name="startTime" label="Start Time" />
-            <Submit className="w-full">Pay Now (100 Tk)</Submit>
+            <Submit disabled={isLoading} className="w-full">
+              Pay Now (100 Tk)
+            </Submit>
           </AppForm>
         </ProtectedRoute>
       </DialogContent>

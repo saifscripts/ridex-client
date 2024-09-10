@@ -28,12 +28,14 @@ interface DataTableProps<TData, TValue> {
   search?: ReactNode;
   filters?: ReactNode;
   isLoading?: boolean;
+  viewOptions?: boolean;
 }
 
 export default function DataTable<TData, TValue>({
   columns,
   data = [],
   search,
+  viewOptions,
   filters,
   isLoading,
 }: DataTableProps<TData, TValue>) {
@@ -62,10 +64,12 @@ export default function DataTable<TData, TValue>({
 
   return (
     <div className="space-y-4 relative">
-      <div className="flex items-center justify-between gap-2 p-3 bg-white border rounded-md">
-        {search}
-        <DataTableViewOptions table={table} />
-      </div>
+      {(search || viewOptions) && (
+        <div className="flex items-center justify-between gap-2 p-3 bg-white border rounded-md">
+          {search}
+          {viewOptions && <DataTableViewOptions table={table} />}
+        </div>
+      )}
       {filters}
       <div className="rounded-md border bg-white p-2 container">
         <Table>
