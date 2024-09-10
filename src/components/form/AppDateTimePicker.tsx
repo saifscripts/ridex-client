@@ -10,7 +10,6 @@ import { cn } from '@/lib/utils';
 import { StaticDateTimePicker } from '@mui/x-date-pickers';
 import { renderTimeViewClock } from '@mui/x-date-pickers/timeViewRenderers';
 import { CalendarIcon } from '@radix-ui/react-icons';
-import { format } from 'date-fns';
 import moment from 'moment';
 import { useRef } from 'react';
 import { useFormContext } from 'react-hook-form';
@@ -50,7 +49,7 @@ export function AppDateTimePicker({
                   ref={triggerRef}
                 >
                   {field.value ? (
-                    format(field.value, 'PPpp')
+                    moment(field.value).format('LLL')
                   ) : (
                     <span>{placeholder || 'Pick a date'}</span>
                   )}
