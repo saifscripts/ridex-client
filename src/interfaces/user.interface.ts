@@ -10,6 +10,7 @@ export interface IDecodedUser {
 export type IUserRole = keyof typeof USER_ROLE;
 
 export interface IUser {
+  _id: string;
   name: string;
   email: string;
   phone: string;
