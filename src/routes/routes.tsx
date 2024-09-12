@@ -6,7 +6,6 @@ import PublicRoute from '@/components/layout/PublicRoute';
 import { USER_ROLE } from '@/constants';
 import AboutUs from '@/pages/AboutUs';
 import BikeDetails from '@/pages/BikeDetails';
-import Bikes from '@/pages/Bikes';
 import ManageBikes from '@/pages/dashboard/ManageBikes';
 import ManageRentals from '@/pages/dashboard/ManageRentals';
 import ManageUsers from '@/pages/dashboard/ManageUsers';
@@ -29,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'bikes',
-        element: <Bikes />,
+        element: <ManageBikes />,
       },
       {
         path: 'bike/:bikeId',
@@ -74,7 +73,7 @@ const router = createBrowserRouter([
         path: '/dashboard/bikes',
         element: (
           <ProtectedRoute authorizedRoles={[USER_ROLE.USER]}>
-            <Bikes />,
+            <ManageBikes />,
           </ProtectedRoute>
         ),
       },

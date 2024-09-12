@@ -1,7 +1,4 @@
-import { ColumnDef } from '@tanstack/react-table';
-
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { BIKE_BRANDS } from '@/constants';
 import {
   CheckboxFilter,
@@ -9,8 +6,9 @@ import {
   RadioButtonFilter,
 } from '@/features/table';
 import { IBike } from '@/interfaces';
-import { ChartNoAxesGantt } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ColumnDef } from '@tanstack/react-table';
+import DeleteBikeModal from './DeleteBikeModal';
+import UpdateBikeModal from './UpdateBikeModal';
 
 export const columns: ColumnDef<IBike>[] = [
   {
@@ -99,12 +97,8 @@ export const columns: ColumnDef<IBike>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex justify-end">
-          <Link to={`/bike/${row.original._id}`}>
-            <Button variant="outline" size="sm" className="flex gap-2">
-              <ChartNoAxesGantt className="size-4" />
-              View Details
-            </Button>
-          </Link>
+          <UpdateBikeModal bike={row.original} />
+          <DeleteBikeModal bike={row.original} />
         </div>
       );
     },
