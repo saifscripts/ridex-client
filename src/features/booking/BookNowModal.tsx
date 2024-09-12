@@ -11,6 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import { USER_ROLE } from '@/constants';
 import { IBike } from '@/interfaces';
 import { useCreateBookingMutation } from '@/redux/features/booking/bookingApi';
 import moment from 'moment';
@@ -58,7 +59,7 @@ export function BookNowModal({ bike }: BookNowModalProps) {
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
-        <ProtectedRoute>
+        <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
           <DialogHeader>
             <DialogTitle>
               Rent {bike.brand} {bike.model} {bike.year}

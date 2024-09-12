@@ -2,6 +2,7 @@ import DashboardLayout from '@/components/layout/DashboardLayout/DashboardLayout
 import { MainLayout } from '@/components/layout/MainLayout';
 import ProtectedRoute from '@/components/layout/ProtectedRoute';
 import PublicRoute from '@/components/layout/PublicRoute';
+import { USER_ROLE } from '@/constants';
 import AboutUs from '@/pages/AboutUs';
 import BikeDetails from '@/pages/BikeDetails';
 import Bikes from '@/pages/Bikes';
@@ -55,26 +56,42 @@ const router = createBrowserRouter([
   {
     path: '/dashboard',
     element: (
-      <ProtectedRoute>
+      <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
         <DashboardLayout />
       </ProtectedRoute>
     ),
     children: [
       {
         index: true,
-        element: <DashboardHome />,
+        element: (
+          <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
+            <DashboardHome />,
+          </ProtectedRoute>
+        ),
       },
       {
         path: 'profile',
-        element: <Profile />,
+        element: (
+          <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
+            <Profile />,
+          </ProtectedRoute>
+        ),
       },
       {
         path: 'bikes',
-        element: <Bikes />,
+        element: (
+          <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
+            <Bikes />,
+          </ProtectedRoute>
+        ),
       },
       {
         path: 'bookings',
-        element: <Bookings />,
+        element: (
+          <ProtectedRoute authorizedRoles={[USER_ROLE.USER]}>
+            <Bookings />,
+          </ProtectedRoute>
+        ),
       },
     ],
   },
