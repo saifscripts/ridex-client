@@ -1,1 +1,1 @@
-export * from './columns';
+export { default as BikeData } from './BikeData';

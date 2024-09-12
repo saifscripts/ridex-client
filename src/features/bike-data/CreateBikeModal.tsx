@@ -13,17 +13,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
 import { bikeBrandOptions, USER_ROLE } from '@/constants';
 import { IBike, IResponse } from '@/interfaces';
 import { showToast } from '@/lib/utils';
 import { isNormalNumber, isPositiveNumber, isValidYear } from '@/lib/validate';
-import { useUpdateBikeMutation } from '@/redux/features/bike/bikeApi';
-import { FilePenLineIcon } from 'lucide-react';
+import { useCreateBikeMutation } from '@/redux/features/bike/bikeApi';
+import { PlusCircleIcon } from 'lucide-react';
+import { useRef } from 'react';
 import { FieldValues } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -46,49 +42,39 @@ const FormSchema = z.object({
   brand: z.string().min(1, 'Brand cannot be an empty string'),
 });
 
-interface UpdateBikeModalProps {
-  bike: IBike;
-}
-
-export default function UpdateBikeModal({ bike }: UpdateBikeModalProps) {
-  const [updateBike] = useUpdateBikeMutation();
+export default function CreateBikeModal() {
+  const [createBike] = useCreateBikeMutation();
+  const dialogTriggerRef = useRef<HTMLButtonElement>(null);
   async function onSubmit(data: FieldValues) {
-    const options = {
-      id: bike._id,
-      body: data,
-    };
-    const result = (await updateBike(options)) as IResponse<IBike>;
-    showToast(result, 'Bike Updated!');
-    return result?.data?.success; // if returned true the form will be reset
+    const result = (await createBike(data)) as IResponse<IBike>;
+    showToast(result, 'New Bike Bike Added!');
+    if (result.data?.success) {
+      (dialogTriggerRef.current as HTMLButtonElement).click();
+    }
   }
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon" className="hover:bg-gray-200">
-          <Tooltip>
-            <TooltipTrigger>
-              <Button variant="ghost" size="icon" className="hover:bg-gray-200">
-                <FilePenLineIcon className="size-4" />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Update bike</p>
-            </TooltipContent>
-          </Tooltip>
+        <Button
+          ref={dialogTriggerRef}
+          variant="outline"
+          size="default"
+          className="ml-auto  flex"
+        >
+          <PlusCircleIcon className="mn:mr-2 h-4 w-4" />
+          <span className="hidden mn:inline">Add Bike</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
         <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
           <DialogHeader>
-            <DialogTitle>
-              Update {bike.brand} {bike.model} {bike.year}
-            </DialogTitle>
+            <DialogTitle>Add New Bike</DialogTitle>
             <DialogDescription>
-              Update the bike with proper information!
+              Add a new the bike with proper information!
             </DialogDescription>
           </DialogHeader>
-          <AppForm onSubmit={onSubmit} schema={FormSchema} defaultValues={bike}>
+          <AppForm onSubmit={onSubmit} schema={FormSchema}>
             <AppInput name="name" label="Name" placeholder="Enter bike name" />
             <AppTextarea
               name="description"
@@ -124,7 +110,7 @@ export default function UpdateBikeModal({ bike }: UpdateBikeModalProps) {
               type="number"
               placeholder="Enter bike CC"
             />
-            <Submit className="w-full">Update</Submit>
+            <Submit className="w-full">Add New Bike</Submit>
           </AppForm>
         </ProtectedRoute>
       </DialogContent>

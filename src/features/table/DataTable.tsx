@@ -1,14 +1,4 @@
-import {
-  ColumnDef,
-  ColumnFiltersState,
-  SortingState,
-  VisibilityState,
-  flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from '@tanstack/react-table';
+import { ColumnDef, Table as ITable, flexRender } from '@tanstack/react-table';
 
 import {
   Table,
@@ -18,59 +8,21 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { ReactNode, useState } from 'react';
 import DataTableSkeleton from './DataTableSkeleton';
-import { DataTableViewOptions } from './DataTableViewOptions';
 
 interface DataTableProps<TData, TValue> {
+  table: ITable<TData>;
   columns: ColumnDef<TData, TValue>[];
-  data?: TData[];
-  search?: ReactNode;
-  filters?: ReactNode;
   isLoading?: boolean;
-  viewOptions?: boolean;
 }
 
 export default function DataTable<TData, TValue>({
+  table,
   columns,
-  data = [],
-  search,
-  viewOptions,
-  filters,
   isLoading,
 }: DataTableProps<TData, TValue>) {
-  const [sorting, setSorting] = useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
-  const [rowSelection, setRowSelection] = useState({});
-
-  const table = useReactTable({
-    data,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-    onSortingChange: setSorting,
-    getSortedRowModel: getSortedRowModel(),
-    onColumnFiltersChange: setColumnFilters,
-    getFilteredRowModel: getFilteredRowModel(),
-    onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
-    state: {
-      sorting,
-      columnFilters,
-      columnVisibility,
-      rowSelection,
-    },
-  });
-
   return (
     <div className="space-y-4 relative">
-      {(search || viewOptions) && (
-        <div className="flex items-center justify-between gap-2 p-3 bg-white border rounded-md">
-          {search}
-          {viewOptions && <DataTableViewOptions table={table} />}
-        </div>
-      )}
-      {filters}
       <div className="rounded-md border bg-white p-2 container">
         <Table>
           <TableHeader>
