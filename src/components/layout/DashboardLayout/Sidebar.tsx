@@ -1,22 +1,20 @@
 import { cn } from '@/lib/utils';
-import {
-  AvatarIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  DashboardIcon,
-  EnterIcon,
-} from '@radix-ui/react-icons';
-import DashboardItem from './DashboardItem';
+import { useAppSelector } from '@/redux/hooks';
+import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
+import { ISidebarItem } from './interfaces';
+import SidebarItem from './SidebarItem';
+import sidebarLinks from './sidebarLinks';
 
-interface DashboardSidebarProps {
+interface SidebarProps {
   isOpen: boolean;
   toggleSidebar: () => void;
 }
 
-export default function DashboardSidebar({
-  isOpen,
-  toggleSidebar,
-}: DashboardSidebarProps) {
+export default function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
+  const user = useAppSelector((state) => state.auth.user);
+
+  if (!user) return;
+
   return (
     <div
       className={cn(
@@ -32,15 +30,16 @@ export default function DashboardSidebar({
           //   'opacity-0': !isOpen,
         })}
       >
-        <DashboardItem isOpen={isOpen} to="profile" icon={<AvatarIcon />}>
-          Profile
-        </DashboardItem>
-        <DashboardItem isOpen={isOpen} to="bikes" icon={<EnterIcon />}>
-          Bikes
-        </DashboardItem>
-        <DashboardItem isOpen={isOpen} to="bookings" icon={<DashboardIcon />}>
-          Bookings
-        </DashboardItem>
+        {sidebarLinks[user?.role].map((item: ISidebarItem) => (
+          <SidebarItem
+            key={item.href}
+            href={item.href}
+            isOpen={isOpen}
+            icon={item.icon}
+          >
+            {item.text}
+          </SidebarItem>
+        ))}
       </div>
 
       <div

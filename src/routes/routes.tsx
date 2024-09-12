@@ -7,8 +7,10 @@ import { USER_ROLE } from '@/constants';
 import AboutUs from '@/pages/AboutUs';
 import BikeDetails from '@/pages/BikeDetails';
 import Bikes from '@/pages/Bikes';
-import Bookings from '@/pages/dashboard/Bookings';
-import DashboardHome from '@/pages/dashboard/DashboardHome';
+import ManageBikes from '@/pages/dashboard/ManageBikes';
+import ManageRentals from '@/pages/dashboard/ManageRentals';
+import ManageUsers from '@/pages/dashboard/ManageUsers';
+import MyRentals from '@/pages/dashboard/MyRentals';
 import Profile from '@/pages/dashboard/Profile';
 import Home from '@/pages/Home';
 import Login from '@/pages/Login';
@@ -57,23 +59,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: (
-      <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
-        <DashboardLayout />
-      </ProtectedRoute>
-    ),
+    element: <DashboardLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        element: (
-          <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
-            <DashboardHome />,
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: 'profile',
         element: (
           <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
             <Profile />,
@@ -81,18 +71,42 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: 'bikes',
+        path: '/dashboard/bikes',
         element: (
-          <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
+          <ProtectedRoute authorizedRoles={[USER_ROLE.USER]}>
             <Bikes />,
           </ProtectedRoute>
         ),
       },
       {
-        path: 'bookings',
+        path: '/dashboard/my-rentals',
         element: (
           <ProtectedRoute authorizedRoles={[USER_ROLE.USER]}>
-            <Bookings />,
+            <MyRentals />,
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/dashboard/manage-bikes',
+        element: (
+          <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN]}>
+            <ManageBikes />,
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/dashboard/manage-rentals',
+        element: (
+          <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN]}>
+            <ManageRentals />,
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/dashboard/manage-users',
+        element: (
+          <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN]}>
+            <ManageUsers />,
           </ProtectedRoute>
         ),
       },

@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Navbar } from '../Navbar';
-import DashboardSidebar from './DashboardSidebar';
+import Sidebar from './Sidebar';
 
 export default function DashboardLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -23,10 +23,7 @@ export default function DashboardLayout() {
     <div className="h-screen overflow-y-hidden">
       <Navbar />
       <div className={cn('flex h-[calc(100vh-64px)]')}>
-        <DashboardSidebar
-          toggleSidebar={toggleSidebar}
-          isOpen={isSidebarOpen}
-        />
+        <Sidebar toggleSidebar={toggleSidebar} isOpen={isSidebarOpen} />
         <div className="bg-secondary w-full h-full overflow-y-scroll">
           <Outlet />
         </div>

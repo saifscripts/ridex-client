@@ -46,7 +46,7 @@ export default function Login() {
     if (result?.data?.success) {
       const { token } = result.data;
       await dispatch(setUser(token));
-      navigate(state?.pathname || '/dashboard/profile');
+      navigate(state?.pathname || '/dashboard');
       toast({
         title: 'Login successful!',
       });

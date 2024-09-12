@@ -3,7 +3,7 @@ import { PaidBookings } from '@/features/booking/paid-bookings/';
 import { UnpaidBookings } from '@/features/booking/unpaid-bookings';
 import { CreditCard, DollarSign } from 'lucide-react';
 
-export default function Bookings() {
+export default function MyRentals() {
   return (
     <div className="m-4 p-4 rounded-lg bg-white">
       <Tabs defaultValue="unpaid" className="w-full">
