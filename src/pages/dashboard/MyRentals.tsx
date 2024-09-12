@@ -1,6 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { PaidBookings } from '@/features/booking/paid-bookings/';
-import { UnpaidBookings } from '@/features/booking/unpaid-bookings';
+import { PaidRentals, UnpaidRentals } from '@/features/rentals';
 import { CreditCard, DollarSign } from 'lucide-react';
 
 export default function MyRentals() {
@@ -24,10 +23,10 @@ export default function MyRentals() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="unpaid">
-          <UnpaidBookings />
+          <UnpaidRentals />
         </TabsContent>
         <TabsContent value="paid">
-          <PaidBookings />
+          <PaidRentals />
         </TabsContent>
       </Tabs>
     </div>

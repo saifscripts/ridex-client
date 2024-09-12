@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/dialog';
 import { USER_ROLE } from '@/constants';
 import { IBike } from '@/interfaces';
-import { useCreateBookingMutation } from '@/redux/features/booking/bookingApi';
+import { useCreateRentalMutation } from '@/redux/features/rental/rentalApi';
 import moment from 'moment';
 import { useState } from 'react';
 import { FieldValues } from 'react-hook-form';
@@ -32,18 +32,18 @@ const defaultValues = {
   startTime: new Date(),
 };
 
-interface BookNowModalProps {
+interface RentNowModalProps {
   bike: IBike;
 }
 
-export function BookNowModal({ bike }: BookNowModalProps) {
-  const [createBooking] = useCreateBookingMutation();
+export function RentNowModal({ bike }: RentNowModalProps) {
+  const [createRental] = useCreateRentalMutation();
   const [isLoading, setIsLoading] = useState(false);
 
   async function onSubmit(data: FieldValues) {
     setIsLoading(true);
     data.bikeId = bike._id;
-    const result = await createBooking(data);
+    const result = await createRental(data);
     if (result?.data?.success) {
       window.location.href = result?.data?.data?.payment_url;
     } else {
@@ -55,7 +55,7 @@ export function BookNowModal({ bike }: BookNowModalProps) {
     <Dialog>
       <DialogTrigger asChild>
         <Button className="w-60" size="lg" disabled={!bike.isAvailable}>
-          Book Now
+          Rent Now
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
@@ -65,7 +65,7 @@ export function BookNowModal({ bike }: BookNowModalProps) {
               Rent {bike.brand} {bike.model} {bike.year}
             </DialogTitle>
             <DialogDescription>
-              Select your booking start time and pay 100TK for confirmation!
+              Select your rent start time and pay 100TK for confirmation!
             </DialogDescription>
           </DialogHeader>
           <AppForm
@@ -75,7 +75,7 @@ export function BookNowModal({ bike }: BookNowModalProps) {
           >
             <AppDateTimePicker name="startTime" label="Start Time" />
             <Submit disabled={isLoading} className="w-full">
-              Pay Now (100 Tk)
+              Pay 100 BDT
             </Submit>
           </AppForm>
         </ProtectedRoute>

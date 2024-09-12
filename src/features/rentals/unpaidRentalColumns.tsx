@@ -3,7 +3,7 @@ import { ColumnDef } from '@tanstack/react-table';
 import moment from 'moment';
 import PayButton from './PayButton';
 
-export const columns: ColumnDef<IRental>[] = [
+export const unpaidRentalColumns: ColumnDef<IRental>[] = [
   {
     accessorKey: 'bikeId.name',
     header: 'Bike Name',

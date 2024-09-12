@@ -1,14 +1,14 @@
 import { baseApi } from '../../api/baseApi';
 
-export const bookingApi = baseApi.injectEndpoints({
+export const rentalApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    createBooking: builder.mutation({
+    createRental: builder.mutation({
       query: (data) => ({
         url: '/rentals/',
         method: 'POST',
         body: data,
       }),
-      invalidatesTags: ['Booking'],
+      invalidatesTags: ['Rental'],
     }),
     initiateRemainingPayment: builder.mutation({
       query: (rentalId) => ({
@@ -16,19 +16,19 @@ export const bookingApi = baseApi.injectEndpoints({
         method: 'PUT',
       }),
     }),
-    getMyBookings: builder.query({
+    getMyRentals: builder.query({
       query: (params = {}) => ({
         url: '/rentals',
         method: 'GET',
         params,
       }),
-      providesTags: ['Booking'],
+      providesTags: ['Rental'],
     }),
   }),
 });
 
 export const {
-  useCreateBookingMutation,
-  useGetMyBookingsQuery,
+  useCreateRentalMutation,
+  useGetMyRentalsQuery,
   useInitiateRemainingPaymentMutation,
-} = bookingApi;
+} = rentalApi;

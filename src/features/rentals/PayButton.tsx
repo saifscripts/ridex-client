@@ -1,6 +1,6 @@
 import AppForm from '@/components/form/AppForm';
 import Submit from '@/components/form/Submit';
-import { useInitiateRemainingPaymentMutation } from '@/redux/features/booking/bookingApi';
+import { useInitiateRemainingPaymentMutation } from '@/redux/features/rental/rentalApi';
 import React, { useState } from 'react';
 
 interface PayButtonProps {

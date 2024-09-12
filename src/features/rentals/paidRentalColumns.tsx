@@ -2,7 +2,7 @@ import { IRental } from '@/constants';
 import { ColumnDef } from '@tanstack/react-table';
 import moment from 'moment';
 
-export const columns: ColumnDef<IRental>[] = [
+export const paidRentalColumns: ColumnDef<IRental>[] = [
   {
     accessorKey: 'bikeId.name',
     header: 'Bike Name',
