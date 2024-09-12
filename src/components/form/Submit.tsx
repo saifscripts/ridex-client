@@ -7,9 +7,21 @@ interface SubmitProps {
   children: ReactNode;
   className?: string;
   disabled?: boolean;
+  variant?:
+    | 'default'
+    | 'destructive'
+    | 'outline'
+    | 'secondary'
+    | 'ghost'
+    | 'link';
 }
 
-export default function Submit({ children, className, disabled }: SubmitProps) {
+export default function Submit({
+  children,
+  className,
+  disabled,
+  variant,
+}: SubmitProps) {
   const {
     formState: { isSubmitting },
   } = useFormContext();
@@ -19,6 +31,7 @@ export default function Submit({ children, className, disabled }: SubmitProps) {
       type="submit"
       disabled={disabled || isSubmitting}
       className={cn(className)}
+      variant={variant}
     >
       {children}
     </Button>

@@ -8,3 +8,8 @@ export const BIKE_BRANDS = [
   'Suzuki',
   'Royal Enfield',
 ];
+
+export const bikeBrandOptions = BIKE_BRANDS.map((brand) => ({
+  value: brand,
+  label: brand,
+}));
