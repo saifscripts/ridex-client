@@ -1,3 +1,4 @@
+import AppError from '@/error/AppError';
 import { IUserRole } from '@/interfaces';
 import { ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
@@ -19,7 +20,7 @@ export default function ProtectedRoute({
   }
 
   if (!authorizedRoles.includes(user?.role)) {
-    throw new Error('Unauthorized Access!');
+    throw new AppError(403, 'Unauthorized Access!');
   }
 
   return children;
