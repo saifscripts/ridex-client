@@ -10,6 +10,7 @@ import Sidebar from './Sidebar';
 
 const Navbar = () => {
   const isLoggedIn = useAppSelector((state) => state.auth.token);
+  const user = useAppSelector((state) => state.auth.user);
 
   return (
     <div className="h-16 border-b flex justify-between items-center px-6">
@@ -23,7 +24,10 @@ const Navbar = () => {
       </div>
       <div className="hidden md:flex gap-2 items-center">
         {isLoggedIn ? (
-          <Logout />
+          <>
+            <p>{user?.role}</p>
+            <Logout />
+          </>
         ) : (
           <>
             <Link to="/login">

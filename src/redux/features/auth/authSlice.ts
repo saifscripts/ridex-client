@@ -1,5 +1,6 @@
 import { IUser } from '@/interfaces';
 import { createSlice } from '@reduxjs/toolkit';
+import { jwtDecode } from 'jwt-decode';
 
 export interface IAuthState {
   user: null | IUser;
@@ -16,8 +17,9 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state.user = action.payload.user || state.user;
-      state.token = action.payload.token || state.token;
+      const token = action.payload;
+      state.user = jwtDecode(token);
+      state.token = token;
     },
     logout: (state) => {
       state.user = null;

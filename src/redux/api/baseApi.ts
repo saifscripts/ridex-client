@@ -27,10 +27,7 @@ const baseQueryWithRefreshToken: BaseQueryFn = async (args, api, options) => {
   if (result?.error?.status === 401) {
     const token = await refreshToken();
     if (!token) api.dispatch(logout());
-
-    const user = (api.getState() as RootState).auth.user;
-
-    api.dispatch(setUser({ user, token }));
+    api.dispatch(setUser(token));
 
     result = await baseQuery(args, api, options);
   }
