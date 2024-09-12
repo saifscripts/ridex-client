@@ -1,4 +1,5 @@
 import DashboardLayout from '@/components/layout/DashboardLayout/DashboardLayout';
+import ErrorPage from '@/components/layout/ErrorPage';
 import { MainLayout } from '@/components/layout/MainLayout';
 import ProtectedRoute from '@/components/layout/ProtectedRoute';
 import PublicRoute from '@/components/layout/PublicRoute';
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -60,6 +62,7 @@ const router = createBrowserRouter([
         <DashboardLayout />
       </ProtectedRoute>
     ),
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
