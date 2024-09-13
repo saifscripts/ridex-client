@@ -1,18 +1,10 @@
-import {
-  isRouteErrorResponse,
-  Link,
-  useNavigate,
-  useRouteError,
-} from 'react-router-dom';
+import AppError from '@/error/AppError';
+import { Link, useNavigate, useRouteError } from 'react-router-dom';
 import { Button } from '../ui/button';
 
 export default function ErrorPage() {
-  const error = useRouteError();
+  const error = useRouteError() as AppError;
   const navigate = useNavigate();
-
-  if (!isRouteErrorResponse(error)) {
-    return null;
-  }
 
   return (
     <main className="h-screen flex flex-col justify-center items-center gap-4">
