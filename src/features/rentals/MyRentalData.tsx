@@ -19,7 +19,7 @@ export default function MyRentalData({
 }: MyRentalProps) {
   const table = useReactTable({
     data,
-    columns: columns,
+    columns,
     getCoreRowModel: getCoreRowModel(),
   });
 

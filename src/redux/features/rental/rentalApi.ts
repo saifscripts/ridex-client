@@ -24,11 +24,20 @@ export const rentalApi = baseApi.injectEndpoints({
       }),
       providesTags: ['Rental'],
     }),
+    getAllRentals: builder.query({
+      query: (params = {}) => ({
+        url: '/rentals/all',
+        method: 'GET',
+        params,
+      }),
+      providesTags: ['Rental'],
+    }),
   }),
 });
 
 export const {
   useCreateRentalMutation,
   useGetMyRentalsQuery,
+  useGetAllRentalsQuery,
   useInitiateRemainingPaymentMutation,
 } = rentalApi;
