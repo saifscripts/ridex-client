@@ -19,12 +19,14 @@ interface AppDateTimePickerProps {
   name: string;
   label?: string;
   placeholder?: string;
+  disabled?: boolean;
 }
 
 export function AppDateTimePicker({
   name,
   label,
   placeholder,
+  disabled,
 }: AppDateTimePickerProps) {
   const form = useFormContext();
 
@@ -42,6 +44,7 @@ export function AppDateTimePicker({
               <FormControl>
                 <Button
                   variant={'outline'}
+                  disabled={disabled}
                   className={cn(
                     'w-full pl-3 text-left font-normal',
                     !field.value && 'text-muted-foreground'

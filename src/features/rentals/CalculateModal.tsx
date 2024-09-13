@@ -12,48 +12,49 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { IRental, RENTAL_STATUS, USER_ROLE } from '@/constants';
+import { IResponse } from '@/interfaces';
+import { showToast } from '@/lib/utils';
+import { useReturnBikeMutation } from '@/redux/features/rental/rentalApi';
 import moment from 'moment';
 import { FieldValues } from 'react-hook-form';
 import { z } from 'zod';
+import { CalculatedInvoice } from './CalculatedInvoice';
 
 const FormSchema = z.object({
-  startTime: z
-    .date({ required_error: 'Start time is required' })
+  returnTime: z
+    .date({ required_error: 'Return time is required' })
     .default(new Date())
     .transform((value) => {
       return moment(value).format();
     }),
 });
 
-const defaultValues = {
-  startTime: new Date(),
-};
-
 interface CalculateModalProps {
   rental: IRental;
 }
 
 export function CalculateModal({ rental }: CalculateModalProps) {
-  //   const [createRental] = useCreateRentalMutation();
-  //   const [isLoading, setIsLoading] = useState(false);
+  const [returnBike] = useReturnBikeMutation();
 
   async function onSubmit(data: FieldValues) {
-    // setIsLoading(true);
-    // data.bikeId = bike._id;
-    // const result = await createRental(data);
-    // if (result?.data?.success) {
-    //   window.location.href = result?.data?.data?.payment_url;
-    // } else {
-    //   setIsLoading(false);
-    // }
+    const options = {
+      rentalId: rental._id,
+      body: data,
+    };
+    const result = (await returnBike(options)) as IResponse<IRental>;
+    showToast(result, 'Bike returned!');
   }
+
+  const defaultValues = {
+    startTime: rental.startTime,
+    returnTime: new Date(),
+  };
 
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button
-          className="w-60"
-          size="lg"
+          size="sm"
           disabled={rental?.rentalStatus === RENTAL_STATUS.RETURNED}
         >
           Calculate
@@ -73,10 +74,10 @@ export function CalculateModal({ rental }: CalculateModalProps) {
             schema={FormSchema}
             defaultValues={defaultValues}
           >
-            <AppDateTimePicker name="startTime" label="Start Time" />
-            <Submit disabled={true} className="w-full">
-              Return bike
-            </Submit>
+            <AppDateTimePicker disabled name="startTime" label="Start Time" />
+            <AppDateTimePicker name="returnTime" label="Return Time" />
+            <CalculatedInvoice rental={rental} />
+            <Submit className="w-full">Return bike</Submit>
           </AppForm>
         </ProtectedRoute>
       </DialogContent>
