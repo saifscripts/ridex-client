@@ -44,7 +44,7 @@ export default function MakeAdminModal({ user }: MakeAdminModalProps) {
           <Tooltip>
             <TooltipTrigger>
               <Button variant="ghost" size="icon" className="hover:bg-gray-200">
-                <ShieldPlusIcon className="size-4 text-green-600" />
+                <ShieldPlusIcon className="size-5 text-green-600" />
               </Button>
             </TooltipTrigger>
             <TooltipContent>
