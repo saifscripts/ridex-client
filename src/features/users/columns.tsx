@@ -1,3 +1,4 @@
+import { USER_ROLE } from '@/constants';
 import { IUser } from '@/interfaces';
 import { ColumnDef } from '@tanstack/react-table';
 import DeleteUserModal from './DeleteUserModal';
@@ -29,11 +30,16 @@ export const columns: ColumnDef<IUser>[] = [
     id: 'actions',
     header: () => <div className="text-right mr-2">Action</div>,
     cell: ({ row }) => {
+      const user = row.original;
+
       return (
         <div className="flex justify-end">
-          <RemoveAdminModal user={row.original} />
-          <MakeAdminModal user={row.original} />
-          <DeleteUserModal user={row.original} />
+          {user?.role === USER_ROLE.ADMIN ? (
+            <RemoveAdminModal user={user} />
+          ) : (
+            <MakeAdminModal user={user} />
+          )}
+          <DeleteUserModal user={user} />
         </div>
       );
     },
