@@ -37,7 +37,20 @@ export function generateSortString(previousString: string, newValue: string) {
     return _item !== _value && Boolean(item);
   });
 
-  filtered.push(newValue);
+  filtered.unshift(newValue);
 
   return filtered.join(',');
+}
+
+export function convertPropertiesToString(
+  obj: Record<string, string | number>
+) {
+  const result: Record<string, string> = {};
+
+  for (const [key, value] of Object.entries(obj)) {
+    // Convert all property values to string
+    result[key] = String(value);
+  }
+
+  return result;
 }

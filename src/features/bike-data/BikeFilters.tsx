@@ -17,7 +17,7 @@ const AVAILABILITY_MAPPER: Record<string, string> = {
 };
 
 export default function BikeFilters() {
-  const { searchParams, deleteSearchParam, setSearchParams } =
+  const { searchParams, replaceSearchParam, setSearchParams } =
     useAppSearchParams();
 
   const filters = [...searchParams].filter(
@@ -27,13 +27,14 @@ export default function BikeFilters() {
   if (!filters?.length) return;
 
   return (
-    <div className="flex gap-2 p-3 bg-white border rounded-md flex-wrap">
+    <div className="flex gap-2 p-3 bg-white border rounded-md flex-wrap items-center">
+      <p className="text-xs">Filtered By</p>
       {filters?.map(([key, value]) => (
         <Button
           variant="ghost"
           key={value}
           className="flex gap-2 items-center bg-gray-50 rounded-full"
-          onClick={() => deleteSearchParam({ key, value })}
+          onClick={() => replaceSearchParam({ key, value }, { page: '1' })}
         >
           {key === 'brand'
             ? BIKE_BRANDS_MAPPER[value]
@@ -52,12 +53,12 @@ export default function BikeFilters() {
           );
 
           const params = new URLSearchParams(others);
-
-          setSearchParams(params);
+          params.append('page', '1');
+          setSearchParams(params, { replace: true });
         }}
       >
         <FilterXIcon className="size-4" />
-        Clear Filters
+        Clear All
       </Button>
     </div>
   );

@@ -1,4 +1,4 @@
-import { IRental } from '@/constants';
+import { IRental } from '@/interfaces';
 import { ColumnDef } from '@tanstack/react-table';
 import moment from 'moment';
 

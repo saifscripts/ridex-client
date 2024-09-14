@@ -1,7 +1,10 @@
+import { bikeBrandOptions } from '@/constants';
 import {
+  CheckboxFilter,
   DataTable,
   DataTablePagination,
   DataTableViewOptions,
+  RadioButtonFilter,
 } from '@/features/table/';
 import { IBike, IMetaData } from '@/interfaces';
 import {
@@ -13,6 +16,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import { BikeIcon, SearchCheckIcon } from 'lucide-react';
 import { useState } from 'react';
 import BikeFilters from './BikeFilters';
 import BikeSearch from './BikeSearch';
@@ -50,11 +54,26 @@ export default function BikeData({ data, meta, isLoading }: BikeDataProps) {
   });
 
   return (
-    <div className="space-y-4 container my-4">
-      <div className="flex items-center justify-between gap-2 p-3 bg-white border rounded-md">
+    <div className="space-y-2 m-4">
+      <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-4 p-3 bg-white border rounded-md">
         <BikeSearch />
-        <div className="flex gap-2">
+
+        <div className="flex gap-2 w-full lg:w-auto">
           <DataTableViewOptions table={table} />
+          <CheckboxFilter columnId="brand" filters={bikeBrandOptions}>
+            <BikeIcon className="h-4 w-4" />
+            <span className="hidden sm:inline">Brand</span>
+          </CheckboxFilter>
+          <RadioButtonFilter
+            columnId={'isAvailable'}
+            filters={[
+              { value: true, label: 'Available' },
+              { value: false, label: 'Unavailable' },
+            ]}
+          >
+            <SearchCheckIcon className="h-4 w-4" />
+            <span className="hidden sm:inline">Availability</span>
+          </RadioButtonFilter>
           <CreateBikeModal />
         </div>
       </div>

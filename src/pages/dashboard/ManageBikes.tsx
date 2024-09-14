@@ -12,7 +12,6 @@ export default function ManageBikes() {
   }, [searchParams]);
 
   const { data, isFetching } = useGetBikesQuery(params);
-  console.log(data);
 
   return (
     <BikeData

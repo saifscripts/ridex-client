@@ -58,7 +58,7 @@ export default function CreateBikeModal() {
       <DialogTrigger asChild>
         <Button
           ref={dialogTriggerRef}
-          variant="outline"
+          //   variant="outline"
           size="default"
           className="ml-auto  flex"
         >

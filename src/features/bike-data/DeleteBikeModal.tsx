@@ -44,7 +44,7 @@ export default function DeleteBikeModal({ bike }: DeleteBikeModalProps) {
           <Tooltip>
             <TooltipTrigger>
               <Button variant="ghost" size="icon" className="hover:bg-gray-200">
-                <Trash className="size-4" />
+                <Trash className="size-5 text-red-500" />
               </Button>
             </TooltipTrigger>
             <TooltipContent>

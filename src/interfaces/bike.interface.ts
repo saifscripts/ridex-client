@@ -2,7 +2,7 @@ export interface IBike {
   _id: string;
   name: string;
   description: string;
-  pricePerHour: string;
+  pricePerHour: number;
   isAvailable: boolean;
   cc: number;
   year: number;

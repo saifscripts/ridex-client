@@ -23,7 +23,7 @@ export default function DataTable<TData, TValue>({
 }: DataTableProps<TData, TValue>) {
   return (
     <div className="space-y-4 relative">
-      <div className="rounded-md border bg-white p-2 container">
+      <div className="rounded-md border bg-white p-2">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

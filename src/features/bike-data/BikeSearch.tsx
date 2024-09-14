@@ -14,7 +14,7 @@ export default function BikeSearch() {
           { replace: true }
         )
       }
-      className="w-full sm:w-72"
+      className="w-full lg:w-72"
     />
   );
 }

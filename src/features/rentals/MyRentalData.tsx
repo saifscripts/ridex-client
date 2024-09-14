@@ -1,5 +1,5 @@
-import { IRental } from '@/constants';
 import { DataTable } from '@/features/table';
+import { IRental } from '@/interfaces';
 import {
   ColumnDef,
   getCoreRowModel,

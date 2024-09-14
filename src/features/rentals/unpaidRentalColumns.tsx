@@ -1,4 +1,5 @@
-import { IRental, RENTAL_STATUS } from '@/constants';
+import { RENTAL_STATUS } from '@/constants';
+import { IRental } from '@/interfaces';
 import { ColumnDef } from '@tanstack/react-table';
 import moment from 'moment';
 import PayButton from './PayButton';

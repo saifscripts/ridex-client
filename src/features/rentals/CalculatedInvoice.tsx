@@ -5,7 +5,7 @@ import {
   TableFooter,
   TableRow,
 } from '@/components/ui/table';
-import { IRental } from '@/constants';
+import { IRental } from '@/interfaces';
 import { useWatch } from 'react-hook-form';
 import { calculateTotalCost } from './utils';
 
@@ -16,7 +16,7 @@ interface CalculatedInvoiceProps {
 export function CalculatedInvoice({ rental }: CalculatedInvoiceProps) {
   const { startTime, returnTime } = useWatch();
 
-  const pricePerHour = Number(rental.bikeId.pricePerHour);
+  const pricePerHour = rental.bikeId.pricePerHour;
   const totalCost = calculateTotalCost(startTime, returnTime, pricePerHour);
 
   return (

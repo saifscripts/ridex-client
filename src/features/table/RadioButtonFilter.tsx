@@ -12,35 +12,32 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import useAppSearchParams from '@/hooks/useAppSearchParams';
-import { MixerVerticalIcon } from '@radix-ui/react-icons';
+import { ReactNode } from 'react';
 
-interface DataTableFilterProps {
+interface RadioButtonFilterProps {
   columnId: string;
-  title: string;
   filters: { value: string | boolean; label: string }[];
+  children: ReactNode;
 }
 
-export default function CheckboxFilter({
+export default function RadioButtonFilter({
   columnId,
-  title,
   filters,
-}: DataTableFilterProps) {
+  children,
+}: RadioButtonFilterProps) {
   const { searchParams, replaceSearchParam } = useAppSearchParams();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          size="sm"
-          className="-ml-3 h-8 data-[state=open]:bg-accent"
-        >
-          <span>{title}</span>
-          {<MixerVerticalIcon className="ml-2 h-4 w-4" />}
+        <Button variant="outline" size="default" className="flex gap-2">
+          {children}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>{title}</DropdownMenuLabel>
+        <DropdownMenuLabel className="flex gap-2 items-center">
+          {children}
+        </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuRadioGroup
           value={searchParams.get(columnId) || undefined}

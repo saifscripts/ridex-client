@@ -69,7 +69,7 @@ export default function UpdateBikeModal({ bike }: UpdateBikeModalProps) {
           <Tooltip>
             <TooltipTrigger>
               <Button variant="ghost" size="icon" className="hover:bg-gray-200">
-                <FilePenLineIcon className="size-4" />
+                <FilePenLineIcon className="size-5 text-blue-400" />
               </Button>
             </TooltipTrigger>
             <TooltipContent>

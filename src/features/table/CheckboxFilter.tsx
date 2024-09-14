@@ -12,40 +12,33 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import useAppSearchParams from '@/hooks/useAppSearchParams';
-import { MixerVerticalIcon } from '@radix-ui/react-icons';
+import { ReactNode } from 'react';
 
 interface DataTableFilterProps {
   columnId: string;
-  title: string;
   filters: { value: string | boolean; label: string }[];
+  children: ReactNode;
 }
 
 export default function CheckboxFilter({
   columnId,
-  title,
   filters,
+  children,
 }: DataTableFilterProps) {
-  const {
-    searchParams,
-    appendSearchParams,
-    deleteSearchParam,
-    replaceSearchParam,
-  } = useAppSearchParams();
+  const { searchParams, appendSearchParams, replaceSearchParam } =
+    useAppSearchParams();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          size="sm"
-          className="-ml-3 h-8 data-[state=open]:bg-accent"
-        >
-          <span>{title}</span>
-          {<MixerVerticalIcon className="ml-2 h-4 w-4" />}
+        <Button variant="outline" size="default" className="flex gap-2">
+          {children}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>{title}</DropdownMenuLabel>
+        <DropdownMenuLabel className="flex gap-2 items-center">
+          {children}
+        </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           {filters.map((item) => {
@@ -69,11 +62,12 @@ export default function CheckboxFilter({
                       { replace: true }
                     );
                   } else {
-                    deleteSearchParam(
+                    replaceSearchParam(
                       {
                         key: columnId,
                         value: String(item.value),
                       },
+                      { page: '1' },
                       { replace: true }
                     );
                   }

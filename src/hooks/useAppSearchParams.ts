@@ -68,7 +68,6 @@ const useAppSearchParams = () => {
       updatedSearchParams.append(key, value);
     });
 
-    setSearchParams(updatedSearchParams);
     setSearchParams(updatedSearchParams, options);
   };
 

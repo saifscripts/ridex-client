@@ -1,10 +1,5 @@
 import { Badge } from '@/components/ui/badge';
-import { BIKE_BRANDS } from '@/constants';
-import {
-  CheckboxFilter,
-  DataTableColumnHeader,
-  RadioButtonFilter,
-} from '@/features/table';
+import { DataTableColumnHeader } from '@/features/table';
 import { IBike } from '@/interfaces';
 import { ColumnDef } from '@tanstack/react-table';
 import DeleteBikeModal from './DeleteBikeModal';
@@ -14,7 +9,12 @@ export const columns: ColumnDef<IBike>[] = [
   {
     accessorKey: 'name',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Name" />
+      <DataTableColumnHeader
+        column={column}
+        title="Name"
+        ascLabel="A to Z"
+        dscLabel="Z to A"
+      />
     ),
   },
   {
@@ -27,10 +27,11 @@ export const columns: ColumnDef<IBike>[] = [
   {
     accessorKey: 'brand',
     header: ({ column }) => (
-      <CheckboxFilter
-        columnId={column.id}
+      <DataTableColumnHeader
+        column={column}
         title="Brand"
-        filters={BIKE_BRANDS.map((item) => ({ value: item, label: item }))}
+        ascLabel="A to Z"
+        dscLabel="Z to A"
       />
     ),
   },
@@ -52,16 +53,7 @@ export const columns: ColumnDef<IBike>[] = [
   },
   {
     accessorKey: 'isAvailable',
-    header: ({ column }) => (
-      <RadioButtonFilter
-        columnId={column.id}
-        title="Availability"
-        filters={[
-          { value: true, label: 'Available' },
-          { value: false, label: 'Unavailable' },
-        ]}
-      />
-    ),
+    header: 'Availability',
 
     cell: ({ row }) => {
       const isAvailable = row.getValue('isAvailable');
@@ -79,7 +71,13 @@ export const columns: ColumnDef<IBike>[] = [
   {
     accessorKey: 'pricePerHour',
     header: ({ column }) => (
-      <DataTableColumnHeader className="" column={column} title="Price/Hour" />
+      <DataTableColumnHeader
+        className=""
+        column={column}
+        title="Price/Hour"
+        ascLabel="Low to High"
+        dscLabel="High to Low"
+      />
     ),
     cell: ({ row }) => {
       const pricePerHour = parseFloat(row.getValue('pricePerHour'));
@@ -93,10 +91,10 @@ export const columns: ColumnDef<IBike>[] = [
   },
   {
     id: 'actions',
-    header: () => <div className="text-right mr-2">Action</div>,
+    header: () => <div className="text-right">Action</div>,
     cell: ({ row }) => {
       return (
-        <div className="flex justify-end">
+        <div className="flex justify-end gap-1">
           <UpdateBikeModal bike={row.original} />
           <DeleteBikeModal bike={row.original} />
         </div>

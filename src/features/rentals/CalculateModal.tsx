@@ -11,8 +11,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { IRental, RENTAL_STATUS, USER_ROLE } from '@/constants';
-import { IResponse } from '@/interfaces';
+import { RENTAL_STATUS, USER_ROLE } from '@/constants';
+import { IRental, IResponse } from '@/interfaces';
 import { showToast } from '@/lib/utils';
 import { useReturnBikeMutation } from '@/redux/features/rental/rentalApi';
 import moment from 'moment';
