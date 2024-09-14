@@ -20,7 +20,7 @@ export default function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
       className={cn(
         'bg-white h-full border-r py-4 transition-width duration-150 flex flex-col items-center relative',
         {
-          'w-[256px] block px-4': isOpen,
+          'w-[256px] px-4': isOpen,
           'w-16 sm:w-20': !isOpen,
         }
       )}

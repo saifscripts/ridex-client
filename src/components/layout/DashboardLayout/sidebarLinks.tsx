@@ -1,11 +1,12 @@
 import { DashboardIcon } from '@radix-ui/react-icons';
+import { BikeIcon, LogsIcon, UserPenIcon, UsersIcon } from 'lucide-react';
 
 const sidebarLinks = {
   USER: [
     {
       href: '/dashboard',
       text: 'Profile',
-      icon: <DashboardIcon />,
+      icon: <UserPenIcon className="size-5" />,
     },
     {
       href: '/dashboard/bikes',
@@ -22,22 +23,22 @@ const sidebarLinks = {
     {
       href: '/dashboard',
       text: 'Profile',
-      icon: <DashboardIcon />,
+      icon: <UserPenIcon className="size-5" />,
     },
     {
       href: '/dashboard/manage-bikes',
       text: 'Manage Bikes',
-      icon: <DashboardIcon />,
+      icon: <BikeIcon className="size-5" />,
     },
     {
       href: '/dashboard/manage-users',
       text: 'Manage Users',
-      icon: <DashboardIcon />,
+      icon: <UsersIcon className="size-5" />,
     },
     {
       href: '/dashboard/manage-rentals',
       text: 'Manage Rentals',
-      icon: <DashboardIcon />,
+      icon: <LogsIcon className="size-5" />,
     },
   ],
 };

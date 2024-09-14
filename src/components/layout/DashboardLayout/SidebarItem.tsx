@@ -29,7 +29,9 @@ export default function SidebarItem({
       )}
     >
       {icon}
-      <span className={cn({ 'opacity-0 hidden': !isOpen })}>{children}</span>
+      <span className={cn('text-nowrap', { 'opacity-0 hidden': !isOpen })}>
+        {children}
+      </span>
     </Link>
   );
 }
