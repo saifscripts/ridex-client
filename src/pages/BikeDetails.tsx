@@ -53,7 +53,7 @@ export default function BikeDetails() {
             </p>
 
             <Badge variant="secondary" className="xs:text-xl mb-8">
-              Price/Hour: ${bikeData?.pricePerHour}
+              {bikeData?.pricePerHour} BDT/Hour
             </Badge>
 
             <Separator className="w-full mb-4" />

@@ -16,7 +16,13 @@ import {
 import useAppSearchParams from '@/hooks/useAppSearchParams';
 import { IMetaData } from '@/interfaces';
 
-export function DataTablePagination({ metaData }: { metaData: IMetaData }) {
+export function DataTablePagination({
+  metaData,
+  pageSizes = [10, 20, 30, 40, 50],
+}: {
+  metaData: IMetaData;
+  pageSizes?: number[];
+}) {
   const { searchParams, appendSearchParams } = useAppSearchParams();
 
   return (
@@ -28,7 +34,7 @@ export function DataTablePagination({ metaData }: { metaData: IMetaData }) {
         <div className="flex items-center space-x-2">
           <p className="text-sm font-medium hidden xs:block">Rows per page</p>
           <Select
-            value={searchParams.get('limit') || '10'}
+            value={searchParams.get('limit') || String(pageSizes[0])}
             onValueChange={(value) => {
               appendSearchParams(
                 { limit: value, page: '1' },
@@ -37,10 +43,12 @@ export function DataTablePagination({ metaData }: { metaData: IMetaData }) {
             }}
           >
             <SelectTrigger className="h-8 w-[70px]">
-              <SelectValue placeholder={searchParams.get('limit') || '10'} />
+              <SelectValue
+                placeholder={searchParams.get('limit') || String(pageSizes[0])}
+              />
             </SelectTrigger>
             <SelectContent side="top">
-              {[10, 20, 30, 40, 50].map((pageSize) => (
+              {pageSizes.map((pageSize) => (
                 <SelectItem key={pageSize} value={`${pageSize}`}>
                   {pageSize}
                 </SelectItem>

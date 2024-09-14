@@ -83,7 +83,7 @@ export const columns: ColumnDef<IBike>[] = [
       const pricePerHour = parseFloat(row.getValue('pricePerHour'));
       const formatted = new Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: 'USD',
+        currency: 'BDT',
       }).format(pricePerHour);
 
       return <div className="">{formatted}</div>;
