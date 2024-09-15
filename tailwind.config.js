@@ -77,7 +77,8 @@ module.exports = {
         width: 'width',
       },
       screens: {
-        mn: '400px',
+        tn: '350px', // tiny
+        mn: '400px', // mini
         xs: '500px',
         '2xl': '1400px',
       },
