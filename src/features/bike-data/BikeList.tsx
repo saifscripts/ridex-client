@@ -95,14 +95,13 @@ function BikeCards({
 }) {
   if (isLoading) return <BikesSkeleton />;
 
-  return (
+  return table.getRowModel().rows?.length > 0 ? (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 my-4">
-      {table.getRowModel().rows?.length &&
-        table
-          .getRowModel()
-          .rows.map(({ original: bike }) => (
-            <BikeCard key={bike._id} bike={bike} />
-          ))}
+      {table.getRowModel().rows.map(({ original: bike }) => (
+        <BikeCard key={bike._id} bike={bike} />
+      ))}
     </div>
+  ) : (
+    <p className="text-center text-2xl my-8">No Bikes Found</p>
   );
 }
