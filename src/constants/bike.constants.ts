@@ -13,3 +13,8 @@ export const bikeBrandOptions = BIKE_BRANDS.map((brand) => ({
   value: brand,
   label: brand,
 }));
+
+export const bikeAvailabilityOptions = [
+  { value: true, label: 'Available' },
+  { value: false, label: 'Unavailable' },
+];

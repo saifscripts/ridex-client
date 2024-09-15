@@ -3,7 +3,7 @@ import { Table } from '@tanstack/react-table';
 import { IBike } from '@/interfaces';
 import { BikeCard } from './BikeCard';
 
-import { bikeBrandOptions } from '@/constants';
+import { bikeAvailabilityOptions, bikeBrandOptions } from '@/constants';
 import {
   CheckboxFilter,
   DataTablePagination,
@@ -69,10 +69,7 @@ export default function BikeList({ data, meta, isLoading }: BikeDataProps) {
           </CheckboxFilter>
           <RadioButtonFilter
             columnId={'isAvailable'}
-            filters={[
-              { value: true, label: 'Available' },
-              { value: false, label: 'Unavailable' },
-            ]}
+            filters={bikeAvailabilityOptions}
           >
             <SearchCheckIcon className="h-4 w-4" />
             <span className="hidden sm:inline">Availability</span>
