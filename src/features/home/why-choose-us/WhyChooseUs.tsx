@@ -39,7 +39,7 @@ export default function WhyChooseUs() {
         </p>
 
         {/* Features */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {features.map((feature) => (
             <div
               key={feature.id}
