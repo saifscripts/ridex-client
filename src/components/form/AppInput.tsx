@@ -13,6 +13,7 @@ interface AppInputProps {
   type?: string;
   label?: string;
   placeholder?: string;
+  className?: string;
 }
 
 export default function AppInput({
@@ -20,6 +21,7 @@ export default function AppInput({
   label,
   placeholder,
   type,
+  className,
 }: AppInputProps) {
   const form = useFormContext();
 
@@ -31,7 +33,12 @@ export default function AppInput({
         <FormItem>
           {label && <FormLabel>{label}</FormLabel>}
           <FormControl>
-            <Input type={type} placeholder={placeholder} {...field} />
+            <Input
+              type={type}
+              placeholder={placeholder}
+              {...field}
+              className={className}
+            />
           </FormControl>
           <FormMessage />
         </FormItem>

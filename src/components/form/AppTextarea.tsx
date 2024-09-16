@@ -12,12 +12,14 @@ interface AppTextareaProps {
   name: string;
   label?: string;
   placeholder?: string;
+  className?: string;
 }
 
 export default function AppTextarea({
   name,
   label,
   placeholder,
+  className,
 }: AppTextareaProps) {
   const form = useFormContext();
 
@@ -29,7 +31,11 @@ export default function AppTextarea({
         <FormItem>
           {label && <FormLabel>{label}</FormLabel>}
           <FormControl>
-            <Textarea placeholder={placeholder} {...field} />
+            <Textarea
+              placeholder={placeholder}
+              {...field}
+              className={className}
+            />
           </FormControl>
           <FormMessage />
         </FormItem>

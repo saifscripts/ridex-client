@@ -48,6 +48,13 @@ export const userApi = baseApi.injectEndpoints({
       invalidatesTags: ['User'],
       transformResponse: (res: ISuccessResponse<IUser>) => res.data,
     }),
+    contactUs: builder.mutation({
+      query: (body) => ({
+        url: '/users/contact-us',
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 });
 
@@ -58,4 +65,5 @@ export const {
   useRemoveAdminMutation,
   useGetMeQuery,
   useUpdateMeMutation,
+  useContactUsMutation,
 } = userApi;
