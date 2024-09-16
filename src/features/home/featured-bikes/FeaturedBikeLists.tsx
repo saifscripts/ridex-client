@@ -1,9 +1,9 @@
 import { Table } from '@tanstack/react-table';
 
 import { IBike } from '@/interfaces';
-import { BikeCard } from './BikeCard';
 
 import { Button } from '@/components/ui/button';
+import { BikeCard, BikesSkeleton, columns } from '@/features/bike-data';
 import {
   ColumnFiltersState,
   SortingState,
@@ -15,8 +15,6 @@ import {
 } from '@tanstack/react-table';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import BikesSkeleton from './BikesSkeleton';
-import { columns } from './columns';
 
 interface BikeDataProps {
   data: IBike[];
