@@ -36,7 +36,7 @@ export default function ContactForm() {
     <AppForm
       onSubmit={handleSubmit}
       schema={FormSchema}
-      className="max-w-4xl mx-auto p-8 rounded-lg bg-white"
+      className="max-w-4xl mx-auto p-8 rounded-lg bg-slate-800 text-white"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <div className="space-y-6">
@@ -44,20 +44,20 @@ export default function ContactForm() {
             name="name"
             label="Name"
             placeholder="Full name"
-            className="border-none bg-gray-100 focus:bg-white h-12"
+            className="border-none bg-slate-700 placeholder:text-white h-12 "
           />
           <AppInput
             name="email"
             type="email"
             label="Email"
             placeholder="Email address"
-            className="border-none bg-gray-100 focus:bg-white h-12"
+            className="border-none bg-slate-700 placeholder:text-white h-12"
           />
           <AppInput
             name="phone"
             label="Phone"
             placeholder="Phone number"
-            className="border-none bg-gray-100 focus:bg-white h-12"
+            className="border-none bg-slate-700 placeholder:text-white h-12"
           />
         </div>
         <div>
@@ -65,7 +65,7 @@ export default function ContactForm() {
             name="message"
             label="Message"
             placeholder="Write your message here"
-            className="h-64 border-none bg-gray-100 focus:bg-white"
+            className="border-none bg-slate-700 placeholder:text-white h-64 "
           />
         </div>
       </div>

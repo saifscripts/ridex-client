@@ -3,7 +3,7 @@ import ContactInfo from './ContactInfo';
 
 export default function ContactUs() {
   return (
-    <section className="py-12 bg-yellow-50">
+    <section className="py-12 bg-white">
       <div className="container">
         <h2 className="text-4xl font-bold text-center text-gray-800 mb-2 uppercase">
           Get In Touch
