@@ -30,7 +30,7 @@ export default function ContactInfo() {
           href={item.link}
           target="_blank"
           key={item.link}
-          className="flex flex-col justify-center items-center gap-4 p-6 rounded-lg hover:bg-slate-800 hover:text-white transition-all duration-300"
+          className="flex flex-col justify-center items-center gap-4 p-6 rounded-lg transition-all duration-300 hover:bg-yellow-50"
         >
           {item.icon}
           <p>{item.text}</p>

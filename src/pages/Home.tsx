@@ -1,8 +1,8 @@
-import { ContactUs } from '@/features/home/contact-us';
-import { FeaturedBikes } from '@/features/home/featured-bikes';
-import { Hero } from '@/features/home/hero';
-import { Testimonials } from '@/features/home/testimonials';
-import { WhyChooseUs } from '@/features/home/why-choose-us';
+import { ContactUs } from '@/features/contact-us';
+import { FeaturedBikes } from '@/features/featured-bikes';
+import { Hero } from '@/features/hero';
+import { Testimonials } from '@/features/testimonials';
+import { WhyChooseUs } from '@/features/why-choose-us';
 
 const Home = () => {
   return (

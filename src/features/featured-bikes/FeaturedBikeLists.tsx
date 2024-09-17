@@ -3,7 +3,7 @@ import { Table } from '@tanstack/react-table';
 import { IBike } from '@/interfaces';
 
 import { Button } from '@/components/ui/button';
-import { BikeCard, BikesSkeleton, columns } from '@/features/bike-data';
+import { BikeCard, BikesSkeleton, columns } from '@/features/bike';
 import {
   ColumnFiltersState,
   SortingState,

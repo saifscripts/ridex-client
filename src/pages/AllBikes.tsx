@@ -1,4 +1,4 @@
-import { BikeList } from '@/features/bike-data';
+import { BikeList } from '@/features/bike';
 import { useGetBikesQuery } from '@/redux/features/bike/bikeApi';
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
