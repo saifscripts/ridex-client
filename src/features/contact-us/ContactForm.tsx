@@ -36,7 +36,7 @@ export default function ContactForm() {
     <AppForm
       onSubmit={handleSubmit}
       schema={FormSchema}
-      className="max-w-4xl mx-auto p-8 rounded-lg shadow-lg"
+      className="max-w-4xl mx-auto p-8 rounded-lg shadow-lg bg-white"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <div className="space-y-6">
@@ -44,20 +44,20 @@ export default function ContactForm() {
             name="name"
             label="Name"
             placeholder="Full name"
-            className="border-none bg-gray-100 focus:bg-white focus-visible:ring-primary focus-visible:ring-2 h-12 "
+            className="border-none bg-gray-50 focus:bg-white focus-visible:ring-primary focus-visible:ring-2 h-12"
           />
           <AppInput
             name="email"
             type="email"
             label="Email"
             placeholder="Email address"
-            className="border-none bg-gray-100 focus:bg-white focus-visible:ring-primary focus-visible:ring-2 h-12"
+            className="border-none bg-gray-50 focus:bg-white focus-visible:ring-primary focus-visible:ring-2 h-12"
           />
           <AppInput
             name="phone"
             label="Phone"
             placeholder="Phone number"
-            className="border-none bg-gray-100 focus:bg-white focus-visible:ring-primary focus-visible:ring-2 h-12"
+            className="border-none bg-gray-50 focus:bg-white focus-visible:ring-primary focus-visible:ring-2 h-12"
           />
         </div>
         <div>
@@ -65,11 +65,11 @@ export default function ContactForm() {
             name="message"
             label="Message"
             placeholder="Write your message here"
-            className="border-none bg-gray-100 focus:bg-white focus-visible:ring-primary focus-visible:ring-2 h-64 "
+            className="border-none bg-gray-50 focus:bg-white focus-visible:ring-primary focus-visible:ring-2 h-64"
           />
         </div>
       </div>
-      <Submit className="block mx-auto w-full max-w-72 h-12">
+      <Submit className="block mx-auto w-full max-w-72 h-12 bg-primary hover:bg-primary-dark transition-colors duration-300">
         Send Message
       </Submit>
     </AppForm>
