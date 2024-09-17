@@ -75,6 +75,7 @@ module.exports = {
       },
       transitionProperty: {
         width: 'width',
+        top: 'top',
       },
       screens: {
         tn: '350px', // tiny

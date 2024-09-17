@@ -30,7 +30,7 @@ export default function DashboardLayout() {
   return (
     <>
       <Navbar />
-      <div className={cn('flex h-[calc(100vh-64px)]')}>
+      <div className={cn('flex h-[calc(100vh-64px)] mt-[64px]')}>
         <Sidebar toggleSidebar={toggleSidebar} isOpen={isSidebarOpen} />
         <div className="bg-secondary w-full h-full overflow-y-scroll">
           <Outlet />
