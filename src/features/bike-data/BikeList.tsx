@@ -57,7 +57,7 @@ export default function BikeList({ data, meta, isLoading }: BikeDataProps) {
   });
 
   return (
-    <div className="my-4 container">
+    <div className="py-4 container">
       <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-4 p-3 bg-white border rounded-md mb-2">
         <BikeSearch />
 
