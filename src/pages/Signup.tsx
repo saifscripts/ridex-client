@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { Button } from '@/components/ui/button';
+import Submit from '@/components/form/Submit';
 import {
   Form,
   FormControl,
@@ -15,6 +15,7 @@ import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/use-toast';
 import { IErrorResponse } from '@/interfaces';
 import { useSignupMutation } from '@/redux/features/auth/authApi';
+import { UserPlusIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const FormSchema = z.object({
@@ -157,9 +158,10 @@ export default function Signup() {
               )}
             />
 
-            <Button type="submit" className="w-full">
+            <Submit className="w-full flex items-center gap-2">
+              <UserPlusIcon size={16} />
               Signup
-            </Button>
+            </Submit>
           </form>
         </Form>
       </div>

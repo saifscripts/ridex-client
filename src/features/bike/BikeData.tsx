@@ -61,14 +61,14 @@ export default function BikeData({ data, meta, isLoading }: BikeDataProps) {
         <div className="flex gap-2 w-full lg:w-auto">
           <DataTableViewOptions table={table} />
           <CheckboxFilter columnId="brand" filters={bikeBrandOptions}>
-            <BikeIcon className="h-4 w-4" />
+            <BikeIcon size={16} />
             <span className="hidden sm:inline">Brand</span>
           </CheckboxFilter>
           <RadioButtonFilter
             columnId={'isAvailable'}
             filters={bikeAvailabilityOptions}
           >
-            <SearchCheckIcon className="h-4 w-4" />
+            <SearchCheckIcon size={16} />
             <span className="hidden sm:inline">Availability</span>
           </RadioButtonFilter>
           <CreateBikeModal />

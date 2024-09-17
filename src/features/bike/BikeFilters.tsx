@@ -41,7 +41,7 @@ export default function BikeFilters() {
             : key === 'isAvailable'
             ? AVAILABILITY_MAPPER[String(value)]
             : value}
-          <XIcon className="size-4" />
+          <XIcon size={16} />
         </Button>
       ))}
 
@@ -57,7 +57,7 @@ export default function BikeFilters() {
           setSearchParams(params, { replace: true });
         }}
       >
-        <FilterXIcon className="size-4" />
+        <FilterXIcon size={16} />
         Clear All
       </Button>
     </div>

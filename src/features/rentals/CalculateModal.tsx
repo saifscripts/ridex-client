@@ -15,6 +15,7 @@ import { RENTAL_STATUS, USER_ROLE } from '@/constants';
 import { IRental, IResponse } from '@/interfaces';
 import { showToast } from '@/lib/utils';
 import { useReturnBikeMutation } from '@/redux/features/rental/rentalApi';
+import { FilePenLineIcon } from 'lucide-react';
 import moment from 'moment';
 import { FieldValues } from 'react-hook-form';
 import { z } from 'zod';
@@ -56,7 +57,9 @@ export function CalculateModal({ rental }: CalculateModalProps) {
         <Button
           size="sm"
           disabled={rental?.rentalStatus === RENTAL_STATUS.RETURNED}
+          className="flex items-center gap-2"
         >
+          <FilePenLineIcon size={16} />
           Calculate
         </Button>
       </DialogTrigger>
@@ -77,7 +80,10 @@ export function CalculateModal({ rental }: CalculateModalProps) {
             <AppDateTimePicker disabled name="startTime" label="Start Time" />
             <AppDateTimePicker name="returnTime" label="Return Time" />
             <CalculatedInvoice rental={rental} />
-            <Submit className="w-full">Return bike</Submit>
+            <Submit className="w-full flex items-center gap-2">
+              <FilePenLineIcon size={16} />
+              Return bike
+            </Submit>
           </AppForm>
         </ProtectedRoute>
       </DialogContent>

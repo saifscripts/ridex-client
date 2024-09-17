@@ -6,17 +6,17 @@ import {
 
 const contactinfo = [
   {
-    icon: <MapPinCheckInsideIcon className="size-8 text-primary" />,
+    icon: <MapPinCheckInsideIcon size={32} className="text-primary" />,
     text: "Cox's Bazar, Bangladesh",
     link: "https://www.google.com/maps/place/Cox's+Bazar/@21.4366366,91.9104591,12z/data=!3m1!4b1!4m6!3m5!1s0x30adc7ea2ab928c3:0x3b539e0a68970810!8m2!3d21.4272184!4d92.0061058!16s%2Fm%2F02vk9mt?entry=ttu&g_ep=EgoyMDI0MDkxMS4wIKXMDSoASAFQAw%3D%3D",
   },
   {
-    icon: <PhoneCallIcon className="size-8 text-primary" />,
+    icon: <PhoneCallIcon size={32} className="text-primary" />,
     text: '+88 01766 637772',
     link: 'tel:+8801766637772',
   },
   {
-    icon: <MailCheckIcon className="size-8 text-primary" />,
+    icon: <MailCheckIcon size={32} className="text-primary" />,
     text: 'mdsaifullah1302@gmail.com',
     link: 'mailto:mdsaifullah1302@gmail.com',
   },

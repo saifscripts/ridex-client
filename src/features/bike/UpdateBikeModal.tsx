@@ -69,7 +69,7 @@ export default function UpdateBikeModal({ bike }: UpdateBikeModalProps) {
           <Tooltip>
             <TooltipTrigger>
               <Button variant="ghost" size="icon" className="hover:bg-gray-200">
-                <FilePenLineIcon className="size-5 text-blue-400" />
+                <FilePenLineIcon size={20} className="text-blue-400" />
               </Button>
             </TooltipTrigger>
             <TooltipContent>
@@ -124,7 +124,10 @@ export default function UpdateBikeModal({ bike }: UpdateBikeModalProps) {
               type="number"
               placeholder="Enter bike CC"
             />
-            <Submit className="w-full">Update</Submit>
+            <Submit className="w-full flex items-center gap-2">
+              <FilePenLineIcon size={16} />
+              Update Bike
+            </Submit>
           </AppForm>
         </ProtectedRoute>
       </DialogContent>

@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { logout } from '@/redux/features/auth/authSlice';
 import { useAppDispatch } from '@/redux/hooks';
-import { ExitIcon } from '@radix-ui/react-icons';
+import { LogOutIcon } from 'lucide-react';
 
 export default function Logout() {
   const dispatch = useAppDispatch();
@@ -16,7 +16,7 @@ export default function Logout() {
       className="text-primary-foreground gap-1"
       variant="link"
     >
-      <ExitIcon />
+      <LogOutIcon size={20} />
       <span>Logout</span>
     </Button>
   );

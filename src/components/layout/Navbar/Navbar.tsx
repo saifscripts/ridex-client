@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 import { useAppSelector } from '@/redux/hooks';
+import { LogInIcon, UserPlusIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
@@ -57,12 +58,18 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <Link to="/login">
-              <Button variant="outline">Login</Button>
-            </Link>
             <Separator orientation="vertical" className="h-10" />
+            <Link to="/login">
+              <Button variant="outline" className="flex items-center gap-2">
+                <LogInIcon size={16} />
+                Login
+              </Button>
+            </Link>
             <Link to="/signup">
-              <Button className="text-gray-900">Signup</Button>
+              <Button className="text-gray-900 flex items-center gap-2">
+                <UserPlusIcon size={16} />
+                Signup
+              </Button>
             </Link>
           </>
         )}

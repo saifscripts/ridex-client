@@ -2,10 +2,11 @@ import { z } from 'zod';
 
 import AppForm from '@/components/form/AppForm';
 import AppInput from '@/components/form/AppInput';
-import { Button } from '@/components/ui/button';
+import Submit from '@/components/form/Submit';
 import { IResponse } from '@/interfaces';
 import { showToast } from '@/lib/utils';
 import { useChangePasswordMutation } from '@/redux/features/auth/authApi';
+import { LockIcon } from 'lucide-react';
 import { FieldValues } from 'react-hook-form';
 
 const FormSchema = z.object({
@@ -57,9 +58,13 @@ export default function ChangePassword() {
           placeholder="Enter new password"
         />
 
-        <Button type="submit" variant="destructive" className="w-full">
+        <Submit
+          variant="destructive"
+          className="w-full flex items-center gap-2"
+        >
+          <LockIcon size={16} />
           Change Password
-        </Button>
+        </Submit>
       </AppForm>
     </div>
   );

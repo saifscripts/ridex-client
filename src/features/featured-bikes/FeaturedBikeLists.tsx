@@ -13,6 +13,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import { ArrowRightIcon } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -54,9 +55,10 @@ export default function FeaturedBikeList({ data, isLoading }: BikeDataProps) {
         Discover our most popular bikes, ready for your next adventure.
       </p>
       <BikeCards table={table} isLoading={isLoading} />
-      <div className="mt-8 text-center">
+      <div className="mt-8 flex justify-center">
         <Link to="/bikes">
-          <Button variant="outline" size="sm">
+          <Button size="sm" className="flex items-center gap-2">
+            <ArrowRightIcon size={16} />
             View All Bikes
           </Button>
         </Link>

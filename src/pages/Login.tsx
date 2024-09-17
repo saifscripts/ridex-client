@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { Button } from '@/components/ui/button';
+import Submit from '@/components/form/Submit';
 import {
   Form,
   FormControl,
@@ -17,6 +17,7 @@ import { IErrorResponse } from '@/interfaces';
 import { useLoginMutation } from '@/redux/features/auth/authApi';
 import { setUser } from '@/redux/features/auth/authSlice';
 import { useAppDispatch } from '@/redux/hooks';
+import { LogInIcon } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const FormSchema = z.object({
@@ -100,9 +101,10 @@ export default function Login() {
               )}
             />
 
-            <Button type="submit" className="w-full">
+            <Submit className="w-full flex items-center gap-2">
+              <LogInIcon size={16} />
               Login
-            </Button>
+            </Submit>
           </form>
         </Form>
       </div>

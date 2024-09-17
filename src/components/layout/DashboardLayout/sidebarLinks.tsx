@@ -1,44 +1,49 @@
-import { DashboardIcon } from '@radix-ui/react-icons';
-import { BikeIcon, LogsIcon, UserPenIcon, UsersIcon } from 'lucide-react';
+import {
+  BikeIcon,
+  LayoutDashboardIcon,
+  SquareChartGanttIcon,
+  UserPenIcon,
+  UsersIcon,
+} from 'lucide-react';
 
 const sidebarLinks = {
   USER: [
     {
       href: '/dashboard',
       text: 'Profile',
-      icon: <UserPenIcon className="size-5" />,
+      icon: <UserPenIcon size={20} />,
     },
     {
       href: '/dashboard/bikes',
       text: 'Bikes',
-      icon: <DashboardIcon />,
+      icon: <BikeIcon size={20} />,
     },
     {
       href: '/dashboard/my-rentals',
       text: 'My Rentals',
-      icon: <DashboardIcon />,
+      icon: <LayoutDashboardIcon size={20} />,
     },
   ],
   ADMIN: [
     {
       href: '/dashboard',
       text: 'Profile',
-      icon: <UserPenIcon className="size-5" />,
+      icon: <UserPenIcon size={20} />,
     },
     {
       href: '/dashboard/manage-bikes',
       text: 'Manage Bikes',
-      icon: <BikeIcon className="size-5" />,
+      icon: <BikeIcon size={20} />,
     },
     {
       href: '/dashboard/manage-users',
       text: 'Manage Users',
-      icon: <UsersIcon className="size-5" />,
+      icon: <UsersIcon size={20} />,
     },
     {
       href: '/dashboard/manage-rentals',
       text: 'Manage Rentals',
-      icon: <LogsIcon className="size-5" />,
+      icon: <SquareChartGanttIcon size={20} />,
     },
   ],
 };

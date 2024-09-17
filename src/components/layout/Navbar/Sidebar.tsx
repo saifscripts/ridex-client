@@ -8,12 +8,8 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { useAppSelector } from '@/redux/hooks';
-import {
-  Cross2Icon,
-  EnterIcon,
-  HamburgerMenuIcon,
-  ImageIcon,
-} from '@radix-ui/react-icons';
+
+import { LogInIcon, MenuIcon, UserPlusIcon, XIcon } from 'lucide-react';
 import Logo from './Logo';
 import Logout from './Logout';
 import navLinks from './navLinks';
@@ -25,14 +21,17 @@ export default function Sidebar() {
   return (
     <Sheet>
       <SheetTrigger>
-        <HamburgerMenuIcon className="size-6" />
+        <MenuIcon size={24} />
       </SheetTrigger>
       <SheetContent className="w-[256px] flex flex-col justify-between">
         <SheetHeader className="text-left">
           <div className="flex items-center justify-between">
             <Logo />
             <SheetClose>
-              <Cross2Icon className="text-3xl size-6 cursor-pointer border hover:bg-gray-100" />
+              <XIcon
+                size={24}
+                className="cursor-pointer border p-[2px] active:bg-gray-100"
+              />
             </SheetClose>
           </div>
           <Separator className="mt-2 mb-4" />
@@ -46,10 +45,10 @@ export default function Sidebar() {
 
             {!isLoggedIn && (
               <>
-                <SidebarItem icon={<EnterIcon />} to="/login">
+                <SidebarItem icon={<LogInIcon size={20} />} to="/login">
                   Login
                 </SidebarItem>
-                <SidebarItem icon={<ImageIcon />} to="/signup">
+                <SidebarItem icon={<UserPlusIcon size={20} />} to="/signup">
                   Signup
                 </SidebarItem>
               </>

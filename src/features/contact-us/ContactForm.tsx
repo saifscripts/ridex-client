@@ -5,6 +5,7 @@ import Submit from '@/components/form/Submit';
 import { IResponse } from '@/interfaces';
 import { showToast } from '@/lib/utils';
 import { useContactUsMutation } from '@/redux/features/user/userApi';
+import { MessageCircleIcon } from 'lucide-react';
 import { FieldValues, SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -69,7 +70,8 @@ export default function ContactForm() {
           />
         </div>
       </div>
-      <Submit className="block mx-auto w-full max-w-72 h-12 bg-primary hover:bg-primary-dark transition-colors duration-300">
+      <Submit className="flex items-center gap-2 mx-auto w-full max-w-72 h-12 bg-primary hover:bg-primary-dark transition-colors duration-300">
+        <MessageCircleIcon size={16} />
         Send Message
       </Submit>
     </AppForm>

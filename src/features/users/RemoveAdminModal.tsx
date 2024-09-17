@@ -44,7 +44,7 @@ export default function RemoveAdminModal({ user }: RemoveAdminModalProps) {
           <Tooltip>
             <TooltipTrigger>
               <Button variant="ghost" size="icon" className="hover:bg-gray-200">
-                <ShieldXIcon className="size-5 text-red-400" />
+                <ShieldXIcon size={20} className="text-red-400" />
               </Button>
             </TooltipTrigger>
             <TooltipContent>

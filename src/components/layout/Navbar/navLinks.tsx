@@ -1,25 +1,30 @@
-import { DashboardIcon, HomeIcon, RowsIcon } from '@radix-ui/react-icons';
+import {
+  BadgeInfoIcon,
+  BikeIcon,
+  HouseIcon,
+  LayoutDashboardIcon,
+} from 'lucide-react';
 
 const navLinks = [
   {
     path: '/',
     text: 'Home',
-    icon: <HomeIcon />,
+    icon: <HouseIcon size={20} />,
   },
   {
     path: '/bikes',
     text: 'Bikes',
-    icon: <HomeIcon />,
+    icon: <BikeIcon size={20} />,
   },
   {
     path: '/about-us',
     text: 'About Us',
-    icon: <RowsIcon />,
+    icon: <BadgeInfoIcon size={20} />,
   },
   {
     path: '/dashboard',
     text: 'Dashboard',
-    icon: <DashboardIcon />,
+    icon: <LayoutDashboardIcon size={20} />,
   },
 ];
 

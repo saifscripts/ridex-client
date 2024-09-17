@@ -62,7 +62,7 @@ export default function CreateBikeModal() {
           size="default"
           className="ml-auto  flex"
         >
-          <PlusCircleIcon className="mn:mr-2 h-4 w-4" />
+          <PlusCircleIcon size={16} className="mn:mr-2" />
           <span className="hidden mn:inline">Add Bike</span>
         </Button>
       </DialogTrigger>
@@ -110,7 +110,10 @@ export default function CreateBikeModal() {
               type="number"
               placeholder="Enter bike CC"
             />
-            <Submit className="w-full">Add New Bike</Submit>
+            <Submit className="w-full flex items-center gap-2">
+              <PlusCircleIcon size={16} />
+              Add New Bike
+            </Submit>
           </AppForm>
         </ProtectedRoute>
       </DialogContent>

@@ -19,7 +19,7 @@ import { USER_ROLE } from '@/constants';
 import { IResponse, IUser } from '@/interfaces';
 import { showToast } from '@/lib/utils';
 import { useDeleteUserMutation } from '@/redux/features/user/userApi';
-import { Trash } from 'lucide-react';
+import { TrashIcon } from 'lucide-react';
 import { useState } from 'react';
 
 interface DeleteUserModalProps {
@@ -44,7 +44,7 @@ export default function DeleteUserModal({ user }: DeleteUserModalProps) {
           <Tooltip>
             <TooltipTrigger>
               <Button variant="ghost" size="icon" className="hover:bg-gray-200">
-                <Trash className="size-5 text-red-600" />
+                <TrashIcon size={20} className="text-red-600" />
               </Button>
             </TooltipTrigger>
             <TooltipContent>

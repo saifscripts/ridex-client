@@ -1,6 +1,7 @@
 import { RENTAL_STATUS } from '@/constants';
 import { IRental } from '@/interfaces';
 import { ColumnDef } from '@tanstack/react-table';
+import { CreditCardIcon } from 'lucide-react';
 import moment from 'moment';
 import PayButton from './PayButton';
 
@@ -72,6 +73,7 @@ export const unpaidRentalColumns: ColumnDef<IRental>[] = [
             rentalId={rentalId}
             disabled={rentalStatus === RENTAL_STATUS.ONGOING}
           >
+            <CreditCardIcon size={16} />
             Pay {formatted}
           </PayButton>
         </div>

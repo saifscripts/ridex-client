@@ -1,5 +1,5 @@
 import { Separator } from '@/components/ui/separator';
-import { FaEnvelope, FaFacebook, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FacebookIcon, LinkedinIcon, MailIcon, XIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const columns = [
@@ -104,7 +104,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="text-2xl hover:text-white transition-colors duration-300"
               >
-                <FaEnvelope />
+                <MailIcon size={24} />
               </a>
               <a
                 href="https://linkedin.com/in/saifscripts"
@@ -112,7 +112,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="text-2xl hover:text-white transition-colors duration-300"
               >
-                <FaLinkedin />
+                <LinkedinIcon size={24} />
               </a>
               <a
                 href="https://facebook.com/saifelhamn"
@@ -120,7 +120,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="text-2xl hover:text-white transition-colors duration-300"
               >
-                <FaFacebook />
+                <FacebookIcon size={24} />
               </a>
               <a
                 href="https://x.com/saifscripts"
@@ -128,7 +128,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="text-2xl hover:text-white transition-colors duration-300"
               >
-                <FaTwitter />
+                <XIcon size={24} />
               </a>
             </div>
             <div className="mt-8 text-sm text-gray-400">

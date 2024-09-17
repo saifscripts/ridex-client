@@ -4,20 +4,20 @@ export const Milestones = () => {
   const milestones = [
     {
       year: 2019,
-      icon: <TrophyIcon className="w-10 h-10 text-primary" />,
+      icon: <TrophyIcon size={40} className="text-primary" />,
       title: 'Platform launched',
       description:
         'Platform launched with the goal of revolutionizing the way people rent bikes.',
     },
     {
       year: 2020,
-      icon: <TrophyIcon className="w-10 h-10 text-primary" />,
+      icon: <TrophyIcon size={40} className="text-primary" />,
       title: 'Reached 10,000+ users',
       description: 'Reached 10,000+ users, expanding our reach to more cities.',
     },
     {
       year: 2022,
-      icon: <TrophyIcon className="w-10 h-10 text-primary" />,
+      icon: <TrophyIcon size={40} className="text-primary" />,
       title: 'Introduced premium features',
       description: 'Introduced premium features, extended the user experience.',
     },

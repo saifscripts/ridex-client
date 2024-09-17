@@ -19,7 +19,7 @@ import { USER_ROLE } from '@/constants';
 import { IBike, IResponse } from '@/interfaces';
 import { showToast } from '@/lib/utils';
 import { useDeleteBikeMutation } from '@/redux/features/bike/bikeApi';
-import { Trash } from 'lucide-react';
+import { TrashIcon } from 'lucide-react';
 import { useState } from 'react';
 
 interface DeleteBikeModalProps {
@@ -44,7 +44,7 @@ export default function DeleteBikeModal({ bike }: DeleteBikeModalProps) {
           <Tooltip>
             <TooltipTrigger>
               <Button variant="ghost" size="icon" className="hover:bg-gray-200">
-                <Trash className="size-5 text-red-500" />
+                <TrashIcon size={20} className="text-red-500" />
               </Button>
             </TooltipTrigger>
             <TooltipContent>

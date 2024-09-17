@@ -3,13 +3,14 @@ import { z } from 'zod';
 import AppForm from '@/components/form/AppForm';
 import AppInput from '@/components/form/AppInput';
 import FormSkeleton from '@/components/form/FormSkeleton';
-import { Button } from '@/components/ui/button';
+import Submit from '@/components/form/Submit';
 import { IResponse, IUser } from '@/interfaces';
 import { showToast } from '@/lib/utils';
 import {
   useGetMeQuery,
   useUpdateMeMutation,
 } from '@/redux/features/user/userApi';
+import { SaveIcon } from 'lucide-react';
 
 const FormSchema = z.object({
   name: z.string().min(1, 'Name cannot be an empty string').optional(),
@@ -48,9 +49,10 @@ export default function EditProfileInfo() {
           label="Address"
           placeholder="Enter your address"
         />
-        <Button type="submit" className="w-full">
+        <Submit className="w-full flex items-center gap-2">
+          <SaveIcon size={16} />
           Save Changes
-        </Button>
+        </Submit>
       </AppForm>
     </div>
   );

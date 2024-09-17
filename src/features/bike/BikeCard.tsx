@@ -10,11 +10,17 @@ import {
 } from '@/components/ui/card';
 import { IBike } from '@/interfaces';
 import { cn } from '@/lib/utils';
-import { Link } from 'react-router-dom';
+import { EyeIcon } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 
 export function BikeCard({ bike }: { bike: IBike }) {
+  const navigate = useNavigate();
+
   return (
-    <Card className="overflow-hidden flex flex-col justify-between hover:scale-[1.01] transition-transform duration-150 ease-in-out">
+    <Card
+      className="overflow-hidden flex flex-col justify-between hover:scale-[1.01] transition-transform duration-150 ease-in-out cursor-pointer"
+      onClick={() => navigate(`/bike/${bike._id}`)}
+    >
       <CardHeader>
         <div className="relative mb-4">
           <img
@@ -42,7 +48,10 @@ export function BikeCard({ bike }: { bike: IBike }) {
       <CardFooter className="flex gap-2 justify-between">
         <Badge variant="outline">{bike.pricePerHour} BDT/Hour</Badge>
         <Link to={`/bike/${bike._id}`}>
-          <Button>View Details</Button>
+          <Button variant="secondary" className="flex items-center gap-2">
+            <EyeIcon size={16} />
+            View Details
+          </Button>
         </Link>
       </CardFooter>
     </Card>

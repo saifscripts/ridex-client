@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { useAppSelector } from '@/redux/hooks';
+import { ListPlus, ListTree, UserPlusIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function HeroIntro() {
@@ -16,19 +17,30 @@ export default function HeroIntro() {
       </p>
       <div className="flex items-center xs:justify-center md:justify-start gap-4 flex-col xs:flex-row">
         <Link to="/bikes" className="w-[70%] xs:w-auto">
-          <Button size="lg" className="w-full">
-            Rent a Ride Now
+          <Button size="lg" className="w-full flex items-center gap-2">
+            <ListPlus size={16} />
+            Rent a Bike Now
           </Button>
         </Link>
         {user ? (
           <Link to="/dashboard/my-rentals" className="w-[70%] xs:w-auto">
-            <Button variant="secondary" size="lg" className="w-full">
+            <Button
+              variant="secondary"
+              size="lg"
+              className="w-full flex items-center gap-2"
+            >
+              <ListTree size={16} />
               My Rentals
             </Button>
           </Link>
         ) : (
           <Link to="/signup" className="w-[70%] xs:w-auto">
-            <Button variant="secondary" size="lg" className="w-full">
+            <Button
+              variant="secondary"
+              size="lg"
+              className="w-full flex items-center gap-2"
+            >
+              <UserPlusIcon size={16} />
               Sign Up for Free
             </Button>
           </Link>

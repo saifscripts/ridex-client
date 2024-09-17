@@ -29,7 +29,10 @@ export default function PayButton({
 
   return (
     <AppForm onSubmit={onSubmit}>
-      <Submit disabled={disabled || isLoading} className="min-w-[120px] w-full">
+      <Submit
+        disabled={disabled || isLoading}
+        className="min-w-[120px] w-full flex items-center gap-2"
+      >
         {children}
       </Submit>
     </AppForm>

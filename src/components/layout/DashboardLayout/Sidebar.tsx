@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import { useAppSelector } from '@/redux/hooks';
-import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import { ISidebarItem } from './interfaces';
 import SidebarItem from './SidebarItem';
 import sidebarLinks from './sidebarLinks';
@@ -47,9 +47,9 @@ export default function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
         onClick={toggleSidebar}
       >
         {isOpen ? (
-          <ChevronLeftIcon className="size-4" />
+          <ChevronLeftIcon size={16} />
         ) : (
-          <ChevronRightIcon className="size-4" />
+          <ChevronRightIcon size={16} />
         )}
       </div>
     </div>

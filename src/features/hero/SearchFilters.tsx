@@ -37,7 +37,10 @@ export default function SearchFilters() {
             className="bg-white bg-opacity-90"
             placeholder="Search bikes"
           />
-          <SearchIcon className="absolute top-1/2 right-[14px] -translate-y-1/2 size-3 text-gray-400" />
+          <SearchIcon
+            size={12}
+            className="absolute top-1/2 right-[14px] -translate-y-1/2 text-gray-400"
+          />
         </div>
         <Select onValueChange={handleBrandChange} defaultValue="all">
           <SelectTrigger className="bg-white bg-opacity-90">
@@ -81,7 +84,10 @@ export default function SearchFilters() {
           }}
           className="block"
         >
-          <Button className="w-full">Search Bikes</Button>
+          <Button className="w-full flex items-center gap-2">
+            <SearchIcon size={16} />
+            Search Bikes
+          </Button>
         </Link>
       </div>
     </div>

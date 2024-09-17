@@ -14,6 +14,7 @@ import {
 import { USER_ROLE } from '@/constants';
 import { IBike } from '@/interfaces';
 import { useCreateRentalMutation } from '@/redux/features/rental/rentalApi';
+import { CreditCardIcon, ListPlus } from 'lucide-react';
 import moment from 'moment';
 import { useState } from 'react';
 import { FieldValues } from 'react-hook-form';
@@ -54,7 +55,12 @@ export function RentNowModal({ bike }: RentNowModalProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-60" size="lg" disabled={!bike.isAvailable}>
+        <Button
+          size="lg"
+          disabled={!bike.isAvailable}
+          className="flex items-center gap-2 w-60"
+        >
+          <ListPlus size={16} />
           Rent Now
         </Button>
       </DialogTrigger>
@@ -74,7 +80,11 @@ export function RentNowModal({ bike }: RentNowModalProps) {
             defaultValues={defaultValues}
           >
             <AppDateTimePicker name="startTime" label="Start Time" />
-            <Submit disabled={isLoading} className="w-full">
+            <Submit
+              disabled={isLoading}
+              className="w-full flex items-center gap-2"
+            >
+              <CreditCardIcon size={16} />
               Pay 100 BDT
             </Submit>
           </AppForm>
