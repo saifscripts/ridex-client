@@ -14,13 +14,13 @@ const Navbar = () => {
   const isLoggedIn = useAppSelector((state) => state.auth.token);
   const user = useAppSelector((state) => state.auth.user);
 
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
-      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+      setVisible(prevScrollPos > currentScrollPos);
       setPrevScrollPos(currentScrollPos);
     };
 
