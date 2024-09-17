@@ -19,8 +19,16 @@ export default function DashboardLayout() {
     }
   }, [screenSize]);
 
+  // stop scrolling on body (fix for chrome)
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
   return (
-    <div className="h-screen overflow-y-hidden">
+    <>
       <Navbar />
       <div className={cn('flex h-[calc(100vh-64px)]')}>
         <Sidebar toggleSidebar={toggleSidebar} isOpen={isSidebarOpen} />
@@ -28,6 +36,6 @@ export default function DashboardLayout() {
           <Outlet />
         </div>
       </div>
-    </div>
+    </>
   );
 }
