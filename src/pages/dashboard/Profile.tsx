@@ -1,29 +1,29 @@
-import { Separator } from '@/components/ui/separator';
 import {
   ChangePassword,
-  EditAvatar,
-  EditProfileInfo,
+  EditProfile,
+  Logout,
+  ProfileHeader,
+  ProfileSkeleton,
+  ProfileTabs,
 } from '@/features/profile';
 import { useGetMeQuery } from '@/redux/features/user/userApi';
+import { useState } from 'react';
 
 export default function Profile() {
   const { data: user } = useGetMeQuery('');
+  const [activeTab, setActiveTab] = useState('edit');
+
+  if (!user) return <ProfileSkeleton />;
 
   return (
-    <div className="space-y-6">
-      <div className="bg-white p-6 rounded-lg h-full border">
-        <h1 className="text-xl sm:text-2xl font-bold text-center">
-          Welcome, {user?.name}
-        </h1>
-        <Separator className="my-6" />
+    <div className="space-y-4">
+      <ProfileHeader />
+      <ProfileTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          <div className="space-y-8">
-            <EditAvatar user={user} />
-            <ChangePassword />
-          </div>
-          <EditProfileInfo />
-        </div>
+      <div className="mt-4">
+        {activeTab === 'edit' && <EditProfile />}
+        {activeTab === 'account' && <ChangePassword />}
+        {activeTab === 'logout' && <Logout />}
       </div>
     </div>
   );

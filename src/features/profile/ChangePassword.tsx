@@ -35,16 +35,16 @@ export default function ChangePassword() {
   }
 
   return (
-    <div className="p-6 border rounded-lg">
-      <h2 className="text-xl sm:text-xl font-bold text-center">
+    <AppForm
+      onSubmit={onSubmit}
+      schema={FormSchema}
+      defaultValues={defaultValues}
+      className="bg-white shadow rounded-lg p-6"
+    >
+      <h2 className="text-xl font-semibold text-gray-800 mb-4">
         Change Password
       </h2>
-
-      <AppForm
-        onSubmit={onSubmit}
-        schema={FormSchema}
-        defaultValues={defaultValues}
-      >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <AppInput
           name="currentPassword"
           label="Current Password"
@@ -57,15 +57,12 @@ export default function ChangePassword() {
           type="password"
           placeholder="Enter new password"
         />
+      </div>
 
-        <Submit
-          variant="destructive"
-          className="w-full flex items-center gap-2"
-        >
-          <LockIcon size={16} />
-          Change Password
-        </Submit>
-      </AppForm>
-    </div>
+      <Submit variant="destructive" className="flex items-center gap-2">
+        <LockIcon size={16} />
+        Change Password
+      </Submit>
+    </AppForm>
   );
 }
