@@ -61,7 +61,7 @@ export default function Sidebar({ isOpen }: { isOpen: boolean }) {
   return (
     <div
       className={cn(
-        'w-[256px] bg-white transition-width duration-300 border-r flex-shrink-0 p-4',
+        'w-[256px] h-screen bg-white transition-width duration-300 border-r flex-shrink-0 p-4',
         {
           'w-0 px-0': !isOpen,
         }
