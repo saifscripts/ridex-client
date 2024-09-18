@@ -70,7 +70,7 @@ const router = createBrowserRouter([
         index: true,
         element: (
           <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
-            <Profile />,
+            <Profile />
           </ProtectedRoute>
         ),
       },
@@ -78,7 +78,7 @@ const router = createBrowserRouter([
         path: '/dashboard/bikes',
         element: (
           <ProtectedRoute authorizedRoles={[USER_ROLE.USER]}>
-            <AllBikes />,
+            <AllBikes />
           </ProtectedRoute>
         ),
       },
@@ -86,7 +86,7 @@ const router = createBrowserRouter([
         path: '/dashboard/my-rentals',
         element: (
           <ProtectedRoute authorizedRoles={[USER_ROLE.USER]}>
-            <MyRentals />,
+            <MyRentals />
           </ProtectedRoute>
         ),
       },
@@ -94,7 +94,7 @@ const router = createBrowserRouter([
         path: '/dashboard/manage-bikes',
         element: (
           <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN]}>
-            <ManageBikes />,
+            <ManageBikes />
           </ProtectedRoute>
         ),
       },
@@ -102,7 +102,7 @@ const router = createBrowserRouter([
         path: '/dashboard/manage-rentals',
         element: (
           <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN]}>
-            <ManageRentals />,
+            <ManageRentals />
           </ProtectedRoute>
         ),
       },
@@ -110,7 +110,7 @@ const router = createBrowserRouter([
         path: '/dashboard/manage-users',
         element: (
           <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN]}>
-            <ManageUsers />,
+            <ManageUsers />
           </ProtectedRoute>
         ),
       },
