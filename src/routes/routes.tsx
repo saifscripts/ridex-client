@@ -1,6 +1,6 @@
-import DashboardLayout from '@/components/layout/DashboardLayout/DashboardLayout';
+import { CommonLayout } from '@/components/layout/common-layout';
+import { DashboardLayout } from '@/components/layout/dashboard-layout';
 import ErrorPage from '@/components/layout/ErrorPage';
-import { MainLayout } from '@/components/layout/MainLayout';
 import ProtectedRoute from '@/components/layout/ProtectedRoute';
 import PublicRoute from '@/components/layout/PublicRoute';
 import { USER_ROLE } from '@/constants';
@@ -20,7 +20,7 @@ import { createBrowserRouter } from 'react-router-dom';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <MainLayout />,
+    element: <CommonLayout />,
     errorElement: <ErrorPage />,
     children: [
       {

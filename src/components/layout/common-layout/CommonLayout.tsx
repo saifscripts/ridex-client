@@ -1,8 +1,8 @@
-import { Footer } from '@/components/layout/Footer';
-import { Navbar } from '@/components/layout/Navbar';
+import { Footer } from '@/components/layout/footer';
+import { Navbar } from '@/components/layout/navbar';
 import { Outlet } from 'react-router-dom';
 
-const MainLayout = () => {
+export default function CommonLayout() {
   return (
     <>
       <Navbar />
@@ -12,6 +12,4 @@ const MainLayout = () => {
       <Footer />
     </>
   );
-};
-
-export default MainLayout;
+}
