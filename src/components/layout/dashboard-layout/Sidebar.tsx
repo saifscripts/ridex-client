@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import { useAppSelector } from '@/redux/hooks';
 import {
   BikeIcon,
-  LayoutDashboardIcon,
+  ListTreeIcon,
   SquareChartGanttIcon,
   UserPenIcon,
   UsersIcon,
@@ -26,7 +26,7 @@ const sidebarLinks = {
     {
       href: '/dashboard/my-rentals',
       text: 'My Rentals',
-      icon: <LayoutDashboardIcon size={20} />,
+      icon: <ListTreeIcon size={20} />,
     },
   ],
   ADMIN: [

@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { useAppSelector } from '@/redux/hooks';
-import { ListPlus, ListTree, UserPlusIcon } from 'lucide-react';
+import { ListPlus, ListTreeIcon, UserPlusIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function HeroIntro() {
@@ -29,7 +29,7 @@ export default function HeroIntro() {
               size="lg"
               className="w-full flex items-center gap-2"
             >
-              <ListTree size={16} />
+              <ListTreeIcon size={16} />
               My Rentals
             </Button>
           </Link>
