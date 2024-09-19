@@ -10,9 +10,11 @@ import { LockIcon } from 'lucide-react';
 import { FieldValues } from 'react-hook-form';
 
 const FormSchema = z.object({
-  currentPassword: z.string({
-    required_error: 'Current password is required',
-  }),
+  currentPassword: z
+    .string({
+      required_error: 'Current password is required',
+    })
+    .min(1, 'Current password is required'),
   newPassword: z
     .string({
       required_error: 'Password is required',
