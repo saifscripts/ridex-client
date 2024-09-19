@@ -1,4 +1,11 @@
-import { FormControl, FormItem, FormLabel, FormMessage } from '../ui/form';
+import { useFormContext } from 'react-hook-form';
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '../ui/form';
 import { Input } from '../ui/input';
 
 interface AppFileInputProps {
@@ -6,6 +13,7 @@ interface AppFileInputProps {
   label?: string;
   placeholder?: string;
   className?: string;
+  accept?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -14,21 +22,35 @@ export default function AppFileInput({
   label,
   placeholder,
   className,
+  accept,
   onChange,
 }: AppFileInputProps) {
+  const form = useFormContext();
+
   return (
-    <FormItem>
-      {label && <FormLabel>{label}</FormLabel>}
-      <FormControl>
-        <Input
-          type="file"
-          placeholder={placeholder}
-          name={name}
-          className={className}
-          onChange={onChange}
-        />
-      </FormControl>
-      <FormMessage />
-    </FormItem>
+    <FormField
+      control={form.control}
+      name={name}
+      render={({ field }) => (
+        <FormItem>
+          {label && <FormLabel>{label}</FormLabel>}
+          <FormControl>
+            <Input
+              type="file"
+              placeholder={placeholder}
+              name={name}
+              value={field.value}
+              accept={accept}
+              className={className}
+              onChange={(value) => {
+                field.onChange(value);
+                onChange(value);
+              }}
+            />
+          </FormControl>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
   );
 }

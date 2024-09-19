@@ -3,7 +3,7 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { ZodSchema } from 'zod';
 
 import { Form } from '@/components/ui/form';
-import { cn } from '@/lib/utils';
+import { cn, convertNumberFields } from '@/lib/utils';
 import { ReactNode } from 'react';
 
 interface AppFormProps {
@@ -11,8 +11,7 @@ interface AppFormProps {
   children: ReactNode;
   onSubmit: SubmitHandler<FieldValues>;
   className?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  defaultValues?: Record<string, any> | undefined;
+  defaultValues?: Record<string, unknown> | undefined;
 }
 
 export default function AppForm({
@@ -24,7 +23,7 @@ export default function AppForm({
 }: AppFormProps) {
   const form = useForm({
     resolver: schema && zodResolver(schema),
-    defaultValues,
+    defaultValues: convertNumberFields(defaultValues),
   });
 
   const submitHandler: SubmitHandler<FieldValues> = async (data) => {

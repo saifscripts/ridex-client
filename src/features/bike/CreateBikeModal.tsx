@@ -41,6 +41,10 @@ const FormSchema = z.object({
     .transform((value) => Number(value)),
   model: z.string().min(1, 'Model cannot be an empty string'),
   brand: z.string().min(1, 'Brand cannot be an empty string'),
+  image: z
+    .any()
+    .refine((files) => files && files.length > 0, 'Image is required')
+    .transform(() => {}),
 });
 
 export default function CreateBikeModal() {
@@ -71,12 +75,7 @@ export default function CreateBikeModal() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button
-          ref={dialogTriggerRef}
-          //   variant="outline"
-          size="default"
-          className="ml-auto  flex"
-        >
+        <Button ref={dialogTriggerRef} className="ml-auto flex">
           <PlusCircleIcon size={16} className="mn:mr-2" />
           <span className="hidden mn:inline">Add Bike</span>
         </Button>
@@ -129,6 +128,7 @@ export default function CreateBikeModal() {
               name="image"
               label="Image"
               placeholder="Enter bike image"
+              accept="image/*"
               onChange={handleImageChange}
             />
             <Submit className="w-full flex items-center gap-2">

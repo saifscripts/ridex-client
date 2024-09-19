@@ -1,3 +1,4 @@
+import AppFileInput from '@/components/form/AppFileInput';
 import AppForm from '@/components/form/AppForm';
 import AppInput from '@/components/form/AppInput';
 import AppSelect from '@/components/form/AppSelect';
@@ -24,6 +25,7 @@ import { showToast } from '@/lib/utils';
 import { isNormalNumber, isPositiveNumber, isValidYear } from '@/lib/validate';
 import { useUpdateBikeMutation } from '@/redux/features/bike/bikeApi';
 import { FilePenLineIcon } from 'lucide-react';
+import { useState } from 'react';
 import { FieldValues } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -52,10 +54,23 @@ interface UpdateBikeModalProps {
 
 export default function UpdateBikeModal({ bike }: UpdateBikeModalProps) {
   const [updateBike] = useUpdateBikeMutation();
+  const [image, setImage] = useState<File | string>(bike.imageURL);
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setImage(file);
+    }
+  };
+
   async function onSubmit(data: FieldValues) {
+    const formData = new FormData();
+    formData.append('data', JSON.stringify(data));
+    formData.append('image', image as File);
+
     const options = {
       id: bike._id,
-      body: data,
+      body: formData,
     };
     const result = (await updateBike(options)) as IResponse<IBike>;
     showToast(result, 'Bike Updated!');
@@ -88,7 +103,11 @@ export default function UpdateBikeModal({ bike }: UpdateBikeModalProps) {
               Update the bike with proper information!
             </DialogDescription>
           </DialogHeader>
-          <AppForm onSubmit={onSubmit} schema={FormSchema} defaultValues={bike}>
+          <AppForm
+            onSubmit={onSubmit}
+            schema={FormSchema}
+            defaultValues={bike as unknown as Record<string, unknown>}
+          >
             <AppInput name="name" label="Name" placeholder="Enter bike name" />
             <AppTextarea
               name="description"
@@ -123,6 +142,13 @@ export default function UpdateBikeModal({ bike }: UpdateBikeModalProps) {
               label="CC"
               type="number"
               placeholder="Enter bike CC"
+            />
+            <AppFileInput
+              name="image"
+              label="Image"
+              placeholder="Enter bike image"
+              accept="image/*"
+              onChange={handleImageChange}
             />
             <Submit className="w-full flex items-center gap-2">
               <FilePenLineIcon size={16} />

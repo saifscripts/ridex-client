@@ -54,3 +54,20 @@ export function convertPropertiesToString(
 
   return result;
 }
+
+// convert object's number fields to string any nested level
+export function convertNumberFields(obj?: Record<string, unknown>) {
+  if (!obj) return {};
+
+  const result: Record<string, string | Record<string, unknown>> = {};
+
+  for (const [key, value] of Object.entries(obj)) {
+    if (typeof value === 'object' && value !== null) {
+      result[key] = convertNumberFields(value as Record<string, unknown>);
+    } else {
+      result[key] = String(value);
+    }
+  }
+
+  return result;
+}
