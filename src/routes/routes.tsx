@@ -29,7 +29,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'bikes',
-        element: <AllBikes />,
+        element: (
+          <div className="container py-4">
+            <AllBikes />
+          </div>
+        ),
       },
       {
         path: 'bike/:bikeId',

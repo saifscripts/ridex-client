@@ -4,7 +4,7 @@ import { CreditCard, DollarSign } from 'lucide-react';
 
 export default function MyRentals() {
   return (
-    <div className="m-4 p-4 rounded-lg bg-white">
+    <div className="rounded-lg bg-white">
       <Tabs defaultValue="unpaid" className="w-full">
         <TabsList className="w-full max-w-96 h-12 p-2 bg-white">
           <TabsTrigger

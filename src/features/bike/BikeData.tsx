@@ -54,7 +54,7 @@ export default function BikeData({ data, meta, isLoading }: BikeDataProps) {
   });
 
   return (
-    <div className="space-y-2 m-4">
+    <div className="space-y-2">
       <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-4 p-3 bg-white border rounded-md">
         <BikeSearch />
 

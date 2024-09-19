@@ -57,7 +57,7 @@ export default function BikeList({ data, meta, isLoading }: BikeDataProps) {
   });
 
   return (
-    <div className="py-4 container">
+    <>
       <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-4 p-3 bg-white border rounded-md mb-2">
         <BikeSearch />
 
@@ -79,7 +79,7 @@ export default function BikeList({ data, meta, isLoading }: BikeDataProps) {
       <BikeFilters />
       <BikeCards table={table} isLoading={isLoading} />
       <DataTablePagination metaData={meta} pageSizes={[12, 24, 48]} />
-    </div>
+    </>
   );
 }
 

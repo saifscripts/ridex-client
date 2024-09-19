@@ -20,7 +20,7 @@ export default function UserData({ data, isLoading, columns }: UserProps) {
   });
 
   return (
-    <div className="space-y-4 container my-4">
+    <div className="space-y-4">
       <DataTable columns={columns} table={table} isLoading={isLoading} />
     </div>
   );

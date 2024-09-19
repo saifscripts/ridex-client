@@ -41,14 +41,14 @@ const sidebarLinks = {
       icon: <BikeIcon size={20} />,
     },
     {
-      href: '/dashboard/manage-users',
-      text: 'Manage Users',
-      icon: <UsersIcon size={20} />,
-    },
-    {
       href: '/dashboard/manage-rentals',
       text: 'Manage Rentals',
       icon: <SquareChartGanttIcon size={20} />,
+    },
+    {
+      href: '/dashboard/manage-users',
+      text: 'Manage Users',
+      icon: <UsersIcon size={20} />,
     },
   ],
 };
