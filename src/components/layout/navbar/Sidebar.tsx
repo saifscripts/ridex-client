@@ -9,14 +9,20 @@ import {
 } from '@/components/ui/sheet';
 import { useAppSelector } from '@/redux/hooks';
 
-import { LogInIcon, MenuIcon, UserPlusIcon, XIcon } from 'lucide-react';
+import { LogoutButton } from '@/features/logout';
+import {
+  LogInIcon,
+  LogOutIcon,
+  MenuIcon,
+  UserPlusIcon,
+  XIcon,
+} from 'lucide-react';
 import Logo from './Logo';
-import Logout from './Logout';
 import navLinks from './navLinks';
 import SidebarItem from './SidebarItem';
 
 export default function Sidebar() {
-  const isLoggedIn = useAppSelector((state) => state.auth.token);
+  const user = useAppSelector((state) => state.auth.user);
 
   return (
     <Sheet>
@@ -43,7 +49,7 @@ export default function Sidebar() {
               </SidebarItem>
             ))}
 
-            {!isLoggedIn && (
+            {!user && (
               <>
                 <SidebarItem icon={<LogInIcon size={20} />} to="/login">
                   Login
@@ -56,7 +62,15 @@ export default function Sidebar() {
           </div>
         </SheetHeader>
         <SheetFooter className="flex-row justify-end">
-          {isLoggedIn && <Logout />}
+          {user && (
+            <LogoutButton
+              className="text-primary-foreground gap-1"
+              variant="link"
+            >
+              <LogOutIcon size={20} />
+              <span>Logout</span>
+            </LogoutButton>
+          )}
         </SheetFooter>
       </SheetContent>
     </Sheet>

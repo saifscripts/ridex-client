@@ -1,12 +1,12 @@
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { LogoutButton } from '@/features/logout';
 import { cn } from '@/lib/utils';
 import { useAppSelector } from '@/redux/hooks';
-import { LogInIcon, UserPlusIcon } from 'lucide-react';
+import { LogInIcon, LogOutIcon, UserPlusIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
-import Logout from './Logout';
 import NavItem from './NavItem';
 import navLinks from './navLinks';
 import Sidebar from './Sidebar';
@@ -54,7 +54,13 @@ const Navbar = () => {
         {isLoggedIn ? (
           <>
             <p>{user?.role}</p>
-            <Logout />
+            <LogoutButton
+              className="text-primary-foreground gap-1"
+              variant="link"
+            >
+              <LogOutIcon size={20} />
+              <span>Logout</span>
+            </LogoutButton>
           </>
         ) : (
           <>

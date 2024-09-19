@@ -36,7 +36,7 @@ export const userApi = baseApi.injectEndpoints({
         url: '/users/me',
         method: 'GET',
       }),
-      providesTags: ['User'],
+      providesTags: ['Me'],
       transformResponse: (res: ISuccessResponse<IUser>) => res.data,
     }),
     updateMe: builder.mutation({
@@ -45,7 +45,7 @@ export const userApi = baseApi.injectEndpoints({
         method: 'PUT',
         body,
       }),
-      invalidatesTags: ['User'],
+      invalidatesTags: ['Me'],
       transformResponse: (res: ISuccessResponse<IUser>) => res.data,
     }),
     contactUs: builder.mutation({
@@ -61,7 +61,7 @@ export const userApi = baseApi.injectEndpoints({
         method: 'POST',
         body,
       }),
-      invalidatesTags: ['User'],
+      invalidatesTags: ['Me'],
     }),
   }),
 });

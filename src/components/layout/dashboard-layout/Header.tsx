@@ -1,8 +1,8 @@
+import { LogoutButton } from '@/features/logout';
 import { cn } from '@/lib/utils';
 import { useAppSelector } from '@/redux/hooks';
-import { MenuIcon } from 'lucide-react';
+import { LogOutIcon, MenuIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import Logout from './Logout';
 
 interface HeaderProps {
   isOpen: boolean;
@@ -31,7 +31,12 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
           </h1>
         </Link>
       </div>
-      {user && <Logout />}
+      {user && (
+        <LogoutButton variant="link" className="text-primary-foreground gap-1">
+          <LogOutIcon size={20} />
+          <span>Logout</span>
+        </LogoutButton>
+      )}
     </div>
   );
 }
