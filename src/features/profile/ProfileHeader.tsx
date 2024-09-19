@@ -1,10 +1,15 @@
+import avatar from '@/assets/avatar.gif';
 import texture from '@/assets/texture.png';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { useGetMeQuery } from '@/redux/features/user/userApi';
-import { MailIcon, MapPinIcon, PencilIcon, PhoneIcon } from 'lucide-react';
+import {
+  useGetMeQuery,
+  useUploadAvatarMutation,
+} from '@/redux/features/user/userApi';
+import { Loader2Icon, MailIcon, MapPinIcon, PhoneIcon } from 'lucide-react';
+import UploadAvatar from './UploadAvatar';
 
 export default function ProfileHeader() {
   const { data: user } = useGetMeQuery('');
+  const [uploadAvatar, { isLoading }] = useUploadAvatarMutation();
 
   return (
     <div className="bg-white rounded-lg p-1">
@@ -21,15 +26,20 @@ export default function ProfileHeader() {
           <br />
           <span className="capitalize text-primary">{user?.name}</span>
         </h1>
-        <div className="absolute left-4 top-3">
-          <Avatar className="size-24 lg:size-32 ring-2 ring-white">
-            <AvatarImage src="https://github.com/shadcn.png" />
-            <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
-          </Avatar>
-          <PencilIcon
-            size={24}
-            className="absolute top-[5%] right-[5%] bg-white p-1 rounded-lg text-slate-700 z-20 cursor-pointer"
-          />
+        <div
+          className="absolute left-4 top-3 size-24 lg:size-32 ring-2 ring-white rounded-full bg-contain bg-center bg-gray-100"
+          style={{
+            backgroundImage: `url(${avatar})`,
+          }}
+        >
+          <div
+            className="absolute inset-0 size-24 lg:size-32 rounded-full bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${user?.avatarURL})`,
+            }}
+          ></div>
+          <UploadAvatar uploadAvatar={uploadAvatar} isLoading={isLoading} />
+          {isLoading && <Loader />}
         </div>
       </div>
       <div className="p-4">
@@ -49,6 +59,14 @@ export default function ProfileHeader() {
           </p>
         </div>
       </div>
+    </div>
+  );
+}
+
+function Loader() {
+  return (
+    <div className="absolute inset-0 bg-black opacity-50 rounded-full flex items-center justify-center z-10">
+      <Loader2Icon className="size-6 animate-spin text-white" />
     </div>
   );
 }

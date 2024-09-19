@@ -55,6 +55,14 @@ export const userApi = baseApi.injectEndpoints({
         body,
       }),
     }),
+    uploadAvatar: builder.mutation({
+      query: (body: FormData) => ({
+        url: '/users/avatar',
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: ['User'],
+    }),
   }),
 });
 
@@ -66,4 +74,5 @@ export const {
   useGetMeQuery,
   useUpdateMeMutation,
   useContactUsMutation,
+  useUploadAvatarMutation,
 } = userApi;
