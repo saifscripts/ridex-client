@@ -1,4 +1,3 @@
-import bikeImg from '@/assets/bike.jpg';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -23,11 +22,15 @@ export function BikeCard({ bike }: { bike: IBike }) {
     >
       <CardHeader>
         <div className="relative mb-4">
-          <img
-            src={bikeImg}
-            alt={`${bike.name} ${bike.model} ${bike.year}`}
-            className="w-full m-auto rounded-lg"
-          />
+          <div
+            className="w-full h-48 bg-cover bg-center rounded-lg"
+            style={{
+              backgroundImage: `url(${bike.imageURL})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+            aria-label={`${bike.name} ${bike.model} ${bike.year}`}
+          ></div>
           <Badge
             className={cn('absolute top-0 left-0', {
               'bg-green-100 text-green-700 hover:bg-green-100 hover:text-green-700':
