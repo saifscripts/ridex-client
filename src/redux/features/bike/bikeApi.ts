@@ -8,6 +8,7 @@ export const bikeApi = baseApi.injectEndpoints({
         url: '/bikes/',
         method: 'POST',
         body: data,
+        formData: true,
       }),
       invalidatesTags: ['Bike'],
     }),

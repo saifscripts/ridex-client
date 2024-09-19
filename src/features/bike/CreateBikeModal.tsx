@@ -1,3 +1,4 @@
+import AppFileInput from '@/components/form/AppFileInput';
 import AppForm from '@/components/form/AppForm';
 import AppInput from '@/components/form/AppInput';
 import AppSelect from '@/components/form/AppSelect';
@@ -19,7 +20,7 @@ import { showToast } from '@/lib/utils';
 import { isNormalNumber, isPositiveNumber, isValidYear } from '@/lib/validate';
 import { useCreateBikeMutation } from '@/redux/features/bike/bikeApi';
 import { PlusCircleIcon } from 'lucide-react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { FieldValues } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -45,9 +46,23 @@ const FormSchema = z.object({
 export default function CreateBikeModal() {
   const [createBike] = useCreateBikeMutation();
   const dialogTriggerRef = useRef<HTMLButtonElement>(null);
+  const [image, setImage] = useState<File | null>(null);
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setImage(file);
+    }
+  };
+
   async function onSubmit(data: FieldValues) {
-    const result = (await createBike(data)) as IResponse<IBike>;
+    const formData = new FormData();
+    formData.append('data', JSON.stringify(data));
+    formData.append('image', image as File);
+
+    const result = (await createBike(formData)) as IResponse<IBike>;
     showToast(result, 'New Bike Bike Added!');
+
     if (result.data?.success) {
       (dialogTriggerRef.current as HTMLButtonElement).click();
     }
@@ -109,6 +124,12 @@ export default function CreateBikeModal() {
               label="CC"
               type="number"
               placeholder="Enter bike CC"
+            />
+            <AppFileInput
+              name="image"
+              label="Image"
+              placeholder="Enter bike image"
+              onChange={handleImageChange}
             />
             <Submit className="w-full flex items-center gap-2">
               <PlusCircleIcon size={16} />
