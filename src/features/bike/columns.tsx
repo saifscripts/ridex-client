@@ -7,6 +7,15 @@ import UpdateBikeModal from './UpdateBikeModal';
 
 export const columns: ColumnDef<IBike>[] = [
   {
+    accessorKey: 'imageURL',
+    header: 'Thumbnail',
+    cell: ({ row }) => {
+      return (
+        <img src={row.original.imageURL} alt="bike" className="w-12 rounded" />
+      );
+    },
+  },
+  {
     accessorKey: 'name',
     header: ({ column }) => (
       <DataTableColumnHeader
