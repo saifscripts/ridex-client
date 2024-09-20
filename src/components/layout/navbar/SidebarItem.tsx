@@ -6,9 +6,10 @@ interface SidebarItemProps {
   to: string;
   icon: ReactNode;
   children: ReactNode;
+  onClick: () => void;
 }
 
-const SidebarItem = ({ to, icon, children }: SidebarItemProps) => {
+const SidebarItem = ({ to, icon, children, onClick }: SidebarItemProps) => {
   return (
     <NavLink
       to={to}
@@ -20,6 +21,7 @@ const SidebarItem = ({ to, icon, children }: SidebarItemProps) => {
           }
         )
       }
+      onClick={onClick}
     >
       {icon}
       {children}

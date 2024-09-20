@@ -44,7 +44,7 @@ export default function DeleteUserModal({ user }: DeleteUserModalProps) {
           <Tooltip>
             <TooltipTrigger>
               <Button variant="ghost" size="icon" className="hover:bg-gray-200">
-                <TrashIcon size={20} className="text-red-600" />
+                <TrashIcon size={20} className="text-destructive" />
               </Button>
             </TooltipTrigger>
             <TooltipContent>

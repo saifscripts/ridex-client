@@ -1,3 +1,4 @@
+import { ContainerMd } from '@/components/layout/Container';
 import {
   Carousel,
   CarouselContent,
@@ -9,7 +10,7 @@ import { Rating } from '@mui/material';
 import { AspectRatio } from '@radix-ui/react-aspect-ratio';
 import Autoplay from 'embla-carousel-autoplay';
 
-const reviews = [
+const testimonials = [
   {
     id: 1,
     avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
@@ -94,45 +95,47 @@ const reviews = [
 
 export function TestimonialContent() {
   return (
-    <Carousel
-      className="w-full"
-      plugins={[
-        Autoplay({
-          delay: 2000,
-        }),
-      ]}
-    >
-      <CarouselContent className="-ml-6">
-        {reviews.map((review) => (
-          <CarouselItem
-            key={review.id}
-            className="md:basis-1/2 lg:basis-1/3 pl-6"
-          >
-            <AspectRatio
-              ratio={4 / 3}
-              className="bg-white rounded-lg p-6 text-center flex flex-col justify-between"
+    <ContainerMd>
+      <Carousel
+        className="w-full"
+        plugins={[
+          Autoplay({
+            delay: 2000,
+          }),
+        ]}
+      >
+        <CarouselContent className="-ml-6">
+          {testimonials.map((review) => (
+            <CarouselItem
+              key={review.id}
+              className="md:basis-1/2 lg:basis-1/3 pl-6"
             >
-              <div>
-                <img
-                  src={review.avatar}
-                  alt=""
-                  className="rounded-full w-12 mx-auto mb-2"
-                />
-                <Rating
-                  size="small"
-                  value={review.rating}
-                  readOnly
-                  className="mb-4"
-                />
-                <p className="text-gray-400 mb-4">{review.review}</p>
-              </div>
-              <p className="text-gray-600">{review.name}</p>
-            </AspectRatio>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+              <AspectRatio
+                ratio={4 / 3}
+                className="bg-white rounded-lg p-6 text-center flex flex-col justify-between"
+              >
+                <div>
+                  <img
+                    src={review.avatar}
+                    alt=""
+                    className="rounded-full w-12 mx-auto mb-2"
+                  />
+                  <Rating
+                    size="small"
+                    value={review.rating}
+                    readOnly
+                    className="mb-4"
+                  />
+                  <p className="text-gray-400 mb-4">{review.review}</p>
+                </div>
+                <p className="text-gray-600">{review.name}</p>
+              </AspectRatio>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+    </ContainerMd>
   );
 }

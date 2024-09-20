@@ -14,7 +14,7 @@ export default function ProfileHeader() {
   return (
     <div className="bg-white rounded-lg p-1">
       <div
-        className="h-24 lg:h-32 w-full bg-slate-700 rounded-lg text-white flex items-center justify-center relative p-6
+        className="h-24 lg:h-32 w-full bg-slate-900 rounded-lg text-white flex items-center justify-center relative p-6
          bg-cover bg-center"
         style={{
           backgroundImage: `url(${texture})`,
@@ -45,15 +45,15 @@ export default function ProfileHeader() {
       <div className="p-4">
         <h1 className="text-xl font-bold text-slate-700 mb-2">{user?.name}</h1>
         <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
-          <p className="text-sm text-slate-500 flex items-center gap-2">
+          <p className="text-sm text-slate-600 flex items-center gap-2">
             <MailIcon className="size-4 inline-block" />
             {user?.email}
           </p>
-          <p className="text-sm text-slate-500 flex items-center gap-2">
+          <p className="text-sm text-slate-600 flex items-center gap-2">
             <PhoneIcon className="size-4 inline-block" />
             {user?.phone}
           </p>
-          <p className="text-sm text-slate-500 flex items-center gap-2">
+          <p className="text-sm text-slate-600 flex items-center gap-2">
             <MapPinIcon className="size-4 inline-block" />
             {user?.address}
           </p>

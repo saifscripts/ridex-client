@@ -1,22 +1,15 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-
+import AppInput from '@/components/form/AppInput';
+import AppPasswordInput from '@/components/form/AppPasswordInput';
 import Submit from '@/components/form/Submit';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/use-toast';
+import AuthContainer from '@/features/auth/AuthContainer';
 import { IErrorResponse } from '@/interfaces';
 import { useSignupMutation } from '@/redux/features/auth/authApi';
 import { UserPlusIcon } from 'lucide-react';
+import { FieldValues, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import validator from 'validator';
+import { z } from 'zod';
 
 const FormSchema = z.object({
   name: z
@@ -34,9 +27,13 @@ const FormSchema = z.object({
       required_error: 'Password is required',
     })
     .min(6, 'Password must be at least 6 characters long'),
-  phone: z.string({
-    required_error: 'Phone number is required',
-  }),
+  phone: z
+    .string({
+      required_error: 'Phone number is required',
+    })
+    .refine((value) => validator.isMobilePhone(value, 'bn-BD'), {
+      message: 'Invalid Bangladeshi phone number',
+    }),
   address: z
     .string({
       required_error: 'Address is required',
@@ -48,11 +45,7 @@ export default function Signup() {
   const [signup] = useSignupMutation();
   const navigate = useNavigate();
 
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-  });
-
-  async function onSubmit(data: z.infer<typeof FormSchema>) {
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const result = await signup(data);
 
     if (result?.data?.success) {
@@ -66,105 +59,41 @@ export default function Signup() {
         variant: 'destructive',
       });
     }
-  }
+  };
 
   return (
-    <div className="h-[calc(100vh-64px)] flex justify-center items-center">
-      <div className="max-w-sm w-full border p-6 rounded-lg bg-white">
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="w-full space-y-6"
-          >
-            <h1 className="text-3xl font-semibold text-center">
-              Create Account
-            </h1>
+    <AuthContainer
+      title="Create Account"
+      onSubmit={onSubmit}
+      schema={FormSchema}
+    >
+      <AppInput
+        name="name"
+        placeholder="Enter your full name"
+        label="Full Name"
+      />
+      <AppInput name="email" placeholder="Enter your email" label="Email" />
+      <AppPasswordInput
+        name="password"
+        placeholder="Enter your password"
+        label="Password"
+      />
+      <AppInput
+        name="phone"
+        type="number"
+        placeholder="Enter Bangladeshi phone number"
+        label="Phone"
+      />
+      <AppInput
+        name="address"
+        placeholder="Enter your address"
+        label="Address"
+      />
 
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Full Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter your full name" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter your email" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="Enter your password"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="phone"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Phone</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      placeholder="Enter your phone number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="address"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Address</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter your address" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <Submit className="w-full flex items-center gap-2">
-              <UserPlusIcon size={16} />
-              Signup
-            </Submit>
-          </form>
-        </Form>
-      </div>
-    </div>
+      <Submit className="w-full flex items-center gap-2">
+        <UserPlusIcon size={16} />
+        Signup
+      </Submit>
+    </AuthContainer>
   );
 }

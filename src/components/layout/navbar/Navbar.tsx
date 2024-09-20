@@ -1,9 +1,9 @@
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { LogoutButton } from '@/features/logout';
+import { UserDropdown } from '@/features/user-dropdown';
 import { cn } from '@/lib/utils';
-import { useAppSelector } from '@/redux/hooks';
-import { LogInIcon, LogOutIcon, UserPlusIcon } from 'lucide-react';
+import { useGetMeQuery } from '@/redux/features/user/userApi';
+import { LogInIcon, UserPlusIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
@@ -12,8 +12,7 @@ import navLinks from './navLinks';
 import Sidebar from './Sidebar';
 
 const Navbar = () => {
-  const isLoggedIn = useAppSelector((state) => state.auth.token);
-  const user = useAppSelector((state) => state.auth.user);
+  const { data: user } = useGetMeQuery('');
 
   const [visible, setVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -51,17 +50,8 @@ const Navbar = () => {
         ))}
       </div>
       <div className="hidden md:flex gap-2 items-center">
-        {isLoggedIn ? (
-          <>
-            <p>{user?.role}</p>
-            <LogoutButton
-              className="text-primary-foreground gap-1"
-              variant="link"
-            >
-              <LogOutIcon size={20} />
-              <span>Logout</span>
-            </LogoutButton>
-          </>
+        {user ? (
+          <UserDropdown />
         ) : (
           <>
             <Separator orientation="vertical" className="h-10" />
@@ -72,7 +62,7 @@ const Navbar = () => {
               </Button>
             </Link>
             <Link to="/signup">
-              <Button className="text-gray-900 flex items-center gap-2">
+              <Button className="flex items-center gap-2">
                 <UserPlusIcon size={16} />
                 Signup
               </Button>
@@ -80,7 +70,8 @@ const Navbar = () => {
           </>
         )}
       </div>
-      <div className="md:hidden">
+      <div className="flex gap-2 items-center md:hidden">
+        {user && <UserDropdown />}
         <Sidebar />
       </div>
     </div>

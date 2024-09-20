@@ -1,24 +1,16 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-
+import AppInput from '@/components/form/AppInput';
+import AppPasswordInput from '@/components/form/AppPasswordInput';
 import Submit from '@/components/form/Submit';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/use-toast';
+import { AuthContainer } from '@/features/auth';
 import { IErrorResponse } from '@/interfaces';
 import { useLoginMutation } from '@/redux/features/auth/authApi';
 import { setUser } from '@/redux/features/auth/authSlice';
 import { useAppDispatch } from '@/redux/hooks';
 import { LogInIcon } from 'lucide-react';
+import { FieldValues, SubmitHandler } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { z } from 'zod';
 
 const FormSchema = z.object({
   email: z
@@ -37,11 +29,7 @@ export default function Login() {
   const navigate = useNavigate();
   const { state } = useLocation();
 
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-  });
-
-  async function onSubmit(credentials: z.infer<typeof FormSchema>) {
+  const onSubmit: SubmitHandler<FieldValues> = async (credentials) => {
     const result = await login(credentials);
 
     if (result?.data?.success) {
@@ -57,57 +45,20 @@ export default function Login() {
         variant: 'destructive',
       });
     }
-  }
+  };
 
   return (
-    <div className="h-[calc(100vh-64px)] flex justify-center items-center">
-      <div className="max-w-sm w-full border p-6 rounded-lg bg-white">
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="w-full space-y-6"
-          >
-            <h1 className="text-3xl font-semibold text-center">Login</h1>
-
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter your email" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="Enter your password"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <Submit className="w-full flex items-center gap-2">
-              <LogInIcon size={16} />
-              Login
-            </Submit>
-          </form>
-        </Form>
-      </div>
-    </div>
+    <AuthContainer title="Login" onSubmit={onSubmit} schema={FormSchema}>
+      <AppInput name="email" placeholder="Enter your email" label="Email" />
+      <AppPasswordInput
+        name="password"
+        placeholder="Enter your password"
+        label="Password"
+      />
+      <Submit className="w-full flex items-center gap-2">
+        <LogInIcon size={16} />
+        Login
+      </Submit>
+    </AuthContainer>
   );
 }

@@ -39,7 +39,7 @@ export default function SearchFilters() {
           />
           <SearchIcon
             size={12}
-            className="absolute top-1/2 right-[14px] -translate-y-1/2 text-gray-400"
+            className="absolute top-1/2 right-[14px] -translate-y-1/2 text-muted-foreground"
           />
         </div>
         <Select onValueChange={handleBrandChange} defaultValue="all">

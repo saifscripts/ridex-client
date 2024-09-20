@@ -59,10 +59,12 @@ export function convertPropertiesToString(
 export function convertNumberFields(obj?: Record<string, unknown>) {
   if (!obj) return {};
 
-  const result: Record<string, string | Record<string, unknown>> = {};
+  const result: Record<string, string | Record<string, unknown> | Date> = {};
 
   for (const [key, value] of Object.entries(obj)) {
-    if (typeof value === 'object' && value !== null) {
+    if (value instanceof Date) {
+      result[key] = value;
+    } else if (typeof value === 'object' && value !== null) {
       result[key] = convertNumberFields(value as Record<string, unknown>);
     } else {
       result[key] = String(value);

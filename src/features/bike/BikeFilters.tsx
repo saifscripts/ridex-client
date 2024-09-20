@@ -46,7 +46,8 @@ export default function BikeFilters() {
       ))}
 
       <Button
-        className="flex gap-2 items-center bg-orange-100 rounded-full"
+        variant="secondary"
+        className="flex gap-2 items-center rounded-full"
         onClick={() => {
           const others = [...searchParams].filter(([key]) =>
             uniqueFields.includes(key)

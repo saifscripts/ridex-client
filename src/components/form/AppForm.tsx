@@ -11,7 +11,7 @@ interface AppFormProps {
   children: ReactNode;
   onSubmit: SubmitHandler<FieldValues>;
   className?: string;
-  defaultValues?: Record<string, unknown> | undefined;
+  defaultValues?: unknown;
 }
 
 export default function AppForm({
@@ -23,7 +23,9 @@ export default function AppForm({
 }: AppFormProps) {
   const form = useForm({
     resolver: schema && zodResolver(schema),
-    defaultValues: convertNumberFields(defaultValues),
+    defaultValues: convertNumberFields(
+      defaultValues as Record<string, unknown>
+    ),
   });
 
   const submitHandler: SubmitHandler<FieldValues> = async (data) => {

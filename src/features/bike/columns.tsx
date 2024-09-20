@@ -70,7 +70,7 @@ export const columns: ColumnDef<IBike>[] = [
       return (
         <Badge
           className="w-[100px] text-center inline-block"
-          variant={isAvailable ? 'default' : 'destructive'}
+          variant={isAvailable ? 'success' : 'destructive'}
         >
           {isAvailable ? 'Available' : 'Unavailable'}
         </Badge>

@@ -21,10 +21,10 @@ export default function SidebarItem({
     <Link
       to={href}
       className={cn(
-        'flex gap-3 items-center px-2 py-1 rounded hover:text-primary text-lg',
+        'flex gap-2 items-center px-2 py-1 rounded hover:bg-primary/20 text-lg',
         {
-          'bg-primary text-white hover:text-white': pathname === href,
-          'size-10 justify-center': !isOpen,
+          'bg-primary hover:bg-primary/80': pathname === href,
+          'size-10 justify-center opacity-0 sm:opacity-100': !isOpen,
         }
       )}
     >

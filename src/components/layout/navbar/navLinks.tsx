@@ -1,9 +1,4 @@
-import {
-  BadgeInfoIcon,
-  BikeIcon,
-  HouseIcon,
-  LayoutDashboardIcon,
-} from 'lucide-react';
+import { BadgeInfoIcon, BikeIcon, HouseIcon } from 'lucide-react';
 
 const navLinks = [
   {
@@ -13,18 +8,13 @@ const navLinks = [
   },
   {
     path: '/bikes',
-    text: 'Bikes',
+    text: 'All Bikes',
     icon: <BikeIcon size={20} />,
   },
   {
     path: '/about-us',
     text: 'About Us',
     icon: <BadgeInfoIcon size={20} />,
-  },
-  {
-    path: '/dashboard',
-    text: 'Dashboard',
-    icon: <LayoutDashboardIcon size={20} />,
   },
 ];
 

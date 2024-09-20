@@ -7,8 +7,8 @@ import {
 const contactinfo = [
   {
     icon: <MapPinCheckInsideIcon size={32} className="text-primary" />,
-    text: "Cox's Bazar, Bangladesh",
-    link: "https://www.google.com/maps/place/Cox's+Bazar/@21.4366366,91.9104591,12z/data=!3m1!4b1!4m6!3m5!1s0x30adc7ea2ab928c3:0x3b539e0a68970810!8m2!3d21.4272184!4d92.0061058!16s%2Fm%2F02vk9mt?entry=ttu&g_ep=EgoyMDI0MDkxMS4wIKXMDSoASAFQAw%3D%3D",
+    text: 'GEC, Chattogram, Bangladesh',
+    link: 'https://www.google.com/maps/search/gec+chittagong/@22.3585134,91.8191721,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D',
   },
   {
     icon: <PhoneCallIcon size={32} className="text-primary" />,
@@ -24,13 +24,13 @@ const contactinfo = [
 
 export default function ContactInfo() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 max-w-3xl w-full mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 w-full mx-auto">
       {contactinfo.map((item) => (
         <a
           href={item.link}
           target="_blank"
           key={item.link}
-          className="flex flex-col justify-center items-center gap-4 p-6 rounded-lg transition-all duration-300 hover:bg-yellow-50"
+          className="flex flex-col justify-center items-center gap-4 p-6 rounded-lg transition-all duration-300 hover:bg-primary/5 text-gray-800"
         >
           {item.icon}
           <p>{item.text}</p>

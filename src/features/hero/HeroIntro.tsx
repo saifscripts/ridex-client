@@ -8,7 +8,7 @@ export default function HeroIntro() {
 
   return (
     <div className="text-white flex flex-col justify-center gap-8 text-center md:text-left py-6">
-      <h1 className="text-7xl font-bold">Ride Your Way</h1>
+      <h1 className="text-7xl font-semibold">Ride Your Way</h1>
       <p>
         Explore our wide range of bikes, from city cruisers to mountain
         thrillers. Book in seconds, ride in minutes. Whether it's for a quick

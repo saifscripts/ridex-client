@@ -8,12 +8,16 @@ interface LogoutProps {
   children: React.ReactNode;
   className?: string;
   variant?: ButtonProps['variant'];
+  size?: ButtonProps['size'];
+  onClick?: () => void;
 }
 
 export default function LogoutButton({
   children,
   className,
   variant,
+  size,
+  onClick,
 }: LogoutProps) {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -22,10 +26,18 @@ export default function LogoutButton({
     dispatch(logout());
     dispatch(baseApi.util.resetApiState());
     navigate('/login');
+    if (onClick) {
+      onClick();
+    }
   };
 
   return (
-    <Button onClick={handleLogout} className={className} variant={variant}>
+    <Button
+      onClick={handleLogout}
+      className={className}
+      variant={variant}
+      size={size}
+    >
       {children}
     </Button>
   );

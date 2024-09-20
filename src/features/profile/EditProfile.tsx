@@ -9,6 +9,33 @@ import {
 } from '@/redux/features/user/userApi';
 import { SaveIcon } from 'lucide-react';
 import { FieldValues, SubmitHandler } from 'react-hook-form';
+import validator from 'validator';
+import { z } from 'zod';
+
+const FormSchema = z.object({
+  name: z
+    .string({
+      required_error: 'Name is required',
+    })
+    .min(1, 'Name cannot be an empty string'),
+  email: z
+    .string({
+      required_error: 'Email is required',
+    })
+    .email('Invalid email address'),
+  phone: z
+    .string({
+      required_error: 'Phone number is required',
+    })
+    .refine((value) => validator.isMobilePhone(value, 'bn-BD'), {
+      message: 'Invalid Bangladeshi phone number',
+    }),
+  address: z
+    .string({
+      required_error: 'Address is required',
+    })
+    .min(1, 'Address cannot be an empty string'),
+});
 
 export default function EditProfile() {
   const { data: user } = useGetMeQuery('');
@@ -25,6 +52,7 @@ export default function EditProfile() {
       className="bg-white shadow rounded-lg p-6"
       onSubmit={onSubmit}
       defaultValues={user}
+      schema={FormSchema}
     >
       <h2 className="text-xl font-semibold text-gray-800 mb-4">Edit Profile</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

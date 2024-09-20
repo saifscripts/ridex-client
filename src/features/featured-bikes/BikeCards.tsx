@@ -1,8 +1,5 @@
-import { Table } from '@tanstack/react-table';
-
 import { IBike } from '@/interfaces';
 
-import { Button } from '@/components/ui/button';
 import { BikeCard, BikesSkeleton, columns } from '@/features/bike';
 import {
   ColumnFiltersState,
@@ -13,16 +10,14 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import { ArrowRightIcon } from 'lucide-react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
-interface BikeDataProps {
+interface BikeCardsProps {
   data: IBike[];
   isLoading: boolean;
 }
 
-export default function FeaturedBikeList({ data, isLoading }: BikeDataProps) {
+export default function BikeCards({ data, isLoading }: BikeCardsProps) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
@@ -46,34 +41,6 @@ export default function FeaturedBikeList({ data, isLoading }: BikeDataProps) {
     },
   });
 
-  return (
-    <div className="py-12 container">
-      <h2 className="text-4xl font-bold text-center text-gray-800 mb-2 uppercase">
-        Featured Bikes
-      </h2>
-      <p className="text-center text-gray-600 mb-8">
-        Discover our most popular bikes, ready for your next adventure.
-      </p>
-      <BikeCards table={table} isLoading={isLoading} />
-      <div className="mt-8 flex justify-center">
-        <Link to="/bikes">
-          <Button size="sm" className="flex items-center gap-2">
-            <ArrowRightIcon size={16} />
-            View All Bikes
-          </Button>
-        </Link>
-      </div>
-    </div>
-  );
-}
-
-function BikeCards({
-  table,
-  isLoading,
-}: {
-  table: Table<IBike>;
-  isLoading: boolean;
-}) {
   if (isLoading) return <BikesSkeleton />;
 
   return table.getRowModel().rows?.length > 0 ? (

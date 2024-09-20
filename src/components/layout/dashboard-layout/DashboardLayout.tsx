@@ -40,7 +40,7 @@ export default function DashboardLayout() {
       <div className="flex-1">
         <Header isOpen={isOpen} setIsOpen={setIsOpen} />
         <div
-          className="p-4 h-[calc(100vh-64px)] overflow-y-auto bg-secondary"
+          className="p-4 h-[calc(100vh-64px)] overflow-y-auto"
           ref={childRef}
         >
           <Outlet />

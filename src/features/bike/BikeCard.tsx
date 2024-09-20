@@ -8,7 +8,6 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { IBike } from '@/interfaces';
-import { cn } from '@/lib/utils';
 import { EyeIcon } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -17,7 +16,7 @@ export function BikeCard({ bike }: { bike: IBike }) {
 
   return (
     <Card
-      className="overflow-hidden flex flex-col justify-between hover:scale-[1.01] transition-transform duration-150 ease-in-out cursor-pointer"
+      className="overflow-hidden flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300 ease-in-out cursor-pointer"
       onClick={() => navigate(`/bike/${bike._id}`)}
     >
       <CardHeader>
@@ -32,12 +31,8 @@ export function BikeCard({ bike }: { bike: IBike }) {
             aria-label={`${bike.name} ${bike.model} ${bike.year}`}
           ></div>
           <Badge
-            className={cn('absolute top-0 left-0', {
-              'bg-green-100 text-green-700 hover:bg-green-100 hover:text-green-700':
-                bike.isAvailable,
-              'bg-red-100 text-destructive hover:bg-red-100 hover:text-destructive':
-                !bike.isAvailable,
-            })}
+            variant={bike.isAvailable ? 'success' : 'destructive'}
+            className="absolute top-2 right-2"
           >
             {bike.isAvailable ? 'Available' : 'Unavailable'}
           </Badge>
@@ -49,9 +44,13 @@ export function BikeCard({ bike }: { bike: IBike }) {
       </CardHeader>
 
       <CardFooter className="flex gap-2 justify-between">
-        <Badge variant="outline">{bike.pricePerHour} BDT/Hour</Badge>
+        <Badge variant="secondary">{bike.pricePerHour} BDT/Hour</Badge>
         <Link to={`/bike/${bike._id}`}>
-          <Button variant="secondary" className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            className="flex items-center gap-2"
+          >
             <EyeIcon size={16} />
             View Details
           </Button>

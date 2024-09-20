@@ -1,4 +1,10 @@
 import ceo from '@/assets/ceo.jpg';
+import Container from '@/components/layout/Container';
+import {
+  Section,
+  SectionDescription,
+  SectionTitle,
+} from '@/components/layout/Section';
 
 const teamMembers = [
   {
@@ -47,15 +53,13 @@ const teamMembers = [
 
 export default function Team() {
   return (
-    <section className="py-12 bg-white">
-      <div className="container">
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-4 uppercase">
-          Meet the Team
-        </h2>
-        <p className="text-center text-gray-600 max-w-xl mx-auto mb-8">
+    <Section className="bg-white">
+      <Container>
+        <SectionTitle>Meet the Team</SectionTitle>
+        <SectionDescription>
           Meet our diverse team who made this possible. They are the reason we
           are here today.
-        </p>
+        </SectionDescription>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member, index) => (
             <div key={index} className="text-center shadow-md p-4 rounded-lg">
@@ -65,12 +69,12 @@ export default function Team() {
                 alt={member.name}
               />
               <h3 className="text-xl font-semibold">{member.name}</h3>
-              <p className="text-sm text-gray-500">{member.role}</p>
+              <p className="text-sm text-gray-600">{member.role}</p>
               <p className="mt-4">{member.description}</p>
             </div>
           ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

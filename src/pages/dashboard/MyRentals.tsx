@@ -9,14 +9,14 @@ export default function MyRentals() {
         <TabsList className="w-full max-w-96 h-12 p-2 bg-white">
           <TabsTrigger
             value="unpaid"
-            className="w-full max-w-48 py-2 rounded-bl-none rounded-br-none shadow-none data-[state=active]:shadow-none border-b-2 data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:bg-yellow-50 gap-1"
+            className="w-full max-w-48 py-2 rounded-none shadow-none data-[state=active]:shadow-none border-b-2 data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:bg-primary/5 gap-1"
           >
             <DollarSign className="size-5" />
             UNPAID
           </TabsTrigger>
           <TabsTrigger
             value="paid"
-            className="w-full max-w-48 py-2 rounded-bl-none rounded-br-none shadow-none data-[state=active]:shadow-none border-b-2 data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:bg-yellow-50 gap-2"
+            className="w-full max-w-48 py-2 rounded-none shadow-none data-[state=active]:shadow-none border-b-2 data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:bg-primary/5 gap-2"
           >
             <CreditCard className="size-5" />
             PAID

@@ -1,4 +1,3 @@
-import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 import { useAppSelector } from '@/redux/hooks';
 import {
@@ -61,19 +60,27 @@ export default function Sidebar({ isOpen }: { isOpen: boolean }) {
   return (
     <div
       className={cn(
-        'w-[256px] h-screen bg-white transition-width duration-300 border-r flex-shrink-0 p-4',
+        'w-[240px] h-screen bg-slate-900 text-white transition-width duration-300 border-r flex-shrink-0 px-4',
         {
-          'w-0 px-0': !isOpen,
+          'w-0 sm:w-14 px-0 sm:px-2': !isOpen,
         }
       )}
     >
-      <Link to="/">
-        <h1 className="text-4xl font-bold font-bebas text-center">
-          <span className="text-primary">BIKE</span>LAGBE
-        </h1>
+      <Link
+        to="/"
+        className="h-[64px] border-b flex justify-center items-center"
+      >
+        {isOpen ? (
+          <h1 className="text-4xl font-bold font-bebas text-center">
+            <span className="text-primary">BIKE</span>LAGBE
+          </h1>
+        ) : (
+          <h1 className="text-4xl font-bold text-center text-primary hidden sm:block">
+            B
+          </h1>
+        )}
       </Link>
-      <Separator className="my-4 w-full" />
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 my-4">
         {sidebarLinks[user?.role].map((item) => (
           <SidebarItem
             key={item.href}

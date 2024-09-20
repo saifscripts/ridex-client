@@ -1,7 +1,7 @@
-import { LogoutButton } from '@/features/logout';
+import { UserDropdown } from '@/features/user-dropdown';
 import { cn } from '@/lib/utils';
 import { useAppSelector } from '@/redux/hooks';
-import { LogOutIcon, MenuIcon } from 'lucide-react';
+import { MenuIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface HeaderProps {
@@ -16,7 +16,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
     <div className="h-[64px] bg-white flex items-center justify-between px-4 border-b">
       <div className="flex items-center gap-2">
         <MenuIcon
-          size={32}
+          size={24}
           className="cursor-pointer"
           onClick={() => setIsOpen(!isOpen)}
         />
@@ -31,12 +31,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
           </h1>
         </Link>
       </div>
-      {user && (
-        <LogoutButton variant="link" className="text-primary-foreground gap-1">
-          <LogOutIcon size={20} />
-          <span>Logout</span>
-        </LogoutButton>
-      )}
+      {user && <UserDropdown />}
     </div>
   );
 }

@@ -6,7 +6,7 @@ export default function BikeSearch() {
 
   return (
     <Input
-      placeholder="Search by name, description, model..."
+      placeholder="Search bikes"
       value={searchParams.get('searchTerm') ?? ''}
       onChange={(event) =>
         appendSearchParams(

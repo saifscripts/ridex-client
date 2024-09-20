@@ -7,6 +7,7 @@ import { showToast } from '@/lib/utils';
 import { useContactUsMutation } from '@/redux/features/user/userApi';
 import { MessageCircleIcon } from 'lucide-react';
 import { FieldValues, SubmitHandler } from 'react-hook-form';
+import validator from 'validator';
 import { z } from 'zod';
 
 const FormSchema = z.object({
@@ -18,7 +19,10 @@ const FormSchema = z.object({
     .email({ message: 'Invalid email!' }),
   phone: z
     .string({ required_error: 'You must provide your phone number!' })
-    .min(1, { message: 'You must provide your phone number!' }),
+    .min(1, { message: 'You must provide your phone number!' })
+    .refine((value) => validator.isMobilePhone(value, 'bn-BD'), {
+      message: 'Invalid Bangladeshi phone number',
+    }),
   message: z
     .string({ required_error: "Message can't be empty!" })
     .min(1, { message: "Message can't be empty!" })
@@ -37,7 +41,7 @@ export default function ContactForm() {
     <AppForm
       onSubmit={handleSubmit}
       schema={FormSchema}
-      className="max-w-4xl mx-auto p-8 rounded-lg shadow-lg bg-white"
+      className="mx-auto p-8 rounded-lg shadow-lg bg-white"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <div className="space-y-6">

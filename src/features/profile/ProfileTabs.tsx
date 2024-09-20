@@ -1,5 +1,19 @@
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+
+const tabs = [
+  {
+    name: 'Edit Profile',
+    value: 'edit',
+  },
+  {
+    name: 'Change Password',
+    value: 'account',
+  },
+  {
+    name: 'Logout',
+    value: 'logout',
+  },
+];
 
 interface ProfileTabsProps {
   activeTab: string;
@@ -12,35 +26,16 @@ export default function ProfileTabs({
 }: ProfileTabsProps) {
   return (
     <div className="bg-white rounded-lg p-2 w-full flex xs:gap-2 sm:gap-4 overflow-x-auto">
-      <Button
-        variant="ghost"
-        className={cn('text-xs xs:text-sm', {
-          'bg-secondary font-semibold': activeTab === 'edit',
-        })}
-        onClick={() => setActiveTab('edit')}
-      >
-        Edit Profile
-      </Button>
-
-      <Button
-        variant="ghost"
-        className={cn('text-xs xs:text-sm', {
-          'bg-secondary font-semibold': activeTab === 'account',
-        })}
-        onClick={() => setActiveTab('account')}
-      >
-        Change Password
-      </Button>
-
-      <Button
-        variant="ghost"
-        className={cn('text-xs xs:text-sm', {
-          'bg-secondary font-semibold': activeTab === 'logout',
-        })}
-        onClick={() => setActiveTab('logout')}
-      >
-        Logout
-      </Button>
+      {tabs.map((tab) => (
+        <Button
+          key={tab.value}
+          variant={activeTab === tab.value ? 'secondary' : 'ghost'}
+          className="text-xs xs:text-sm"
+          onClick={() => setActiveTab(tab.value)}
+        >
+          {tab.name}
+        </Button>
+      ))}
     </div>
   );
 }

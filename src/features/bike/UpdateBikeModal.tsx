@@ -103,11 +103,7 @@ export default function UpdateBikeModal({ bike }: UpdateBikeModalProps) {
               Update the bike with proper information!
             </DialogDescription>
           </DialogHeader>
-          <AppForm
-            onSubmit={onSubmit}
-            schema={FormSchema}
-            defaultValues={bike as unknown as Record<string, unknown>}
-          >
+          <AppForm onSubmit={onSubmit} schema={FormSchema} defaultValues={bike}>
             <AppInput name="name" label="Name" placeholder="Enter bike name" />
             <AppTextarea
               name="description"

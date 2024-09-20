@@ -61,7 +61,7 @@ export default function ChangePassword() {
         />
       </div>
 
-      <Submit variant="destructive" className="flex items-center gap-2">
+      <Submit className="flex items-center gap-2">
         <LockIcon size={16} />
         Change Password
       </Submit>

@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -11,7 +12,9 @@ const NavItem = ({ to, children }: NavItemProps) => {
     <NavLink
       to={to}
       className={({ isActive, isPending }) =>
-        isPending ? 'text-primary' : isActive ? 'text-primary' : ''
+        cn({
+          'text-primary font-semibold': isActive || isPending,
+        })
       }
     >
       {children}

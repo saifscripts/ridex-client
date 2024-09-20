@@ -11,18 +11,25 @@ import { useAppSelector } from '@/redux/hooks';
 
 import { LogoutButton } from '@/features/logout';
 import {
+  LayoutDashboardIcon,
   LogInIcon,
   LogOutIcon,
   MenuIcon,
   UserPlusIcon,
   XIcon,
 } from 'lucide-react';
+import { useRef } from 'react';
 import Logo from './Logo';
 import navLinks from './navLinks';
 import SidebarItem from './SidebarItem';
 
 export default function Sidebar() {
   const user = useAppSelector((state) => state.auth.user);
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  const handleClose = () => {
+    closeRef.current?.click();
+  };
 
   return (
     <Sheet>
@@ -33,44 +40,67 @@ export default function Sidebar() {
         <SheetHeader className="text-left">
           <div className="flex items-center justify-between">
             <Logo />
-            <SheetClose>
+            <SheetClose ref={closeRef}>
               <XIcon
                 size={24}
                 className="cursor-pointer border p-[2px] active:bg-gray-100"
               />
             </SheetClose>
           </div>
-          <Separator className="mt-2 mb-4" />
 
           <div className="flex flex-col gap-2">
+            <Separator className="my-2" />
             {navLinks.map((item) => (
-              <SidebarItem key={item.path} icon={item.icon} to={item.path}>
+              <SidebarItem
+                key={item.path}
+                icon={item.icon}
+                to={item.path}
+                onClick={handleClose}
+              >
                 {item.text}
               </SidebarItem>
             ))}
 
-            {!user && (
+            {user ? (
               <>
-                <SidebarItem icon={<LogInIcon size={20} />} to="/login">
+                <SidebarItem
+                  icon={<LayoutDashboardIcon size={20} />}
+                  to="/dashboard"
+                  onClick={handleClose}
+                >
+                  Dashboard
+                </SidebarItem>
+              </>
+            ) : (
+              <>
+                <SidebarItem
+                  icon={<LogInIcon size={20} />}
+                  to="/login"
+                  onClick={handleClose}
+                >
                   Login
                 </SidebarItem>
-                <SidebarItem icon={<UserPlusIcon size={20} />} to="/signup">
+                <SidebarItem
+                  icon={<UserPlusIcon size={20} />}
+                  to="/signup"
+                  onClick={handleClose}
+                >
                   Signup
                 </SidebarItem>
               </>
             )}
+            <Separator className="my-2" />
           </div>
         </SheetHeader>
-        <SheetFooter className="flex-row justify-end">
-          {user && (
-            <LogoutButton
-              className="text-primary-foreground gap-1"
-              variant="link"
-            >
-              <LogOutIcon size={20} />
-              <span>Logout</span>
-            </LogoutButton>
-          )}
+        <SheetFooter>
+          <LogoutButton
+            className="justify-start gap-3 px-2 py-1 text-base"
+            variant="secondary"
+            onClick={handleClose}
+          >
+            <LogOutIcon size={20} />
+            <span>Logout</span>
+          </LogoutButton>
         </SheetFooter>
       </SheetContent>
     </Sheet>
