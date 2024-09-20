@@ -42,7 +42,7 @@ export default function DashboardLayout() {
         <Header isOpen={isOpen} setIsOpen={setIsOpen} />
         <div
           className={cn(
-            'p-4 h-[calc(100vh-64px)] overflow-y-auto max-w-[100vw]',
+            'p-4 h-[calc(100svh-64px)] overflow-y-auto max-w-[100vw]',
             {
               'max-w-[calc(100vw-240px)]': isOpen,
             }

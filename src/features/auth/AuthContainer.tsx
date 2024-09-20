@@ -17,7 +17,7 @@ export default function AuthContainer({
   schema,
 }: IAuthContainerProps) {
   return (
-    <Container className="min-h-[calc(100vh-64px)] flex justify-center items-center py-4">
+    <Container className="min-h-[calc(100svh-64px)] flex justify-center items-center py-4">
       <AppForm
         className="max-w-md w-full border p-6 rounded-xl bg-white space-y-6"
         onSubmit={onSubmit}

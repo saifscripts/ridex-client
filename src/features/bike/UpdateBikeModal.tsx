@@ -93,7 +93,7 @@ export default function UpdateBikeModal({ bike }: UpdateBikeModalProps) {
           </Tooltip>
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-[500px] max-h-[90svh] overflow-y-auto">
         <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
           <DialogHeader>
             <DialogTitle>

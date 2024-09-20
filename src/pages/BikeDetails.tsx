@@ -15,7 +15,7 @@ export default function BikeDetails() {
   if (isLoading) return <p>Loading...</p>;
 
   return (
-    <Container className="min-h-[calc(100vh-64px)] sm:flex items-center justify-center py-4">
+    <Container className="min-h-[calc(100svh-64px)] sm:flex items-center justify-center py-4">
       <div className="bg-white border w-full rounded-xl grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 sm:p-8 lg:p-16">
         <div>
           <img

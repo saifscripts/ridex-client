@@ -6,7 +6,7 @@ export default function CommonLayout() {
   return (
     <>
       <Navbar />
-      <main className="min-h-[calc(100vh-64px)] mt-[64px]">
+      <main className="min-h-[calc(100svh-64px)] mt-[64px]">
         <Outlet />
       </main>
       <Footer />
