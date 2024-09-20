@@ -1,5 +1,4 @@
 import avatar from '@/assets/avatar.gif';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,14 +28,16 @@ export default function UserDropdown() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <div className="flex items-center gap-2 hover:bg-gray-200 rounded-full px-1 md:px-2 py-1 cursor-pointer transition-colors duration-300">
-          <Avatar>
-            <AvatarImage src={user?.avatarURL || avatar} />
-            <AvatarFallback>
-              {user?.name?.charAt(0).toUpperCase()}
-            </AvatarFallback>
-          </Avatar>
+          <div
+            className="size-10 rounded-full bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${user?.avatarURL || avatar})`,
+            }}
+          ></div>
           <div className="hidden md:block">
-            <p className="font-medium">{user?.name}</p>
+            <p className="font-medium tracking-tighter leading-tight">
+              {user?.name}
+            </p>
             <p className="text-muted-foreground text-[12px] tracking-tighter">
               {user?.email.split('@')[0]}
             </p>
