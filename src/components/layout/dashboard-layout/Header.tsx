@@ -26,7 +26,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
             hidden: isOpen,
           })}
         >
-          <h1 className="text-4xl font-bold font-bebas text-center">
+          <h1 className="text-4xl font-bold font-leckerli text-center">
             <span className="text-primary">RIDE</span>X
           </h1>
         </Link>

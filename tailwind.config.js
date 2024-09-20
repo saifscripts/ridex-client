@@ -88,7 +88,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      bebas: ['Bebas Neue', 'sans-serif'],
+      leckerli: ['Leckerli One', 'cursive'],
     },
   },
   plugins: [require('tailwindcss-animate')],

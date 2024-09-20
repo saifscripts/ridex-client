@@ -8,7 +8,9 @@ export default function AboutHero() {
     >
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="relative z-10 text-center text-white container">
-        <h1 className="text-4xl md:text-6xl font-semibold mb-4">RideX</h1>
+        <h1 className="text-4xl md:text-6xl font-bold font-leckerli text-center">
+          <span className="text-primary">RIDE</span>X
+        </h1>
         <p className="text-xl">
           Transforming Urban Mobility, One Ride at a Time
         </p>

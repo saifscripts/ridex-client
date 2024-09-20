@@ -60,27 +60,31 @@ export default function Sidebar({ isOpen }: { isOpen: boolean }) {
   return (
     <div
       className={cn(
-        'w-[240px] h-screen bg-slate-900 text-white transition-width duration-300 border-r flex-shrink-0 px-4',
+        'w-[240px] h-screen bg-slate-900 text-white transition-width duration-300 border-r flex-shrink-0',
         {
-          'w-0 sm:w-14 px-0 sm:px-2': !isOpen,
+          'w-0 sm:w-[64px]': !isOpen,
         }
       )}
     >
       <Link
         to="/"
-        className="h-[64px] border-b flex justify-center items-center"
+        className="h-[64px] border-b border-slate-700 flex justify-center items-center"
       >
         {isOpen ? (
-          <h1 className="text-4xl font-bold font-bebas text-center">
+          <h1 className="text-4xl font-bold font-leckerli text-center">
             <span className="text-primary">RIDE</span>X
           </h1>
         ) : (
-          <h1 className="text-4xl font-bold text-center text-primary hidden sm:block">
+          <h1 className="text-4xl font-bold text-center text-primary hidden sm:block font-leckerli">
             R
           </h1>
         )}
       </Link>
-      <div className="flex flex-col gap-2 my-4">
+      <div
+        className={cn('flex flex-col gap-2 my-4 px-4', {
+          'px-0 sm:px-3': !isOpen,
+        })}
+      >
         {sidebarLinks[user?.role].map((item) => (
           <SidebarItem
             key={item.href}
