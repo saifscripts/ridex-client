@@ -17,7 +17,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
       <div className="flex items-center gap-2">
         <MenuIcon
           size={24}
-          className="cursor-pointer"
+          className="cursor-pointer m-1"
           onClick={() => setIsOpen(!isOpen)}
         />
         <Link

@@ -34,7 +34,7 @@ export default function Sidebar() {
   return (
     <Sheet>
       <SheetTrigger>
-        <MenuIcon size={24} />
+        <MenuIcon size={24} className="cursor-pointer m-1" />
       </SheetTrigger>
       <SheetContent className="w-[256px] flex flex-col justify-between">
         <SheetHeader className="text-left">
