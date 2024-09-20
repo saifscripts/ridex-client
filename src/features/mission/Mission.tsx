@@ -9,9 +9,9 @@ export default function Mission() {
     <Section className="container">
       <SectionTitle>Our Mission</SectionTitle>
       <SectionDescription className="mb-0">
-        At BIKELAGBE, our mission is to transform urban mobility through
-        innovative bike-sharing solutions. We envision a future where cities are
-        more livable, sustainable, and connected. Our purpose is to provide
+        At RideX, our mission is to transform urban mobility through innovative
+        bike-sharing solutions. We envision a future where cities are more
+        livable, sustainable, and connected. Our purpose is to provide
         accessible, eco-friendly transportation options that reduce carbon
         emissions and traffic congestion. We are committed to empowering
         communities, promoting health and wellness, and contributing to a

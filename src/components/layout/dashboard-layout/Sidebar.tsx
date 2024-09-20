@@ -72,11 +72,11 @@ export default function Sidebar({ isOpen }: { isOpen: boolean }) {
       >
         {isOpen ? (
           <h1 className="text-4xl font-bold font-bebas text-center">
-            <span className="text-primary">BIKE</span>LAGBE
+            <span className="text-primary">RIDE</span>X
           </h1>
         ) : (
           <h1 className="text-4xl font-bold text-center text-primary hidden sm:block">
-            B
+            R
           </h1>
         )}
       </Link>

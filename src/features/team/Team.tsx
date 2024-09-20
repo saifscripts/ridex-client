@@ -12,7 +12,7 @@ const teamMembers = [
     role: 'CEO & Founder',
     avatar: ceo,
     description:
-      'Saif is the visionary behind BIKELAGBE, with a passion for sustainable transport and over a decade of experience in the tech industry.',
+      'Saif is the visionary behind RideX, with a passion for sustainable transport and over a decade of experience in the tech industry.',
   },
   {
     name: 'Jane Smith',
