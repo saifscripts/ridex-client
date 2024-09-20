@@ -133,8 +133,8 @@ export function TestimonialContent() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className="-left-4" />
+        <CarouselNext className="-right-4" />
       </Carousel>
     </ContainerMd>
   );
