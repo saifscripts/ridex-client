@@ -52,7 +52,13 @@ const sidebarLinks = {
   ],
 };
 
-export default function Sidebar({ isOpen }: { isOpen: boolean }) {
+export default function Sidebar({
+  isOpen,
+  setIsOpen,
+}: {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+}) {
   const user = useAppSelector((state) => state.auth.user);
 
   if (!user) return null;
@@ -90,6 +96,7 @@ export default function Sidebar({ isOpen }: { isOpen: boolean }) {
             key={item.href}
             href={item.href}
             isOpen={isOpen}
+            setIsOpen={setIsOpen}
             icon={item.icon}
           >
             {item.text}

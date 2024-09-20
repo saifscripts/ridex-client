@@ -36,7 +36,7 @@ export default function DashboardLayout() {
 
   return (
     <div className="flex">
-      <Sidebar isOpen={isOpen} />
+      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className="flex-1">
         <Header isOpen={isOpen} setIsOpen={setIsOpen} />
         <div

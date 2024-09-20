@@ -1,10 +1,11 @@
+import useScreenSize from '@/hooks/useScreenSize';
 import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-
 interface SidebarItemProps {
   href: string;
   isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
   icon: ReactNode;
   children: ReactNode;
 }
@@ -13,9 +14,17 @@ export default function SidebarItem({
   href,
   icon,
   isOpen,
+  setIsOpen,
   children,
 }: SidebarItemProps) {
   const { pathname } = useLocation();
+  const screenSize = useScreenSize();
+
+  const hideSidebar = () => {
+    if (screenSize.width <= 768) {
+      setIsOpen(false);
+    }
+  };
 
   return (
     <Link
@@ -27,6 +36,7 @@ export default function SidebarItem({
           'size-10 justify-center opacity-0 sm:opacity-100': !isOpen,
         }
       )}
+      onClick={hideSidebar}
     >
       {icon}
       <span className={cn('text-nowrap', { 'opacity-0 hidden': !isOpen })}>
