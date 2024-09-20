@@ -93,14 +93,16 @@ export default function Sidebar() {
           </div>
         </SheetHeader>
         <SheetFooter>
-          <LogoutButton
-            className="justify-start gap-3 px-2 py-1 text-base"
-            variant="secondary"
-            onClick={handleClose}
-          >
-            <LogOutIcon size={20} />
-            <span>Logout</span>
-          </LogoutButton>
+          {user && (
+            <LogoutButton
+              className="justify-start gap-3 px-2 py-1 text-base"
+              variant="secondary"
+              onClick={handleClose}
+            >
+              <LogOutIcon size={20} />
+              <span>Logout</span>
+            </LogoutButton>
+          )}
         </SheetFooter>
       </SheetContent>
     </Sheet>
