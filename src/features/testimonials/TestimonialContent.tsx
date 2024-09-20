@@ -96,6 +96,10 @@ export function TestimonialContent() {
   return (
     <ContainerMd>
       <Carousel
+        opts={{
+          align: 'start',
+          loop: true,
+        }}
         className="w-full"
         plugins={[
           Autoplay({
