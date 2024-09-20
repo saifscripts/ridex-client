@@ -7,7 +7,7 @@ export default function HeroIntro() {
   const user = useAppSelector((state) => state.auth.user);
 
   return (
-    <div className="text-white flex flex-col justify-center gap-8 text-center md:text-left py-6">
+    <div className="text-white flex flex-col justify-center gap-8 text-center md:text-left flex-1 h-[calc(100vh-64px)] py-20">
       <h1 className="text-7xl font-semibold">Ride Your Way</h1>
       <p>
         Explore our wide range of bikes, from city cruisers to mountain

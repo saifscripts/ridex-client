@@ -28,7 +28,7 @@ export default function SearchFilters() {
   };
 
   return (
-    <div className="flex justify-center items-center py-6">
+    <div className="flex justify-center items-center flex-1 h-[calc(100vh-64px)] py-20">
       <div className="w-full max-w-sm bg-black bg-opacity-30 rounded-lg p-4 space-y-4">
         <div className="relative">
           <Input
