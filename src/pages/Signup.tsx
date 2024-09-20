@@ -1,9 +1,9 @@
 import AppInput from '@/components/form/AppInput';
 import AppPasswordInput from '@/components/form/AppPasswordInput';
 import Submit from '@/components/form/Submit';
-import { toast } from '@/components/ui/use-toast';
 import AuthContainer from '@/features/auth/AuthContainer';
-import { IErrorResponse } from '@/interfaces';
+import { IResponse } from '@/interfaces';
+import { showToast } from '@/lib/utils';
 import { useSignupMutation } from '@/redux/features/auth/authApi';
 import { UserPlusIcon } from 'lucide-react';
 import { FieldValues, SubmitHandler } from 'react-hook-form';
@@ -46,18 +46,10 @@ export default function Signup() {
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    const result = await signup(data);
-
+    const result = (await signup(data)) as IResponse<unknown>;
+    showToast(result, 'Signup successful!');
     if (result?.data?.success) {
       navigate('/login');
-      toast({
-        title: 'Account created successful!',
-      });
-    } else {
-      toast({
-        title: (result as IErrorResponse)?.error?.data?.message,
-        variant: 'destructive',
-      });
     }
   };
 

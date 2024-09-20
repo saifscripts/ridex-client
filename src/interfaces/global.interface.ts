@@ -24,6 +24,8 @@ export interface IErrorResponse {
 export interface ISuccessResponse<T> {
   success: boolean;
   message: string;
+  token?: string;
+  refreshToken?: string;
   data: T;
   meta?: IMetaData;
 }

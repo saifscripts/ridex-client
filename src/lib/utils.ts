@@ -1,6 +1,6 @@
-import { toast } from '@/components/ui/use-toast';
 import { IResponse } from '@/interfaces';
 import { type ClassValue, clsx } from 'clsx';
+import { toast } from 'sonner';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
@@ -9,12 +9,9 @@ export function cn(...inputs: ClassValue[]) {
 
 export function showToast(result: IResponse<unknown>, title: string) {
   if (result?.error) {
-    toast({
-      title: result?.error?.data?.message,
-      variant: 'destructive',
-    });
+    toast.error(result?.error?.data?.message);
   } else {
-    toast({ title });
+    toast.success(title);
   }
 }
 

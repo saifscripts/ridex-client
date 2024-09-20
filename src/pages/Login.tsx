@@ -1,9 +1,9 @@
 import AppInput from '@/components/form/AppInput';
 import AppPasswordInput from '@/components/form/AppPasswordInput';
 import Submit from '@/components/form/Submit';
-import { toast } from '@/components/ui/use-toast';
 import { AuthContainer } from '@/features/auth';
-import { IErrorResponse } from '@/interfaces';
+import { IResponse } from '@/interfaces';
+import { showToast } from '@/lib/utils';
 import { useLoginMutation } from '@/redux/features/auth/authApi';
 import { setUser } from '@/redux/features/auth/authSlice';
 import { useAppDispatch } from '@/redux/hooks';
@@ -30,20 +30,14 @@ export default function Login() {
   const { state } = useLocation();
 
   const onSubmit: SubmitHandler<FieldValues> = async (credentials) => {
-    const result = await login(credentials);
+    const result = (await login(credentials)) as IResponse<unknown>;
+
+    showToast(result, 'Login successful!');
 
     if (result?.data?.success) {
       const { token } = result.data;
       await dispatch(setUser(token));
       navigate(state?.pathname || '/dashboard');
-      toast({
-        title: 'Login successful!',
-      });
-    } else {
-      toast({
-        title: (result as IErrorResponse)?.error?.data?.message,
-        variant: 'destructive',
-      });
     }
   };
 

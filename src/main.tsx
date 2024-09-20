@@ -1,4 +1,3 @@
-import { Toaster } from '@/components/ui/toaster';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { StrictMode } from 'react';
@@ -6,6 +5,7 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
+import { Toaster } from 'sonner';
 import { TooltipProvider } from './components/ui/tooltip.tsx';
 import './index.css';
 import { persistor, store } from './redux/store.ts';
@@ -22,6 +22,6 @@ createRoot(document.getElementById('root')!).render(
         </LocalizationProvider>
       </PersistGate>
     </Provider>
-    <Toaster />
+    <Toaster richColors position="top-right" closeButton />
   </StrictMode>
 );
