@@ -1,4 +1,5 @@
 import useScreenSize from '@/hooks/useScreenSize';
+import { cn } from '@/lib/utils';
 import { useAppSelector } from '@/redux/hooks';
 import { useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
@@ -40,7 +41,12 @@ export default function DashboardLayout() {
       <div className="flex-1">
         <Header isOpen={isOpen} setIsOpen={setIsOpen} />
         <div
-          className="p-4 h-[calc(100vh-64px)] overflow-y-auto"
+          className={cn(
+            'p-4 h-[calc(100vh-64px)] overflow-y-auto max-w-[100vw]',
+            {
+              'max-w-[calc(100vw-240px)]': isOpen,
+            }
+          )}
           ref={childRef}
         >
           <Outlet />
