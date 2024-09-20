@@ -7,7 +7,6 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { Rating } from '@mui/material';
-import { AspectRatio } from '@radix-ui/react-aspect-ratio';
 import Autoplay from 'embla-carousel-autoplay';
 
 const testimonials = [
@@ -110,10 +109,7 @@ export function TestimonialContent() {
               key={review.id}
               className="md:basis-1/2 lg:basis-1/3 pl-6"
             >
-              <AspectRatio
-                ratio={4 / 3}
-                className="bg-white rounded-lg p-6 text-center flex flex-col justify-between"
-              >
+              <div className="bg-white rounded-lg p-6 text-center flex flex-col justify-between">
                 <div>
                   <img
                     src={review.avatar}
@@ -129,7 +125,7 @@ export function TestimonialContent() {
                   <p className="text-gray-400 mb-4">{review.review}</p>
                 </div>
                 <p className="text-gray-600">{review.name}</p>
-              </AspectRatio>
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
