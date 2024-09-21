@@ -54,7 +54,8 @@ module.exports = {
           foreground: 'hsl(var(--card-foreground))',
         },
         success: {
-          DEFAULT: '#11a75c',
+          DEFAULT: 'hsl(var(--success))',
+          foreground: 'hsl(var(--success-foreground))',
         },
       },
       borderRadius: {
