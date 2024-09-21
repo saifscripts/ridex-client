@@ -29,18 +29,27 @@ const FormSchema = z.object({
     .max(1000, { message: "Message can't be longer than 1000 characters!" }),
 });
 
+const defaultValues = {
+  name: '',
+  email: '',
+  phone: '',
+  message: '',
+};
+
 export default function ContactForm() {
   const [contactUs] = useContactUsMutation();
 
   const handleSubmit: SubmitHandler<FieldValues> = async (data) => {
     const result = (await contactUs(data)) as IResponse<null>;
     showToast(result, 'Message sent!');
+    return result?.data?.success;
   };
 
   return (
     <AppForm
       onSubmit={handleSubmit}
       schema={FormSchema}
+      defaultValues={defaultValues}
       className="mx-auto p-8 rounded-lg shadow-lg bg-white"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
