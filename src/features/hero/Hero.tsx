@@ -9,7 +9,7 @@ export default function Hero() {
       style={{ backgroundImage: `url(${banner})` }}
     >
       {/* Content */}
-      <div className="container flex flex-col md:flex-row gap-8 justify-center items-center h-full relative z-10 overflow-y-auto hide-scrollbar">
+      <div className="container flex flex-col md:flex-row gap-20 md:gap-8 justify-center items-center h-full relative z-10 overflow-y-auto hide-scrollbar">
         <HeroIntro />
         <SearchFilters />
       </div>
