@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { UserDropdown } from '@/features/user-dropdown';
 import { cn } from '@/lib/utils';
-import { useGetMeQuery } from '@/redux/features/user/userApi';
+import { useAppSelector } from '@/redux/hooks';
 import { LogInIcon, UserPlusIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -12,7 +12,7 @@ import navLinks from './navLinks';
 import Sidebar from './Sidebar';
 
 const Navbar = () => {
-  const { data: user } = useGetMeQuery('');
+  const user = useAppSelector((state) => state.auth.user);
 
   const [visible, setVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
