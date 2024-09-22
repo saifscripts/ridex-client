@@ -81,7 +81,7 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/bikes',
         element: (
-          <ProtectedRoute authorizedRoles={[USER_ROLE.USER]}>
+          <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
             <AllBikes />
           </ProtectedRoute>
         ),
@@ -89,7 +89,7 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/my-rentals',
         element: (
-          <ProtectedRoute authorizedRoles={[USER_ROLE.USER]}>
+          <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
             <MyRentals />
           </ProtectedRoute>
         ),

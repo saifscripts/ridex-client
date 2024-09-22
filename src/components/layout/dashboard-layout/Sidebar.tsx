@@ -35,6 +35,11 @@ const sidebarLinks = {
       icon: <UserPenIcon size={20} />,
     },
     {
+      href: '/dashboard/my-rentals',
+      text: 'My Rentals',
+      icon: <ListTreeIcon size={20} />,
+    },
+    {
       href: '/dashboard/manage-bikes',
       text: 'Manage Bikes',
       icon: <BikeIcon size={20} />,
