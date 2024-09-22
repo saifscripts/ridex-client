@@ -43,7 +43,7 @@ export function CalculateModal({ rental }: CalculateModalProps) {
       body: data,
     };
     const result = (await returnBike(options)) as IResponse<IRental>;
-    showToast(result, 'Bike returned!');
+    showToast(result, 'Bike returned successfully!');
   }
 
   const defaultValues = {

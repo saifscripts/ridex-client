@@ -17,6 +17,7 @@ export function BikeCard({ bike }: { bike: IBike }) {
   return (
     <Card
       className="overflow-hidden flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300 ease-in-out cursor-pointer"
+      data-aos="fade-up"
       onClick={() => navigate(`/bike/${bike._id}`)}
     >
       <CardHeader>

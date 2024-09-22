@@ -20,6 +20,7 @@ export default function AppForm({
   onSubmit,
   children,
   className,
+  ...props
 }: AppFormProps) {
   const form = useForm({
     resolver: schema && zodResolver(schema),
@@ -41,6 +42,7 @@ export default function AppForm({
       <form
         onSubmit={form.handleSubmit(submitHandler)}
         className={cn('w-full space-y-6', className)}
+        {...props}
       >
         {children}
       </form>

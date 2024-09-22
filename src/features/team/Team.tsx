@@ -62,7 +62,12 @@ export default function Team() {
         </SectionDescription>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member, index) => (
-            <div key={index} className="text-center shadow-md p-4 rounded-lg">
+            <div
+              key={index}
+              className="text-center shadow-md p-4 rounded-lg"
+              data-aos="zoom-in"
+              data-aos-delay={index * 100}
+            >
               <img
                 className="w-32 h-32 rounded-full mx-auto mb-4"
                 src={member.avatar}

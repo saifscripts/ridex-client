@@ -36,10 +36,12 @@ export const Milestones = () => {
       </SectionDescription>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {milestones.map((milestone) => (
+        {milestones.map((milestone, index) => (
           <div
             key={milestone.year}
             className="bg-white p-8 shadow-lg rounded-lg text-center transition-all duration-300 hover:shadow-xl"
+            data-aos="zoom-in"
+            data-aos-delay={index * 100}
           >
             <div className="flex justify-center items-center mb-6">
               {milestone.icon}

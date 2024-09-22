@@ -23,6 +23,7 @@ export function SectionTitle({
         'text-4xl font-semibold text-center tracking-tight mb-2 uppercase text-gray-900',
         className
       )}
+      data-aos="zoom-in"
     >
       {children}
     </h2>
@@ -42,6 +43,7 @@ export function SectionDescription({
         'text-center text-gray-600 mb-8 max-w-xl mx-auto',
         className
       )}
+      data-aos="zoom-in"
     >
       {children}
     </p>

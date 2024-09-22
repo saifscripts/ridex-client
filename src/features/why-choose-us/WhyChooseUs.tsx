@@ -46,6 +46,8 @@ export default function WhyChooseUs() {
             <div
               key={feature.id}
               className="p-6 rounded-lg shadow flex flex-col justify-end"
+              data-aos="fade-up"
+              data-aos-delay={feature.id * 100}
             >
               <div className="w-full flex items-end mb-8">
                 <img src={feature.illustration} alt="" className="w-full" />

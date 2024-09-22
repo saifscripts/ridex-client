@@ -106,6 +106,7 @@ export function TestimonialContent() {
             delay: 2000,
           }),
         ]}
+        data-aos="fade-up"
       >
         <CarouselContent className="-ml-6">
           {testimonials.map((review) => (
