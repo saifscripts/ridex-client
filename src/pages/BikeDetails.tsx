@@ -18,15 +18,23 @@ export default function BikeDetails() {
   return (
     <Container className="min-h-[calc(100svh-64px)] sm:flex items-center justify-center py-4">
       <div className="bg-white border w-full rounded-xl grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 sm:p-8 lg:p-16">
-        <div className="flex justify-center items-center">
+        <div
+          className="flex justify-center items-center"
+          data-aos="fade-right"
+          data-aos-delay="100"
+        >
           <img
             src={bikeImg}
             alt={`${bikeData.name} ${bikeData.model} ${bikeData.year}`}
             className="w-[80%] block m-auto"
           />
         </div>
-        <div className="flex justify-center items-center">
-          <div className="w-full">
+        <div
+          className="flex justify-center items-center"
+          data-aos="fade-left"
+          data-aos-delay="100"
+        >
+          <div className="w-full text-center lg:text-left">
             <h1 className="font-semibold text-4xl md:text-5xl text-gray-700 mb-4">
               {bikeData?.name}
             </h1>
@@ -34,7 +42,7 @@ export default function BikeDetails() {
               {bikeData.description}
             </p>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 justify-center lg:justify-start">
               <Badge variant="secondary">
                 {bikeData?.pricePerHour} BDT/Hour
               </Badge>

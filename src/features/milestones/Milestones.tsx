@@ -3,30 +3,44 @@ import {
   SectionDescription,
   SectionTitle,
 } from '@/components/layout/Section';
+import useScreenSize from '@/hooks/useScreenSize';
 import { TrophyIcon } from 'lucide-react';
+import { useEffect, useState } from 'react';
+
+const milestones = [
+  {
+    year: 2019,
+    icon: <TrophyIcon size={40} className="text-primary" />,
+    title: 'Platform launched',
+    description:
+      'Platform launched with the goal of revolutionizing the way people rent bikes.',
+  },
+  {
+    year: 2020,
+    icon: <TrophyIcon size={40} className="text-primary" />,
+    title: 'Reached 10,000+ users',
+    description: 'Reached 10,000+ users, expanding our reach to more cities.',
+  },
+  {
+    year: 2022,
+    icon: <TrophyIcon size={40} className="text-primary" />,
+    title: 'Introduced premium features',
+    description: 'Introduced premium features, extended the user experience.',
+  },
+];
 
 export const Milestones = () => {
-  const milestones = [
-    {
-      year: 2019,
-      icon: <TrophyIcon size={40} className="text-primary" />,
-      title: 'Platform launched',
-      description:
-        'Platform launched with the goal of revolutionizing the way people rent bikes.',
-    },
-    {
-      year: 2020,
-      icon: <TrophyIcon size={40} className="text-primary" />,
-      title: 'Reached 10,000+ users',
-      description: 'Reached 10,000+ users, expanding our reach to more cities.',
-    },
-    {
-      year: 2022,
-      icon: <TrophyIcon size={40} className="text-primary" />,
-      title: 'Introduced premium features',
-      description: 'Introduced premium features, extended the user experience.',
-    },
-  ];
+  const [cardsInARow, setCardsInARow] = useState(1);
+  const screenSize = useScreenSize();
+
+  useEffect(() => {
+    if (screenSize.width >= 768) {
+      setCardsInARow(3);
+    } else {
+      setCardsInARow(1);
+    }
+  }, [screenSize.width]);
+
   return (
     <Section className="container">
       <SectionTitle>Our Journey</SectionTitle>
@@ -41,7 +55,7 @@ export const Milestones = () => {
             key={milestone.year}
             className="bg-white p-8 shadow-lg rounded-lg text-center transition-all duration-300 hover:shadow-xl"
             data-aos="zoom-in"
-            data-aos-delay={index * 100}
+            data-aos-delay={(index % cardsInARow) * 100}
           >
             <div className="flex justify-center items-center mb-6">
               {milestone.icon}

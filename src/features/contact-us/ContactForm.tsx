@@ -51,7 +51,8 @@ export default function ContactForm() {
       schema={FormSchema}
       defaultValues={defaultValues}
       className="mx-auto p-8 rounded-lg shadow-lg bg-white"
-      data-aos="fade-up"
+      data-aos="fade-left"
+      data-aos-delay="100"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <div className="space-y-6">

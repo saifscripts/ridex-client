@@ -7,6 +7,8 @@ import {
   SectionDescription,
   SectionTitle,
 } from '@/components/layout/Section';
+import useScreenSize from '@/hooks/useScreenSize';
+import { useEffect, useState } from 'react';
 
 const features = [
   {
@@ -33,6 +35,17 @@ const features = [
 ];
 
 export default function WhyChooseUs() {
+  const [cardsInARow, setCardsInARow] = useState(1);
+  const screenSize = useScreenSize();
+
+  useEffect(() => {
+    if (screenSize.width >= 768) {
+      setCardsInARow(3);
+    } else {
+      setCardsInARow(1);
+    }
+  }, [screenSize.width]);
+
   return (
     <Section className="bg-white">
       <Container>
@@ -42,12 +55,12 @@ export default function WhyChooseUs() {
           the 24/7 customer support through our bike rental service.
         </SectionDescription>
         <ContainerMd className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {features.map((feature) => (
+          {features.map((feature, index) => (
             <div
               key={feature.id}
               className="p-6 rounded-lg shadow flex flex-col justify-end"
-              data-aos="fade-up"
-              data-aos-delay={feature.id * 100}
+              data-aos="zoom-in"
+              data-aos-delay={(index % cardsInARow) * 100}
             >
               <div className="w-full flex items-end mb-8">
                 <img src={feature.illustration} alt="" className="w-full" />

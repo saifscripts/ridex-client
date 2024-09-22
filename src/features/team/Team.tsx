@@ -5,6 +5,8 @@ import {
   SectionDescription,
   SectionTitle,
 } from '@/components/layout/Section';
+import useScreenSize from '@/hooks/useScreenSize';
+import { useEffect, useState } from 'react';
 
 const teamMembers = [
   {
@@ -52,6 +54,19 @@ const teamMembers = [
 ];
 
 export default function Team() {
+  const [cardsInARow, setCardsInARow] = useState(1);
+  const screenSize = useScreenSize();
+
+  useEffect(() => {
+    if (screenSize.width >= 1024) {
+      setCardsInARow(3);
+    } else if (screenSize.width >= 768) {
+      setCardsInARow(2);
+    } else {
+      setCardsInARow(1);
+    }
+  }, [screenSize.width]);
+
   return (
     <Section className="bg-white">
       <Container>
@@ -66,7 +81,7 @@ export default function Team() {
               key={index}
               className="text-center shadow-md p-4 rounded-lg"
               data-aos="zoom-in"
-              data-aos-delay={index * 100}
+              data-aos-delay={(index % cardsInARow) * 100}
             >
               <img
                 className="w-32 h-32 rounded-full mx-auto mb-4"

@@ -22,6 +22,8 @@ export default function AuthContainer({
         className="max-w-md w-full border p-6 rounded-xl bg-white space-y-6"
         onSubmit={onSubmit}
         schema={schema}
+        data-aos="fade-left"
+        data-aos-delay="100"
       >
         <h1 className="text-3xl font-semibold text-center">{title}</h1>
         {children}
