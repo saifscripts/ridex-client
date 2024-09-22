@@ -1,5 +1,7 @@
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
@@ -10,6 +12,8 @@ import { TooltipProvider } from './components/ui/tooltip.tsx';
 import './index.css';
 import { persistor, store } from './redux/store.ts';
 import router from './routes/routes.tsx';
+
+AOS.init();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
