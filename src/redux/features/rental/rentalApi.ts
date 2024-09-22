@@ -38,7 +38,7 @@ export const rentalApi = baseApi.injectEndpoints({
         method: 'PUT',
         body: options.body,
       }),
-      invalidatesTags: ['Rental'],
+      invalidatesTags: ['Rental', 'Bike'],
     }),
   }),
 });
