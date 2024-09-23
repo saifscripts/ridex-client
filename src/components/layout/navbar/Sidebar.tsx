@@ -43,7 +43,7 @@ export default function Sidebar() {
             <SheetClose ref={closeRef}>
               <XIcon
                 size={24}
-                className="cursor-pointer border p-[2px] active:bg-gray-100"
+                className="cursor-pointer border p-[2px] active:bg-foreground/10"
               />
             </SheetClose>
           </div>
@@ -92,7 +92,7 @@ export default function Sidebar() {
             <Separator className="my-2" />
           </div>
         </SheetHeader>
-        <SheetFooter>
+        <SheetFooter className="sm:flex-col-reverse">
           {user && (
             <LogoutButton
               className="justify-start gap-3 px-2 py-1 text-base"

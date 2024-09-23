@@ -37,7 +37,7 @@ export default function SearchFilters() {
           <Input
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="bg-white bg-opacity-90"
+            className="bg-background/80"
             placeholder="Search bikes"
           />
           <SearchIcon
@@ -46,7 +46,7 @@ export default function SearchFilters() {
           />
         </div>
         <Select onValueChange={handleBrandChange} defaultValue="all">
-          <SelectTrigger className="bg-white bg-opacity-90">
+          <SelectTrigger className="bg-background/80">
             <SelectValue placeholder="Brand: All" />
           </SelectTrigger>
           <SelectContent>
@@ -61,7 +61,7 @@ export default function SearchFilters() {
           </SelectContent>
         </Select>
         <Select onValueChange={handleAvailabilityChange} defaultValue="any">
-          <SelectTrigger className="bg-white bg-opacity-90">
+          <SelectTrigger className="bg-background/80">
             <SelectValue placeholder="Availability: Any" />
           </SelectTrigger>
           <SelectContent>

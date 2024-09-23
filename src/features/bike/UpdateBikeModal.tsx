@@ -80,10 +80,14 @@ export default function UpdateBikeModal({ bike }: UpdateBikeModalProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon" className="hover:bg-gray-200">
+        <Button variant="ghost" size="icon" className="hover:bg-foreground/20">
           <Tooltip>
             <TooltipTrigger>
-              <Button variant="ghost" size="icon" className="hover:bg-gray-200">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:bg-foreground/20"
+              >
                 <FilePenLineIcon size={20} className="text-blue-400" />
               </Button>
             </TooltipTrigger>

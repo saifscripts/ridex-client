@@ -43,7 +43,7 @@ export default function ContactInfo() {
           href={item.link}
           target="_blank"
           key={item.link}
-          className="flex flex-col justify-center items-center gap-4 p-6 rounded-lg transition-all duration-300 hover:bg-primary/5 text-gray-800"
+          className="flex flex-col justify-center items-center gap-4 p-6 rounded-lg transition-all duration-300 hover:bg-foreground/5"
           data-aos="zoom-in"
           data-aos-delay={(index % cardsInARow) * 100}
         >

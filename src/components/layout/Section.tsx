@@ -20,7 +20,7 @@ export function SectionTitle({
   return (
     <h2
       className={cn(
-        'text-4xl font-semibold text-center tracking-tight mb-2 uppercase text-gray-900',
+        'text-4xl font-semibold text-center tracking-tight mb-2 uppercase',
         className
       )}
     >
@@ -39,7 +39,7 @@ export function SectionDescription({
   return (
     <p
       className={cn(
-        'text-center text-gray-600 mb-8 max-w-xl mx-auto',
+        'text-center text-foreground/70 mb-8 max-w-xl mx-auto',
         className
       )}
     >

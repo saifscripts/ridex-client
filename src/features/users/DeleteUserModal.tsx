@@ -40,10 +40,14 @@ export default function DeleteUserModal({ user }: DeleteUserModalProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon" className="hover:bg-gray-200">
+        <Button variant="ghost" size="icon" className="hover:bg-foreground/20">
           <Tooltip>
             <TooltipTrigger>
-              <Button variant="ghost" size="icon" className="hover:bg-gray-200">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:bg-foreground/20"
+              >
                 <TrashIcon size={20} className="text-destructive" />
               </Button>
             </TooltipTrigger>

@@ -49,12 +49,14 @@ export default function EditProfile() {
 
   return (
     <AppForm
-      className="bg-white shadow rounded-lg p-6"
+      className="rounded-lg p-6 border"
       onSubmit={onSubmit}
       defaultValues={user}
       schema={FormSchema}
     >
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">Edit Profile</h2>
+      <h2 className="text-xl font-semibold text-foreground/80 mb-4">
+        Edit Profile
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <AppInput name="name" label="Name" placeholder="Your Name" />
         <AppInput name="email" label="Email" placeholder="Your Email" />

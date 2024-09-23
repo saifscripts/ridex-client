@@ -27,13 +27,13 @@ export default function BikeFilters() {
   if (!filters?.length) return;
 
   return (
-    <div className="flex gap-2 p-3 bg-white border rounded-md flex-wrap items-center">
+    <div className="flex gap-2 p-3 bg-background border rounded-md flex-wrap items-center">
       <p className="text-xs">Filtered By</p>
       {filters?.map(([key, value]) => (
         <Button
-          variant="ghost"
+          variant="outline"
           key={value}
-          className="flex gap-2 items-center bg-gray-50 rounded-full"
+          className="flex gap-2 items-center rounded-full"
           onClick={() => replaceSearchParam({ key, value }, { page: '1' })}
         >
           {key === 'brand'

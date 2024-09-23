@@ -23,8 +23,8 @@ export default function UploadAvatar({
   };
 
   return (
-    <div className="absolute top-[5%] right-[5%] bg-white p-1 rounded-lg text-slate-700 z-20 cursor-pointer">
-      <PencilIcon size={16} className="text-slate-700 cursor-pointer" />
+    <div className="absolute top-[5%] right-[5%] bg-background p-1 rounded-lg text-foreground/70 z-20 cursor-pointer">
+      <PencilIcon size={16} className="text-foreground/70 cursor-pointer" />
       <input
         disabled={isLoading}
         type="file"

@@ -47,7 +47,7 @@ export default function WhyChooseUs() {
   }, [screenSize.width]);
 
   return (
-    <Section className="bg-white">
+    <Section>
       <Container>
         <SectionTitle>Why Choose Us?</SectionTitle>
         <SectionDescription>
@@ -58,17 +58,17 @@ export default function WhyChooseUs() {
           {features.map((feature, index) => (
             <div
               key={feature.id}
-              className="p-6 rounded-lg shadow flex flex-col justify-end"
+              className="p-6 rounded-lg shadow flex flex-col justify-end border"
               data-aos="zoom-in"
               data-aos-delay={(index % cardsInARow) * 100}
             >
               <div className="w-full flex items-end mb-8">
                 <img src={feature.illustration} alt="" className="w-full" />
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">
+              <h3 className="text-xl font-semibold mb-2 text-foreground/80">
                 {feature.title}
               </h3>
-              <p className="text-gray-600">{feature.description}</p>
+              <p className="text-foreground/70">{feature.description}</p>
             </div>
           ))}
         </ContainerMd>

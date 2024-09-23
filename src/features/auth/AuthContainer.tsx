@@ -19,7 +19,7 @@ export default function AuthContainer({
   return (
     <Container className="min-h-[calc(100svh-64px)] flex justify-center items-center py-4">
       <AppForm
-        className="max-w-md w-full border p-6 rounded-xl bg-white space-y-6"
+        className="max-w-md w-full border p-6 rounded-xl bg-background space-y-6"
         onSubmit={onSubmit}
         schema={schema}
         data-aos="fade-left"

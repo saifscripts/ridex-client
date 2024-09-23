@@ -9,7 +9,7 @@ import ContactInfo from './ContactInfo';
 
 export default function ContactUs() {
   return (
-    <Section className="bg-white">
+    <Section>
       <SectionTitle>Get In Touch</SectionTitle>
       <SectionDescription>
         We’d love to hear from you! Fill out the form below, and we’ll get back

@@ -50,7 +50,7 @@ export default function ContactForm() {
       onSubmit={handleSubmit}
       schema={FormSchema}
       defaultValues={defaultValues}
-      className="mx-auto p-8 rounded-lg shadow-lg bg-white"
+      className="mx-auto p-8 rounded-lg border"
       data-aos="fade-left"
       data-aos-delay="100"
     >
@@ -60,20 +60,20 @@ export default function ContactForm() {
             name="name"
             label="Name"
             placeholder="Full name"
-            className="border-none bg-gray-50 focus:bg-white focus-visible:ring-primary focus-visible:ring-2 h-12"
+            className="border-none bg-foreground/5 focus:bg-background focus-visible:ring-primary focus-visible:ring-2 h-12"
           />
           <AppInput
             name="email"
             type="email"
             label="Email"
             placeholder="Email address"
-            className="border-none bg-gray-50 focus:bg-white focus-visible:ring-primary focus-visible:ring-2 h-12"
+            className="border-none bg-foreground/5 focus:bg-background focus-visible:ring-primary focus-visible:ring-2 h-12"
           />
           <AppInput
             name="phone"
             label="Phone"
             placeholder="Phone number"
-            className="border-none bg-gray-50 focus:bg-white focus-visible:ring-primary focus-visible:ring-2 h-12"
+            className="border-none bg-foreground/5 focus:bg-background focus-visible:ring-primary focus-visible:ring-2 h-12"
           />
         </div>
         <div>
@@ -81,7 +81,7 @@ export default function ContactForm() {
             name="message"
             label="Message"
             placeholder="Write your message here"
-            className="border-none bg-gray-50 focus:bg-white focus-visible:ring-primary focus-visible:ring-2 h-64"
+            className="border-none bg-foreground/5 focus:bg-background focus-visible:ring-primary focus-visible:ring-2 h-64"
           />
         </div>
       </div>

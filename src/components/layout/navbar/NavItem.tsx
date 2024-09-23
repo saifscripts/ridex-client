@@ -12,7 +12,7 @@ const NavItem = ({ to, children }: NavItemProps) => {
     <NavLink
       to={to}
       className={({ isActive, isPending }) =>
-        cn({
+        cn('hover:text-primary/80', {
           'text-primary font-semibold': isActive || isPending,
         })
       }

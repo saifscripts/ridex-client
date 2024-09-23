@@ -26,7 +26,7 @@ export function DataTablePagination({
   const { searchParams, appendSearchParams } = useAppSearchParams();
 
   return (
-    <div className="flex items-center justify-end sm:justify-between p-3 bg-white rounded-md border container">
+    <div className="flex items-center justify-end sm:justify-between p-3 rounded-md border container">
       <div className="flex-1 text-sm text-muted-foreground hidden sm:block">
         Total Results: {metaData?.total}
       </div>

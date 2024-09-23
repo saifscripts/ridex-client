@@ -41,9 +41,9 @@ export default function ChangePassword() {
       onSubmit={onSubmit}
       schema={FormSchema}
       defaultValues={defaultValues}
-      className="bg-white shadow rounded-lg p-6"
+      className="rounded-lg p-6 border"
     >
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">
+      <h2 className="text-xl font-semibold text-foreground/80 mb-4">
         Change Password
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

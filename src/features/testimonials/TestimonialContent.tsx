@@ -1,4 +1,5 @@
 import { ContainerMd } from '@/components/layout/Container';
+import { Card } from '@/components/ui/card';
 import {
   Carousel,
   CarouselContent,
@@ -113,7 +114,7 @@ export function TestimonialContent() {
               key={review.id}
               className="md:basis-1/2 lg:basis-1/3 pl-6"
             >
-              <div className="bg-white rounded-lg p-6 text-center flex flex-col justify-between">
+              <Card className="rounded-lg p-6 text-center flex flex-col justify-between">
                 <div>
                   <img
                     src={review.avatar}
@@ -126,10 +127,10 @@ export function TestimonialContent() {
                     readOnly
                     className="mb-4"
                   />
-                  <p className="text-gray-400 mb-4">{review.review}</p>
+                  <p className="text-foreground/60 mb-4">{review.review}</p>
                 </div>
-                <p className="text-gray-600">{review.name}</p>
-              </div>
+                <p className="text-foreground/70">{review.name}</p>
+              </Card>
             </CarouselItem>
           ))}
         </CarouselContent>

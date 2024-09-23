@@ -30,9 +30,10 @@ export default function SidebarItem({
     <Link
       to={href}
       className={cn(
-        'flex gap-2 items-center px-2 py-1 rounded hover:bg-primary/20 text-lg',
+        'flex gap-2 items-center px-2 py-1 rounded hover:bg-primary/5 text-lg',
         {
-          'bg-primary hover:bg-primary/80': pathname === href,
+          'bg-primary text-primary-foreground hover:bg-primary/90':
+            pathname === href,
           'size-10 justify-center opacity-0 sm:opacity-100': !isOpen,
         }
       )}

@@ -9,11 +9,11 @@ export default function ErrorPage() {
 
   return (
     <main className="h-screen flex flex-col justify-center items-center gap-4">
-      <h1 className="font-bold text-7xl text-gray-800">
+      <h1 className="font-bold text-8xl text-foreground/80 font-leckerli">
         {error?.status || 500}
       </h1>
 
-      <h2 className="font-semibold text-3xl text-gray-600">
+      <h2 className="font-semibold text-3xl text-foreground/80">
         {error?.statusText || 'Something Went Wrong!'}
       </h2>
       <div className="flex gap-4">

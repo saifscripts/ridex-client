@@ -8,7 +8,7 @@ export default function HeroIntro() {
 
   return (
     <div
-      className="text-white flex flex-col justify-center gap-8 text-center md:text-left flex-1 h-[calc(100svh-64px)] pt-20 md:pt-0"
+      className="text-background dark:text-foreground flex flex-col justify-center gap-8 text-center md:text-left flex-1 h-[calc(100svh-64px)] pt-20 md:pt-0"
       data-aos="fade-right"
     >
       <h1 className="text-7xl font-semibold">Ride Your Way</h1>

@@ -68,7 +68,7 @@ export default function Team() {
   }, [screenSize.width]);
 
   return (
-    <Section className="bg-white">
+    <Section>
       <Container>
         <SectionTitle>Meet the Team</SectionTitle>
         <SectionDescription>
@@ -79,7 +79,7 @@ export default function Team() {
           {teamMembers.map((member, index) => (
             <div
               key={index}
-              className="text-center shadow-md p-4 rounded-lg"
+              className="text-center shadow-md p-4 rounded-lg border"
               data-aos="zoom-in"
               data-aos-delay={(index % cardsInARow) * 100}
             >
@@ -89,7 +89,7 @@ export default function Team() {
                 alt={member.name}
               />
               <h3 className="text-xl font-semibold">{member.name}</h3>
-              <p className="text-sm text-gray-600">{member.role}</p>
+              <p className="text-sm text-foreground/60">{member.role}</p>
               <p className="mt-4">{member.description}</p>
             </div>
           ))}

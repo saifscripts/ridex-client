@@ -12,10 +12,10 @@ export default function ProfileHeader() {
   const [uploadAvatar, { isLoading }] = useUploadAvatarMutation();
 
   return (
-    <div className="bg-white rounded-lg p-1">
+    <div className="rounded-lg p-1 border">
       <div
-        className="h-24 lg:h-32 w-full bg-slate-900 rounded-lg text-white flex items-center justify-center relative p-6
-         bg-cover bg-center"
+        className="h-24 lg:h-32 w-full bg-foreground/90 rounded-lg text-background dark:text-foreground flex items-center justify-center relative p-6
+         bg-cover bg-center border"
         style={{
           backgroundImage: `url(${texture})`,
         }}
@@ -27,7 +27,7 @@ export default function ProfileHeader() {
           <span className="capitalize text-primary">{user?.name}</span>
         </h1>
         <div
-          className="absolute left-4 top-3 size-24 lg:size-32 ring-2 ring-white rounded-full bg-contain bg-center bg-gray-100"
+          className="absolute left-4 top-3 size-24 lg:size-32 ring-2 ring-background dark:ring-foreground rounded-full bg-contain bg-center bg-foreground/10"
           style={{
             backgroundImage: `url(${avatar})`,
           }}
@@ -43,17 +43,19 @@ export default function ProfileHeader() {
         </div>
       </div>
       <div className="p-4">
-        <h1 className="text-xl font-bold text-slate-700 mb-2">{user?.name}</h1>
+        <h1 className="text-xl font-bold text-foreground/80 mb-2">
+          {user?.name}
+        </h1>
         <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
-          <p className="text-sm text-slate-600 flex items-center gap-2">
+          <p className="text-sm text-foreground/70 flex items-center gap-2">
             <MailIcon className="size-4 inline-block" />
             {user?.email}
           </p>
-          <p className="text-sm text-slate-600 flex items-center gap-2">
+          <p className="text-sm text-foreground/70 flex items-center gap-2">
             <PhoneIcon className="size-4 inline-block" />
             {user?.phone}
           </p>
-          <p className="text-sm text-slate-600 flex items-center gap-2">
+          <p className="text-sm text-foreground/70 flex items-center gap-2">
             <MapPinIcon className="size-4 inline-block" />
             {user?.address}
           </p>

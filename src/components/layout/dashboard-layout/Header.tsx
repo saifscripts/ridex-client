@@ -1,3 +1,4 @@
+import { ModeToggle } from '@/components/ui/mode-toggle';
 import { UserDropdown } from '@/features/user-dropdown';
 import { cn } from '@/lib/utils';
 import { useAppSelector } from '@/redux/hooks';
@@ -13,7 +14,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
   const user = useAppSelector((state) => state.auth.user);
 
   return (
-    <div className="h-[64px] bg-white flex items-center justify-between px-4 border-b">
+    <div className="h-[64px] bg-background flex items-center justify-between px-4 border-b">
       <div className="flex items-center gap-2">
         <MenuIcon
           size={24}
@@ -31,7 +32,10 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
           </h1>
         </Link>
       </div>
-      {user && <UserDropdown />}
+      <div className="flex items-center gap-2">
+        <ModeToggle />
+        {user && <UserDropdown />}
+      </div>
     </div>
   );
 }

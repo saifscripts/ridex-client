@@ -2,6 +2,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
   Card,
+  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -38,31 +39,31 @@ export function BikeCard({ bike, index }: { bike: IBike; index: number }) {
       onClick={() => navigate(`/bike/${bike._id}`)}
     >
       <CardHeader>
-        <div className="relative mb-4">
-          <div
-            className="w-full h-48 bg-cover bg-center rounded-lg"
-            style={{
-              backgroundImage: `url(${bike.imageURL})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-            aria-label={`${bike.name} ${bike.model} ${bike.year}`}
-          ></div>
-          <Badge
-            variant={bike.isAvailable ? 'success' : 'destructive'}
-            className="absolute top-2 right-2"
-          >
-            {bike.isAvailable ? 'Available' : 'Unavailable'}
-          </Badge>
-        </div>
+        <div
+          className="w-full h-48 bg-cover bg-center rounded-lg mb-4"
+          style={{
+            backgroundImage: `url(${bike.imageURL})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+          aria-label={`${bike.name} ${bike.model} ${bike.year}`}
+        />
         <CardTitle>
           {bike.brand} {bike.model} {bike.year}
         </CardTitle>
         <CardDescription>{bike.description}</CardDescription>
       </CardHeader>
 
-      <CardFooter className="flex gap-2 justify-between">
-        <Badge variant="secondary">{bike.pricePerHour} BDT/Hour</Badge>
+      <CardContent>
+        <div className="flex items-center gap-2">
+          <Badge variant="secondary">{bike.pricePerHour} BDT/Hour</Badge>
+          <Badge variant={bike.isAvailable ? 'success' : 'destructive'}>
+            {bike.isAvailable ? 'Available' : 'Unavailable'}
+          </Badge>
+        </div>
+      </CardContent>
+
+      <CardFooter className="flex gap-2 justify-end">
         <Link to={`/bike/${bike._id}`}>
           <Button
             variant="outline"

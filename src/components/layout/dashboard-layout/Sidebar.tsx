@@ -71,15 +71,15 @@ export default function Sidebar({
   return (
     <div
       className={cn(
-        'w-[240px] h-screen bg-slate-900 text-white transition-width duration-300 border-r flex-shrink-0',
+        'w-[240px] h-screen transition-width duration-300 border-r flex-shrink-0 px-4',
         {
-          'w-0 sm:w-[64px]': !isOpen,
+          'w-0 sm:w-[64px] px-0 sm:px-3': !isOpen,
         }
       )}
     >
       <Link
         to="/"
-        className="h-[64px] border-b border-slate-700 flex justify-center items-center"
+        className="h-[64px] border-b flex justify-center items-center"
       >
         {isOpen ? (
           <h1 className="text-4xl font-bold font-leckerli text-center">
@@ -92,8 +92,8 @@ export default function Sidebar({
         )}
       </Link>
       <div
-        className={cn('flex flex-col gap-2 my-4 px-4', {
-          'px-0 sm:px-3': !isOpen,
+        className={cn('flex flex-col gap-2 my-4', {
+          '': !isOpen,
         })}
       >
         {sidebarLinks[user?.role].map((item) => (

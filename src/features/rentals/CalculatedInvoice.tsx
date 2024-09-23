@@ -25,19 +25,21 @@ export function CalculatedInvoice({ rental }: CalculatedInvoiceProps) {
         <TableRow>
           <TableCell className="font-semibold">Total Cost</TableCell>
           <TableCell className="text-right font-semibold">
-            {totalCost} BDT
+            {totalCost.toFixed(2)} BDT
           </TableCell>
         </TableRow>
         <TableRow>
           <TableCell>Total Paid</TableCell>
-          <TableCell className="text-right">{rental.paidAmount} BDT</TableCell>
+          <TableCell className="text-right">
+            {rental.paidAmount.toFixed(2)} BDT
+          </TableCell>
         </TableRow>
       </TableBody>
       <TableFooter>
         <TableRow>
           <TableCell>Total Due</TableCell>
           <TableCell className="text-right">
-            {totalCost - rental.paidAmount} BDT
+            {(totalCost - rental.paidAmount).toFixed(2)} BDT
           </TableCell>
         </TableRow>
       </TableFooter>

@@ -27,7 +27,7 @@ export default function UserDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div className="flex items-center gap-2 hover:bg-gray-200 rounded-full px-1 md:px-2 py-1 cursor-pointer transition-colors duration-300">
+        <div className="flex items-center gap-2 hover:bg-foreground/10 rounded-full px-1 md:px-2 py-1 cursor-pointer transition-colors duration-300">
           <div
             className="size-10 rounded-full bg-cover bg-center"
             style={{
@@ -47,7 +47,7 @@ export default function UserDropdown() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
         <DropdownMenuItem
-          className="cursor-pointer text-foreground text-base gap-2"
+          className="cursor-pointer text-base gap-2"
           onClick={() => {
             navigate('/dashboard');
           }}
@@ -57,7 +57,7 @@ export default function UserDropdown() {
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem
-          className="cursor-pointer text-foreground text-base gap-2"
+          className="cursor-pointer text-base gap-2"
           onClick={() => {
             navigate('/dashboard');
           }}
@@ -67,7 +67,7 @@ export default function UserDropdown() {
         </DropdownMenuItem>
         {user?.role === USER_ROLE.USER && (
           <DropdownMenuItem
-            className="cursor-pointer text-foreground text-base gap-2"
+            className="cursor-pointer text-base gap-2"
             onClick={() => {
               navigate('/dashboard/my-rentals');
             }}
@@ -78,7 +78,7 @@ export default function UserDropdown() {
         )}
         {user?.role === USER_ROLE.ADMIN && (
           <DropdownMenuItem
-            className="cursor-pointer text-foreground text-base gap-2"
+            className="cursor-pointer text-base gap-2"
             onClick={() => {
               navigate('/dashboard/manage-bikes');
             }}
@@ -89,7 +89,7 @@ export default function UserDropdown() {
         )}
         {user?.role === USER_ROLE.ADMIN && (
           <DropdownMenuItem
-            className="cursor-pointer text-foreground text-base gap-2"
+            className="cursor-pointer text-base gap-2"
             onClick={() => {
               navigate('/dashboard/manage-rentals');
             }}
@@ -99,13 +99,13 @@ export default function UserDropdown() {
           </DropdownMenuItem>
         )}
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="text-foreground text-base cursor-pointer p-0">
+        <DropdownMenuItem className="text-base cursor-pointer p-0">
           <LogoutButton
             variant="ghost"
             className="px-2 py-1.5 justify-start gap-2 w-full"
           >
             <LogOutIcon size={16} />
-            <span>Logout</span>
+            <span className="text-base">Logout</span>
           </LogoutButton>
         </DropdownMenuItem>
       </DropdownMenuContent>

@@ -53,7 +53,7 @@ export const Milestones = () => {
         {milestones.map((milestone, index) => (
           <div
             key={milestone.year}
-            className="bg-white p-8 shadow-lg rounded-lg text-center transition-all duration-300 hover:shadow-xl"
+            className="p-8 shadow-lg rounded-lg text-center transition-all duration-300 hover:shadow-xl border"
             data-aos="zoom-in"
             data-aos-delay={(index % cardsInARow) * 100}
           >
@@ -63,10 +63,10 @@ export const Milestones = () => {
             <h3 className="text-3xl font-bold text-primary mb-4">
               {milestone.year}
             </h3>
-            <h4 className="text-xl font-semibold text-gray-800 mb-3">
+            <h4 className="text-xl font-semibold text-foreground/80 mb-3">
               {milestone.title}
             </h4>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-foreground/60 leading-relaxed">
               {milestone.description}
             </p>
           </div>

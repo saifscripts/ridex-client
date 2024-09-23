@@ -40,10 +40,14 @@ export default function MakeAdminModal({ user }: MakeAdminModalProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon" className="hover:bg-gray-200">
+        <Button variant="ghost" size="icon" className="hover:bg-foreground/20">
           <Tooltip>
             <TooltipTrigger>
-              <Button variant="ghost" size="icon" className="hover:bg-gray-200">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:bg-foreground/20"
+              >
                 <ShieldPlusIcon size={20} className="text-success" />
               </Button>
             </TooltipTrigger>

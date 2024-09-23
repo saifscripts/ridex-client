@@ -17,7 +17,8 @@ const SidebarItem = ({ to, icon, children, onClick }: SidebarItemProps) => {
         cn(
           'flex gap-3 items-center px-2 py-1 rounded hover:text-primary text-lg',
           {
-            'bg-primary text-white hover:text-white': isActive || isPending,
+            'bg-primary text-primary-foreground hover:text-primary-foreground':
+              isActive || isPending,
           }
         )
       }
