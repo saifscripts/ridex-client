@@ -1,4 +1,4 @@
-import BikeData from '@/features/bike/BikeData';
+import { BikeList } from '@/features/bike';
 import { useGetBikesQuery } from '@/redux/features/bike/bikeApi';
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { useSearchParams } from 'react-router-dom';
 export default function ManageBikes() {
   const [searchParams] = useSearchParams();
 
-  // Convert searchParams to an object when searchParams updated
+  // generate params object from searchParams when searchParams updated
   const params = useMemo(() => {
     return [...searchParams];
   }, [searchParams]);
@@ -14,7 +14,7 @@ export default function ManageBikes() {
   const { data, isFetching } = useGetBikesQuery(params);
 
   return (
-    <BikeData
+    <BikeList
       data={data?.data || []}
       meta={data?.meta}
       isLoading={isFetching}

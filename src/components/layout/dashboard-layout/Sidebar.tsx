@@ -77,6 +77,7 @@ export default function Sidebar({
         }
       )}
     >
+      {/* Logo */}
       <Link
         to="/"
         className="h-[64px] border-b flex justify-center items-center"
@@ -91,6 +92,8 @@ export default function Sidebar({
           </h1>
         )}
       </Link>
+
+      {/* Sidebar Items */}
       <div
         className={cn('flex flex-col gap-2 my-4', {
           '': !isOpen,

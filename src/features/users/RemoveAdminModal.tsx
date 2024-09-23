@@ -57,6 +57,7 @@ export default function RemoveAdminModal({ user }: RemoveAdminModalProps) {
           </Tooltip>
         </Button>
       </DialogTrigger>
+
       <DialogContent className="sm:max-w-[425px]">
         <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
           <DialogHeader>
@@ -65,6 +66,7 @@ export default function RemoveAdminModal({ user }: RemoveAdminModalProps) {
               Are you sure you want to remove <b>{user.name}</b> from Admin?
             </DialogDescription>
           </DialogHeader>
+
           <DialogFooter className="gap-2 sm:space-x-0">
             <DialogClose asChild>
               <Button variant="outline">No</Button>

@@ -57,12 +57,14 @@ export default function EditProfile() {
       <h2 className="text-xl font-semibold text-foreground/80 mb-4">
         Edit Profile
       </h2>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <AppInput name="name" label="Name" placeholder="Your Name" />
         <AppInput name="email" label="Email" placeholder="Your Email" />
         <AppInput name="phone" label="Phone" placeholder="Your Phone" />
         <AppInput name="address" label="Address" placeholder="Your Address" />
       </div>
+
       <Submit className="flex items-center gap-2">
         <SaveIcon size={16} />
         Save Changes

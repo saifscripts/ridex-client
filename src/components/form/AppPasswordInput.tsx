@@ -41,6 +41,7 @@ export default function AppPasswordInput({
                 {...field}
                 className={className}
               />
+              {/* Password visibility toggle */}
               {showPassword ? (
                 <EyeIcon
                   size={20}

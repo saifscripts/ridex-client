@@ -48,6 +48,7 @@ export default function Signup() {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const result = (await signup(data)) as IResponse<unknown>;
     showToast(result, 'Signup successful!');
+
     if (result?.data?.success) {
       navigate('/login');
     }

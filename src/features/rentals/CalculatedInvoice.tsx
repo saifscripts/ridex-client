@@ -21,6 +21,7 @@ export function CalculatedInvoice({ rental }: CalculatedInvoiceProps) {
 
   return (
     <Table>
+      {/* TODO: Add Total Hours and Price Per Hour */}
       <TableBody>
         <TableRow>
           <TableCell className="font-semibold">Total Cost</TableCell>

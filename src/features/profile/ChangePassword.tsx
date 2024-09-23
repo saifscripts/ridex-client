@@ -46,6 +46,7 @@ export default function ChangePassword() {
       <h2 className="text-xl font-semibold text-foreground/80 mb-4">
         Change Password
       </h2>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <AppPasswordInput
           name="currentPassword"

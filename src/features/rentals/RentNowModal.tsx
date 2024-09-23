@@ -64,16 +64,19 @@ export function RentNowModal({ bike }: RentNowModalProps) {
           Rent Now
         </Button>
       </DialogTrigger>
+
       <DialogContent className="sm:max-w-[425px]">
         <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
           <DialogHeader>
             <DialogTitle>
               Rent {bike.brand} {bike.model} {bike.year}
             </DialogTitle>
+
             <DialogDescription>
               Select your rent start time and pay 100TK for confirmation!
             </DialogDescription>
           </DialogHeader>
+
           <AppForm
             onSubmit={onSubmit}
             schema={FormSchema}

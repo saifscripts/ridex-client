@@ -1,7 +1,7 @@
 import { Input } from '@/components/ui/input';
 import useAppSearchParams from '@/hooks/useAppSearchParams';
 
-export default function BikeSearch() {
+export default function SearchInput() {
   const { searchParams, appendSearchParams } = useAppSearchParams();
 
   return (

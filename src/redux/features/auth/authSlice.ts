@@ -18,12 +18,12 @@ const authSlice = createSlice({
   reducers: {
     setUser: (state, action) => {
       const token = action.payload;
-      state.user = jwtDecode(token);
       state.token = token;
+      state.user = jwtDecode(token);
     },
     logout: (state) => {
-      state.user = null;
       state.token = null;
+      state.user = null;
     },
   },
 });

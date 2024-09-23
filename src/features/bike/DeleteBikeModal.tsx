@@ -51,18 +51,21 @@ export default function DeleteBikeModal({ bike }: DeleteBikeModalProps) {
                 <TrashIcon size={20} className="text-destructive" />
               </Button>
             </TooltipTrigger>
+
             <TooltipContent>
               <p>Delete bike</p>
             </TooltipContent>
           </Tooltip>
         </Button>
       </DialogTrigger>
+
       <DialogContent className="sm:max-w-[425px]">
         <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
           <DialogHeader>
             <DialogTitle>
               Delete {bike.brand} {bike.model} {bike.year}
             </DialogTitle>
+
             <DialogDescription>
               Are you sure you want to delete{' '}
               <b>
@@ -71,10 +74,12 @@ export default function DeleteBikeModal({ bike }: DeleteBikeModalProps) {
               ?
             </DialogDescription>
           </DialogHeader>
+
           <DialogFooter className="gap-2 sm:space-x-0">
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
+
             <Button
               variant="destructive"
               disabled={isLoading}

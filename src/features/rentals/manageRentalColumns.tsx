@@ -47,6 +47,7 @@ export const manageRentalColumns: ColumnDef<IRental>[] = [
         style: 'currency',
         currency: 'BDT',
       }).format(value);
+
       return <div className="">{formatted}</div>;
     },
   },

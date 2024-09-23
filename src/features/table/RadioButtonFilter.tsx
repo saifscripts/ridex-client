@@ -34,11 +34,13 @@ export default function RadioButtonFilter({
           {children}
         </Button>
       </DropdownMenuTrigger>
+
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel className="flex gap-2 items-center">
           {children}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
+
         <DropdownMenuRadioGroup
           value={searchParams.get(columnId) || undefined}
           onValueChange={(value) => {
@@ -63,6 +65,7 @@ export default function RadioButtonFilter({
             );
           })}
         </DropdownMenuRadioGroup>
+
         <DropdownMenuSeparator />
         <DropdownMenuItem
           className="space-x-2"

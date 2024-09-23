@@ -39,6 +39,7 @@ export const columns: ColumnDef<IUser>[] = [
           ) : (
             <MakeAdminModal user={user} />
           )}
+
           <DeleteUserModal user={user} />
         </div>
       );

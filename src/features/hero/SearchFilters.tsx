@@ -32,6 +32,7 @@ export default function SearchFilters() {
       className="flex justify-center items-center flex-1 h-[calc(100svh-64px)] pb-20 md:pb-0"
       data-aos="fade-left"
     >
+      {/* Search Bar */}
       <div className="w-full max-w-sm bg-black/40 dark:bg-background/60 rounded-lg p-4 space-y-4">
         <div className="relative">
           <Input
@@ -45,6 +46,8 @@ export default function SearchFilters() {
             className="absolute top-1/2 right-[14px] -translate-y-1/2 text-muted-foreground"
           />
         </div>
+
+        {/* Select Brand */}
         <Select onValueChange={handleBrandChange} defaultValue="all">
           <SelectTrigger className="bg-background/80">
             <SelectValue placeholder="Brand: All" />
@@ -60,6 +63,8 @@ export default function SearchFilters() {
             ))}
           </SelectContent>
         </Select>
+
+        {/* Select Availability */}
         <Select onValueChange={handleAvailabilityChange} defaultValue="any">
           <SelectTrigger className="bg-background/80">
             <SelectValue placeholder="Availability: Any" />
@@ -78,6 +83,8 @@ export default function SearchFilters() {
             ))}
           </SelectContent>
         </Select>
+
+        {/* Search Button */}
         <Link
           to={{
             pathname: '/bikes',

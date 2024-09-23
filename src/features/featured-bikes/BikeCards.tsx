@@ -1,51 +1,18 @@
 import { IBike } from '@/interfaces';
 
-import { BikeCard, BikesSkeleton, columns } from '@/features/bike';
-import {
-  ColumnFiltersState,
-  SortingState,
-  VisibilityState,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from '@tanstack/react-table';
-import { useState } from 'react';
+import { BikeCard, BikesSkeleton } from '@/features/bike';
 
 interface BikeCardsProps {
-  data: IBike[];
+  bikes: IBike[];
   isLoading: boolean;
 }
 
-export default function BikeCards({ data, isLoading }: BikeCardsProps) {
-  const [sorting, setSorting] = useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
-  const [rowSelection, setRowSelection] = useState({});
-
-  const table = useReactTable({
-    data,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-    onSortingChange: setSorting,
-    getSortedRowModel: getSortedRowModel(),
-    onColumnFiltersChange: setColumnFilters,
-    getFilteredRowModel: getFilteredRowModel(),
-    onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
-    state: {
-      sorting,
-      columnFilters,
-      columnVisibility,
-      rowSelection,
-    },
-  });
-
+export default function BikeCards({ bikes, isLoading }: BikeCardsProps) {
   if (isLoading) return <BikesSkeleton />;
 
-  return table.getRowModel().rows?.length > 0 ? (
+  return bikes.length > 0 ? (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 my-4">
-      {table.getRowModel().rows.map(({ original: bike }, index) => (
+      {bikes.map((bike, index) => (
         <BikeCard key={bike._id} bike={bike} index={index} />
       ))}
     </div>

@@ -30,9 +30,10 @@ const milestones = [
 ];
 
 export const Milestones = () => {
-  const [cardsInARow, setCardsInARow] = useState(1);
+  const [cardsInARow, setCardsInARow] = useState(1); // to calculate animation delay
   const screenSize = useScreenSize();
 
+  // set cards in a row based on screen size
   useEffect(() => {
     if (screenSize.width >= 768) {
       setCardsInARow(3);
@@ -44,6 +45,7 @@ export const Milestones = () => {
   return (
     <Section className="container">
       <SectionTitle>Our Journey</SectionTitle>
+
       <SectionDescription>
         From humble beginnings to becoming a leading platform for bike rentals,
         we are proud of the milestones we’ve achieved along the way.
@@ -60,12 +62,15 @@ export const Milestones = () => {
             <div className="flex justify-center items-center mb-6">
               {milestone.icon}
             </div>
+
             <h3 className="text-3xl font-bold text-primary mb-4">
               {milestone.year}
             </h3>
+
             <h4 className="text-xl font-semibold text-foreground/80 mb-3">
               {milestone.title}
             </h4>
+
             <p className="text-foreground/60 leading-relaxed">
               {milestone.description}
             </p>

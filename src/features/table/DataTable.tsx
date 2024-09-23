@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import DataTableSkeleton from './DataTableSkeleton';
+import TableSkeleton from './TableSkeleton';
 
 interface DataTableProps<TData, TValue> {
   table: ITable<TData>;
@@ -45,7 +45,7 @@ export default function DataTable<TData, TValue>({
           </TableHeader>
 
           {isLoading ? (
-            <DataTableSkeleton colSpan={columns.length} />
+            <TableSkeleton colSpan={columns.length} />
           ) : (
             <TableBody>
               {table.getRowModel().rows?.length ? (

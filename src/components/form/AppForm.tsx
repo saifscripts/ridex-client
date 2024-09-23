@@ -3,7 +3,7 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { ZodSchema } from 'zod';
 
 import { Form } from '@/components/ui/form';
-import { cn, convertNumberFields } from '@/lib/utils';
+import { cn, convertPropertiesToString } from '@/lib/utils';
 import { ReactNode } from 'react';
 
 interface AppFormProps {
@@ -24,11 +24,12 @@ export default function AppForm({
 }: AppFormProps) {
   const form = useForm({
     resolver: schema && zodResolver(schema),
-    defaultValues: convertNumberFields(
+    defaultValues: convertPropertiesToString(
       defaultValues as Record<string, unknown>
     ),
   });
 
+  // wrap submit handler to reset form if onSubmit returns true
   const submitHandler: SubmitHandler<FieldValues> = async (data) => {
     const shouldReset = await onSubmit(data);
 

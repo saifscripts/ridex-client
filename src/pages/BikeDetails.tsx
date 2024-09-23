@@ -17,6 +17,7 @@ export default function BikeDetails() {
   return (
     <Container className="min-h-[calc(100svh-64px)] sm:flex items-center justify-center py-4">
       <div className="border w-full rounded-xl grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 sm:p-8 lg:p-16">
+        {/* bike image */}
         <div
           className="flex justify-center items-center"
           data-aos="fade-right"
@@ -28,6 +29,7 @@ export default function BikeDetails() {
             className="w-[80%] block m-auto rounded-xl"
           />
         </div>
+        {/* bike details */}
         <div
           className="flex justify-center items-center"
           data-aos="fade-left"

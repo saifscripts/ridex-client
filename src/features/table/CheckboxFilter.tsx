@@ -14,7 +14,7 @@ import {
 import useAppSearchParams from '@/hooks/useAppSearchParams';
 import { ReactNode } from 'react';
 
-interface DataTableFilterProps {
+interface CheckboxFilterProps {
   columnId: string;
   filters: { value: string | boolean; label: string }[];
   children: ReactNode;
@@ -24,7 +24,7 @@ export default function CheckboxFilter({
   columnId,
   filters,
   children,
-}: DataTableFilterProps) {
+}: CheckboxFilterProps) {
   const { searchParams, appendSearchParams, replaceSearchParam } =
     useAppSearchParams();
 
@@ -35,11 +35,13 @@ export default function CheckboxFilter({
           {children}
         </Button>
       </DropdownMenuTrigger>
+
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel className="flex gap-2 items-center">
           {children}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
+
         <DropdownMenuGroup>
           {filters.map((item) => {
             const checked =
@@ -78,6 +80,7 @@ export default function CheckboxFilter({
             );
           })}
         </DropdownMenuGroup>
+
         <DropdownMenuSeparator />
         <DropdownMenuItem
           className="space-x-2"

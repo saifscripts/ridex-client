@@ -6,7 +6,10 @@ export default function AboutHero() {
       className="relative h-96 bg-cover bg-center flex items-center justify-center"
       style={{ backgroundImage: `url(${aboutHero})` }}
     >
+      {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-50"></div>
+
+      {/* Content */}
       <div
         className="relative z-10 text-center text-background dark:text-foreground container"
         data-aos="zoom-out"

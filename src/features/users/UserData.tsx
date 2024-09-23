@@ -19,9 +19,5 @@ export default function UserData({ data, isLoading, columns }: UserProps) {
     getCoreRowModel: getCoreRowModel(),
   });
 
-  return (
-    <div className="space-y-4">
-      <DataTable columns={columns} table={table} isLoading={isLoading} />
-    </div>
-  );
+  return <DataTable columns={columns} table={table} isLoading={isLoading} />;
 }

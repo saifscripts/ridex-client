@@ -12,12 +12,15 @@ export default function HeroIntro() {
       data-aos="fade-right"
     >
       <h1 className="text-7xl font-semibold">Ride Your Way</h1>
+
       <p>
         Explore our wide range of bikes, from city cruisers to mountain
         thrillers. Book in seconds, ride in minutes. Whether it's for a quick
         commute or an adventurous day out, we’ve got you covered. Start your
         journey with us today!
       </p>
+
+      {/* Action Buttons */}
       <div className="flex items-center xs:justify-center md:justify-start gap-4 flex-col xs:flex-row">
         <Link to="/bikes" className="w-[70%] xs:w-auto">
           <Button size="lg" className="w-full flex items-center gap-2">
@@ -25,6 +28,7 @@ export default function HeroIntro() {
             Rent a Bike Now
           </Button>
         </Link>
+
         {user ? (
           <Link to="/dashboard/my-rentals" className="w-[70%] xs:w-auto">
             <Button

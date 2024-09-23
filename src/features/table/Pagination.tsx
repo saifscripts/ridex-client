@@ -16,7 +16,7 @@ import {
 import useAppSearchParams from '@/hooks/useAppSearchParams';
 import { IMetaData } from '@/interfaces';
 
-export function DataTablePagination({
+export default function Pagination({
   metaData,
   pageSizes = [10, 20, 30, 40, 50],
 }: {
@@ -30,7 +30,9 @@ export function DataTablePagination({
       <div className="flex-1 text-sm text-muted-foreground hidden sm:block">
         Total Results: {metaData?.total}
       </div>
+
       <div className="flex items-center space-x-6 lg:space-x-8">
+        {/* Rows per page */}
         <div className="flex items-center space-x-2">
           <p className="text-sm font-medium hidden xs:block">Rows per page</p>
           <Select
@@ -56,12 +58,17 @@ export function DataTablePagination({
             </SelectContent>
           </Select>
         </div>
+
+        {/* Current page number */}
         <div className="hidden mn:flex w-[100px] items-center justify-center text-sm font-medium">
           Page {metaData?.page} of {metaData?.totalPage}
         </div>
+
+        {/* Pagination buttons */}
         <div className="flex items-center space-x-2">
+          {/* Go to first page */}
           <Button
-            variant="outline"
+            variant="ghost"
             className="hidden h-8 w-8 p-0 lg:flex"
             onClick={() => {
               appendSearchParams({ page: '1' }, { replace: true });
@@ -71,8 +78,10 @@ export function DataTablePagination({
             <span className="sr-only">Go to first page</span>
             <DoubleArrowLeftIcon className="h-4 w-4" />
           </Button>
+
+          {/* Go to previous page */}
           <Button
-            variant="outline"
+            variant="ghost"
             className="h-8 w-8 p-0"
             onClick={() => {
               appendSearchParams(
@@ -85,8 +94,29 @@ export function DataTablePagination({
             <span className="sr-only">Go to previous page</span>
             <ChevronLeftIcon className="h-4 w-4" />
           </Button>
+
+          {/* Page numbers */}
+          {Array.from({ length: metaData?.totalPage }).map((_, index) => (
+            <Button
+              key={index}
+              variant="outline"
+              className="h-8 w-8 p-0 hidden lg:flex"
+              onClick={() => {
+                appendSearchParams(
+                  { page: String(index + 1) },
+                  { replace: true }
+                );
+              }}
+              disabled={index + 1 === metaData?.page}
+            >
+              <span className="sr-only">Page {index + 1}</span>
+              {index + 1}
+            </Button>
+          ))}
+
+          {/* Go to next page */}
           <Button
-            variant="outline"
+            variant="ghost"
             className="h-8 w-8 p-0"
             onClick={() => {
               appendSearchParams(
@@ -99,8 +129,10 @@ export function DataTablePagination({
             <span className="sr-only">Go to next page</span>
             <ChevronRightIcon className="h-4 w-4" />
           </Button>
+
+          {/* Go to last page */}
           <Button
-            variant="outline"
+            variant="ghost"
             className="hidden h-8 w-8 p-0 lg:flex"
             onClick={() => {
               appendSearchParams(

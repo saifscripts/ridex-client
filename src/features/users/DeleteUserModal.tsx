@@ -57,6 +57,7 @@ export default function DeleteUserModal({ user }: DeleteUserModalProps) {
           </Tooltip>
         </Button>
       </DialogTrigger>
+
       <DialogContent className="sm:max-w-[425px]">
         <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
           <DialogHeader>
@@ -65,6 +66,7 @@ export default function DeleteUserModal({ user }: DeleteUserModalProps) {
               Are you sure you want to delete <b>{user.name}</b>?
             </DialogDescription>
           </DialogHeader>
+
           <DialogFooter className="gap-2 sm:space-x-0">
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>

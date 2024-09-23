@@ -7,6 +7,10 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+/**
+ * The function showToast displays a success message with a given title or an error message from the
+ * response data.
+ */
 export function showToast(result: IResponse<unknown>, title: string) {
   if (result?.error) {
     toast.error(result?.error?.data?.message);
@@ -15,6 +19,10 @@ export function showToast(result: IResponse<unknown>, title: string) {
   }
 }
 
+/**
+ * The function `generateParams` takes a queryParams object, converts its values to strings, and
+ * returns a  URLSearchParams object.
+ */
 export function generateParams(queryParams: URLSearchParams) {
   const params = new URLSearchParams();
 
@@ -25,46 +33,52 @@ export function generateParams(queryParams: URLSearchParams) {
   return params;
 }
 
-export function generateSortString(previousString: string, newValue: string) {
-  const array = previousString.split(',');
+/**
+ * The function `generateSortString` takes two strings, removes duplicate values, and returns a new
+ * string with the new value added.
+ * Example:
+ * generateSortString('name,-age', 'name') => 'name,-age'
+ * generateSortString('name,-age', 'age') => 'age,-name'
+ */
+export function generateSortString(sortString: string, newSortValue: string) {
+  const sortValues = sortString.split(',');
 
-  const filtered = array.filter((item) => {
-    const _item = item.startsWith('-') ? item.substring(1) : item;
-    const _value = newValue.startsWith('-') ? newValue.substring(1) : newValue;
-    return _item !== _value && Boolean(item);
+  // Remove duplicate values and filter out the new value if it already exists
+  const filteredSortValues = sortValues.filter((item) => {
+    const itemWithoutPrefix = item.startsWith('-') ? item.substring(1) : item;
+
+    const newValueWithoutPrefix = newSortValue.startsWith('-')
+      ? newSortValue.substring(1)
+      : newSortValue;
+
+    return itemWithoutPrefix !== newValueWithoutPrefix && Boolean(item);
   });
 
-  filtered.unshift(newValue);
+  filteredSortValues.unshift(newSortValue);
 
-  return filtered.join(',');
+  return filteredSortValues.join(',');
 }
 
-export function convertPropertiesToString(
-  obj: Record<string, string | number>
-) {
-  const result: Record<string, string> = {};
-
-  for (const [key, value] of Object.entries(obj)) {
-    // Convert all property values to string
-    result[key] = String(value);
-  }
-
-  return result;
-}
-
-// convert object's number fields to string any nested level
-export function convertNumberFields(obj?: Record<string, unknown>) {
+/**
+ * The function `convertPropertiesToString` converts all number properties of an object to strings, including
+ * nested objects.
+ */
+export function convertPropertiesToString(obj?: Record<string, unknown>) {
   if (!obj) return {};
 
-  const result: Record<string, string | Record<string, unknown> | Date> = {};
+  const result: Record<string, unknown> = {};
 
   for (const [key, value] of Object.entries(obj)) {
-    if (value instanceof Date) {
-      result[key] = value;
-    } else if (typeof value === 'object' && value !== null) {
-      result[key] = convertNumberFields(value as Record<string, unknown>);
-    } else {
+    if (typeof value === 'number') {
       result[key] = String(value);
+    } else if (
+      typeof value === 'object' &&
+      value !== null &&
+      !(value instanceof Date)
+    ) {
+      result[key] = convertPropertiesToString(value as Record<string, unknown>);
+    } else {
+      result[key] = value;
     }
   }
 

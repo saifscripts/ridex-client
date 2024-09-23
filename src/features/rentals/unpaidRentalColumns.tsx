@@ -49,6 +49,7 @@ export const unpaidRentalColumns: ColumnDef<IRental>[] = [
         style: 'currency',
         currency: 'BDT',
       }).format(value);
+
       return <div className="">{formatted}</div>;
     },
   },

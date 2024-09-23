@@ -28,12 +28,14 @@ export default function UserDropdown() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <div className="flex items-center gap-2 hover:bg-foreground/10 rounded-full px-1 md:px-2 py-1 cursor-pointer transition-colors duration-300">
+          {/* Avatar */}
           <div
             className="size-10 rounded-full bg-cover bg-center"
             style={{
               backgroundImage: `url(${user?.avatarURL || avatar})`,
             }}
-          ></div>
+          />
+          {/* Name and email */}
           <div className="hidden md:block">
             <p className="font-medium tracking-tighter leading-tight">
               {user?.name}
@@ -45,6 +47,7 @@ export default function UserDropdown() {
           <ChevronDownIcon size={16} className="hidden md:block" />
         </div>
       </DropdownMenuTrigger>
+
       <DropdownMenuContent align="end" className="w-56">
         <DropdownMenuItem
           className="cursor-pointer text-base gap-2"
@@ -56,6 +59,7 @@ export default function UserDropdown() {
           Dashboard
         </DropdownMenuItem>
         <DropdownMenuSeparator />
+
         <DropdownMenuItem
           className="cursor-pointer text-base gap-2"
           onClick={() => {
@@ -65,6 +69,7 @@ export default function UserDropdown() {
           <UserPenIcon size={16} />
           Profile
         </DropdownMenuItem>
+
         {user?.role === USER_ROLE.USER && (
           <DropdownMenuItem
             className="cursor-pointer text-base gap-2"
@@ -76,6 +81,7 @@ export default function UserDropdown() {
             My Rentals
           </DropdownMenuItem>
         )}
+
         {user?.role === USER_ROLE.ADMIN && (
           <DropdownMenuItem
             className="cursor-pointer text-base gap-2"
@@ -87,6 +93,7 @@ export default function UserDropdown() {
             Manage Bikes
           </DropdownMenuItem>
         )}
+
         {user?.role === USER_ROLE.ADMIN && (
           <DropdownMenuItem
             className="cursor-pointer text-base gap-2"
@@ -98,6 +105,7 @@ export default function UserDropdown() {
             Manage Rentals
           </DropdownMenuItem>
         )}
+
         <DropdownMenuSeparator />
         <DropdownMenuItem className="text-base cursor-pointer p-0">
           <LogoutButton

@@ -42,6 +42,7 @@ export function CalculateModal({ rental }: CalculateModalProps) {
       rentalId: rental._id,
       body: data,
     };
+
     const result = (await returnBike(options)) as IResponse<IRental>;
     showToast(result, 'Bike returned successfully!');
   }
@@ -63,15 +64,18 @@ export function CalculateModal({ rental }: CalculateModalProps) {
           Calculate
         </Button>
       </DialogTrigger>
+
       <DialogContent className="sm:max-w-[425px]">
         <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
           <DialogHeader>
             <DialogTitle>Calculate Total Cost</DialogTitle>
+
             <DialogDescription>
               Select returned time to calculate cost and click on Return Bike to
               return the bike!
             </DialogDescription>
           </DialogHeader>
+
           <AppForm
             onSubmit={onSubmit}
             schema={FormSchema}

@@ -91,22 +91,26 @@ export default function UpdateBikeModal({ bike }: UpdateBikeModalProps) {
                 <FilePenLineIcon size={20} className="text-blue-400" />
               </Button>
             </TooltipTrigger>
+
             <TooltipContent>
               <p>Update bike</p>
             </TooltipContent>
           </Tooltip>
         </Button>
       </DialogTrigger>
+
       <DialogContent className="sm:max-w-[500px] max-h-[90svh] overflow-y-auto">
         <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
           <DialogHeader>
             <DialogTitle>
               Update {bike.brand} {bike.model} {bike.year}
             </DialogTitle>
+
             <DialogDescription>
               Update the bike with proper information!
             </DialogDescription>
           </DialogHeader>
+
           <AppForm onSubmit={onSubmit} schema={FormSchema} defaultValues={bike}>
             <AppInput name="name" label="Name" placeholder="Enter bike name" />
             <AppTextarea

@@ -1,18 +1,16 @@
-import { Table } from '@tanstack/react-table';
-
-import { IBike } from '@/interfaces';
-import { BikeCard } from './BikeCard';
-
 import { bikeAvailabilityOptions, bikeBrandOptions } from '@/constants';
 import {
   CheckboxFilter,
-  DataTablePagination,
+  ColumnViewOptions,
+  DataTable,
+  Pagination,
   RadioButtonFilter,
 } from '@/features/table/';
-import { IMetaData } from '@/interfaces';
+import { IBike, IMetaData } from '@/interfaces';
 import {
   ColumnFiltersState,
   SortingState,
+  Table,
   VisibilityState,
   getCoreRowModel,
   getFilteredRowModel,
@@ -21,10 +19,10 @@ import {
 } from '@tanstack/react-table';
 import { BikeIcon, SearchCheckIcon } from 'lucide-react';
 import { useState } from 'react';
-import BikeFilters from './BikeFilters';
-import BikeSearch from './BikeSearch';
-import BikesSkeleton from './BikesSkeleton';
+import ActiveFilters from './ActiveFilters';
 import { columns } from './columns';
+import CreateBikeModal from './CreateBikeModal';
+import SearchInput from './SearchInput';
 
 interface BikeDataProps {
   data: IBike[];
@@ -57,48 +55,35 @@ export default function BikeList({ data, meta, isLoading }: BikeDataProps) {
   });
 
   return (
-    <>
-      <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-4 p-3 bg-background border rounded-md mb-2">
-        <BikeSearch />
-
-        <div className="flex items-center gap-2 w-full lg:w-auto">
-          <p>Filters:</p>
-          <CheckboxFilter columnId="brand" filters={bikeBrandOptions}>
-            <BikeIcon size={16} />
-            <span className="hidden sm:inline">Brand</span>
-          </CheckboxFilter>
-          <RadioButtonFilter
-            columnId={'isAvailable'}
-            filters={bikeAvailabilityOptions}
-          >
-            <SearchCheckIcon size={16} />
-            <span className="hidden sm:inline">Availability</span>
-          </RadioButtonFilter>
-        </div>
-      </div>
-      <BikeFilters />
-      <BikeCards table={table} isLoading={isLoading} />
-      <DataTablePagination metaData={meta} pageSizes={[12, 24, 48]} />
-    </>
+    <div className="space-y-4">
+      <FilterOptions table={table} />
+      <ActiveFilters />
+      <DataTable columns={columns} table={table} isLoading={isLoading} />
+      <Pagination metaData={meta} />
+    </div>
   );
 }
 
-function BikeCards({
-  table,
-  isLoading,
-}: {
-  table: Table<IBike>;
-  isLoading: boolean;
-}) {
-  if (isLoading) return <BikesSkeleton />;
+function FilterOptions({ table }: { table: Table<IBike> }) {
+  return (
+    <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-4 p-3 bg-background border rounded-md">
+      <SearchInput />
 
-  return table.getRowModel().rows?.length > 0 ? (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 my-4">
-      {table.getRowModel().rows.map(({ original: bike }, index) => (
-        <BikeCard key={bike._id} bike={bike} index={index} />
-      ))}
+      <div className="flex gap-2 w-full lg:w-auto">
+        <ColumnViewOptions table={table} />
+        <CheckboxFilter columnId="brand" filters={bikeBrandOptions}>
+          <BikeIcon size={16} />
+          <span className="hidden sm:inline">Brand</span>
+        </CheckboxFilter>
+        <RadioButtonFilter
+          columnId={'isAvailable'}
+          filters={bikeAvailabilityOptions}
+        >
+          <SearchCheckIcon size={16} />
+          <span className="hidden sm:inline">Availability</span>
+        </RadioButtonFilter>
+        <CreateBikeModal />
+      </div>
     </div>
-  ) : (
-    <p className="text-center text-2xl my-8">No Bikes Found</p>
   );
 }

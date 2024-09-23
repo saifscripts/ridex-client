@@ -59,6 +59,7 @@ export const paidRentalColumns: ColumnDef<IRental>[] = [
         style: 'currency',
         currency: 'BDT',
       }).format(totalCost);
+
       return <div className="">{formatted}</div>;
     },
   },

@@ -38,6 +38,7 @@ export default function Sidebar() {
       </SheetTrigger>
       <SheetContent className="w-[256px] flex flex-col justify-between">
         <SheetHeader className="text-left">
+          {/* Logo and Close Button */}
           <div className="flex items-center justify-between">
             <Logo />
             <SheetClose ref={closeRef}>
@@ -48,6 +49,7 @@ export default function Sidebar() {
             </SheetClose>
           </div>
 
+          {/* Sidebar Items */}
           <div className="flex flex-col gap-2">
             <Separator className="my-2" />
             {navLinks.map((item) => (
@@ -61,6 +63,7 @@ export default function Sidebar() {
               </SidebarItem>
             ))}
 
+            {/* Sidebar Items: Based on User Authentication */}
             {user ? (
               <>
                 <SidebarItem
@@ -92,6 +95,8 @@ export default function Sidebar() {
             <Separator className="my-2" />
           </div>
         </SheetHeader>
+
+        {/* Logout Button */}
         <SheetFooter className="sm:flex-col-reverse">
           {user && (
             <LogoutButton

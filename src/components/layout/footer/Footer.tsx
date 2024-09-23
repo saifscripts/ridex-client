@@ -89,8 +89,9 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <div className="py-12 bg-foreground dark:bg-background text-background/70 dark:text-foreground/70 border-t">
+    <footer className="py-12 bg-foreground dark:bg-background text-background/70 dark:text-foreground/70 border-t">
       <div className="container">
+        {/* Footer Content: First 3 columns */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
           {columns.map((column, index) => (
             <div className="flex flex-col" key={index}>
@@ -113,6 +114,7 @@ export default function Footer() {
             </div>
           ))}
 
+          {/* Footer Content: Social Links */}
           <div className="flex flex-col">
             <h3 className="text-background dark:text-foreground text-lg font-bold mb-2">
               Social
@@ -131,6 +133,8 @@ export default function Footer() {
                 </a>
               ))}
             </div>
+
+            {/* Footer Content: Copyright */}
             <div className="mt-8 text-sm">
               <p>
                 &copy; {new Date().getFullYear()} RideX. All rights reserved.
@@ -139,6 +143,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }

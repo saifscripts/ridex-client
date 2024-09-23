@@ -12,7 +12,6 @@ export default function ProtectedRoute({
   authorizedRoles: IUserRole[];
 }) {
   const user = useAppSelector((state) => state.auth.user);
-
   const { pathname } = useLocation();
 
   if (!user) {

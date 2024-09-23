@@ -19,7 +19,6 @@ export default function Profile() {
     <div className="space-y-4">
       <ProfileHeader />
       <ProfileTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-
       <div className="mt-4">
         {activeTab === 'edit' && <EditProfile />}
         {activeTab === 'account' && <ChangePassword />}

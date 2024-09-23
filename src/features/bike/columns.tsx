@@ -1,5 +1,5 @@
 import { Badge } from '@/components/ui/badge';
-import { DataTableColumnHeader } from '@/features/table';
+import { ColumnHeader } from '@/features/table';
 import { IBike } from '@/interfaces';
 import { ColumnDef } from '@tanstack/react-table';
 import DeleteBikeModal from './DeleteBikeModal';
@@ -18,7 +18,7 @@ export const columns: ColumnDef<IBike>[] = [
   {
     accessorKey: 'name',
     header: ({ column }) => (
-      <DataTableColumnHeader
+      <ColumnHeader
         column={column}
         title="Name"
         ascLabel="A to Z"
@@ -36,7 +36,7 @@ export const columns: ColumnDef<IBike>[] = [
   {
     accessorKey: 'brand',
     header: ({ column }) => (
-      <DataTableColumnHeader
+      <ColumnHeader
         column={column}
         title="Brand"
         ascLabel="A to Z"
@@ -50,15 +50,11 @@ export const columns: ColumnDef<IBike>[] = [
   },
   {
     accessorKey: 'year',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Year" />
-    ),
+    header: ({ column }) => <ColumnHeader column={column} title="Year" />,
   },
   {
     accessorKey: 'cc',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="CC" />
-    ),
+    header: ({ column }) => <ColumnHeader column={column} title="CC" />,
   },
   {
     accessorKey: 'isAvailable',
@@ -80,7 +76,7 @@ export const columns: ColumnDef<IBike>[] = [
   {
     accessorKey: 'pricePerHour',
     header: ({ column }) => (
-      <DataTableColumnHeader
+      <ColumnHeader
         className=""
         column={column}
         title="Price/Hour"

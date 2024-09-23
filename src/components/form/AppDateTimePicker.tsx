@@ -22,6 +22,7 @@ interface AppDateTimePickerProps {
   disabled?: boolean;
 }
 
+// TODO: Remove mui dependency use shadcn or custom date-time-picker to implement this
 export function AppDateTimePicker({
   name,
   label,
@@ -29,7 +30,6 @@ export function AppDateTimePicker({
   disabled,
 }: AppDateTimePickerProps) {
   const form = useFormContext();
-
   const triggerRef = useRef<HTMLButtonElement>(null);
 
   return (
@@ -61,6 +61,7 @@ export function AppDateTimePicker({
               </FormControl>
             </DialogTrigger>
             <DialogContent className="max-w-sm" overlay={false}>
+              {/* TODO: Implement custom date-time-picker */}
               <StaticDateTimePicker
                 value={moment(field.value)}
                 onChange={(value) => field.onChange(value?.toDate())}

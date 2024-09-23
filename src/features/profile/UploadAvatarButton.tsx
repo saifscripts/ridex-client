@@ -2,16 +2,16 @@ import { IResponse, IUser } from '@/interfaces';
 import { showToast } from '@/lib/utils';
 import { PencilIcon } from 'lucide-react';
 
-interface IUploadAvatar {
+interface IUploadAvatarButtonProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   uploadAvatar: any;
   isLoading: boolean;
 }
 
-export default function UploadAvatar({
+export default function UploadAvatarButton({
   uploadAvatar,
   isLoading,
-}: IUploadAvatar) {
+}: IUploadAvatarButtonProps) {
   const handleUploadAvatar = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {

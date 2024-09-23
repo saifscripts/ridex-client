@@ -1,74 +1,96 @@
 import { generateSortString } from '@/lib/utils';
 import { NavigateOptions, useSearchParams } from 'react-router-dom';
 
-const uniqueFields = ['searchTerm', 'sort', 'limit', 'page', 'fields'];
+const spacialFields = ['searchTerm', 'sort', 'limit', 'page', 'fields'];
 
 const useAppSearchParams = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
+  /**
+   * The `appendSearchParams` function updates URL search parameters with the provided key-value pairs,
+   * handling special cases for sorting and unique fields.
+   */
   const appendSearchParams = (
     params: Record<string, string>,
     options?: NavigateOptions
   ) => {
-    const updatedSearchParams = new URLSearchParams(searchParams);
+    // Create a new URLSearchParams object with the current search parameters
+    const currentSearchParams = new URLSearchParams(searchParams);
 
+    // Iterate over each key-value pair in the provided parameters
     Object.entries(params).forEach(([key, value]) => {
-      const previousSortValue = updatedSearchParams.get('sort') || '';
-
-      if (uniqueFields.includes(key)) {
-        updatedSearchParams.delete(key);
+      // If the key is a special field, delete it from the search parameters
+      if (spacialFields.includes(key)) {
+        currentSearchParams.delete(key);
       }
 
+      // Get the previous sort value from the search parameters
+      const previousSortValue = currentSearchParams.get('sort') || '';
+
+      // If the key is 'sort', generate a new sort string using the previous sort value and append it to the search parameters
       if (key === 'sort') {
-        return updatedSearchParams.append(
+        return currentSearchParams.append(
           'sort',
           generateSortString(previousSortValue, value)
         );
       }
 
-      updatedSearchParams.append(key, value);
+      // Append the key-value pair to the current search parameters
+      currentSearchParams.append(key, value);
     });
 
-    setSearchParams(updatedSearchParams, options);
+    setSearchParams(currentSearchParams, options);
   };
 
+  /**
+   * The `appendSearchParam` function appends a single key-value pair to the current search parameters.
+   */
   const appendSearchParam = (
     param: { key: string; value: string },
     options?: NavigateOptions
   ) => {
-    const updatedSearchParams = new URLSearchParams(searchParams);
-    updatedSearchParams.append(param.key, param.value);
-    setSearchParams(updatedSearchParams, options);
+    const currentSearchParams = new URLSearchParams(searchParams);
+    currentSearchParams.append(param.key, param.value);
+    setSearchParams(currentSearchParams, options);
   };
 
+  /**
+   * The `deleteSearchParam` function deletes a key-value pair from the current search parameters.
+   */
   const deleteSearchParam = (
     param: { key: string; value?: string },
     options?: NavigateOptions
   ) => {
-    const updatedSearchParams = new URLSearchParams(searchParams);
-    updatedSearchParams.delete(param.key, param?.value);
-    setSearchParams(updatedSearchParams);
-    setSearchParams(updatedSearchParams, options);
+    const currentSearchParams = new URLSearchParams(searchParams);
+    currentSearchParams.delete(param.key, param?.value);
+    setSearchParams(currentSearchParams, options);
   };
 
+  /**
+   * The `replaceSearchParam` function replaces a key-value pair in the current search parameters.
+   */
   const replaceSearchParam = (
     deletedParam: { key: string; value?: string },
     appendedParams: Record<string, string>,
     options?: NavigateOptions
   ) => {
-    const updatedSearchParams = new URLSearchParams(searchParams);
+    const currentSearchParams = new URLSearchParams(searchParams);
 
-    updatedSearchParams.delete(deletedParam.key, deletedParam?.value);
+    // Delete the key-value pair from the search parameters
+    currentSearchParams.delete(deletedParam.key, deletedParam?.value);
 
+    // Append the new key-value pairs to the search parameters
     Object.entries(appendedParams).forEach(([key, value]) => {
-      if (uniqueFields.includes(key)) {
-        updatedSearchParams.delete(key);
+      // If the key is a special field, delete it from the search parameters first
+      if (spacialFields.includes(key)) {
+        currentSearchParams.delete(key);
       }
 
-      updatedSearchParams.append(key, value);
+      // Append the key-value pair to the search parameters
+      currentSearchParams.append(key, value);
     });
 
-    setSearchParams(updatedSearchParams, options);
+    setSearchParams(currentSearchParams, options);
   };
 
   return {

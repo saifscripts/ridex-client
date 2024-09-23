@@ -35,9 +35,10 @@ const features = [
 ];
 
 export default function WhyChooseUs() {
-  const [cardsInARow, setCardsInARow] = useState(1);
+  const [cardsInARow, setCardsInARow] = useState(1); // to calculate animation delay
   const screenSize = useScreenSize();
 
+  // set cards in a row based on screen size
   useEffect(() => {
     if (screenSize.width >= 768) {
       setCardsInARow(3);

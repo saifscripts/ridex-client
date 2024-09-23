@@ -16,9 +16,10 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export function BikeCard({ bike, index }: { bike: IBike; index: number }) {
   const navigate = useNavigate();
-  const [cardsInARow, setCardsInARow] = useState(1);
+  const [cardsInARow, setCardsInARow] = useState(1); // to generate animation delay for each card
   const screenSize = useScreenSize();
 
+  // Set the number of cards in a row based on screen size
   useEffect(() => {
     if (screenSize.width >= 1400) {
       setCardsInARow(4);
@@ -39,6 +40,7 @@ export function BikeCard({ bike, index }: { bike: IBike; index: number }) {
       onClick={() => navigate(`/bike/${bike._id}`)}
     >
       <CardHeader>
+        {/* Image */}
         <div
           className="w-full h-48 bg-cover bg-center rounded-lg mb-4"
           style={{
@@ -63,6 +65,7 @@ export function BikeCard({ bike, index }: { bike: IBike; index: number }) {
         </div>
       </CardContent>
 
+      {/* View Details Button */}
       <CardFooter className="flex gap-2 justify-end">
         <Link to={`/bike/${bike._id}`}>
           <Button

@@ -1,12 +1,10 @@
-import { Button } from '@/components/ui/button';
 import { ModeToggle } from '@/components/ui/mode-toggle';
 import { Separator } from '@/components/ui/separator';
 import { UserDropdown } from '@/features/user-dropdown';
 import { cn } from '@/lib/utils';
 import { useAppSelector } from '@/redux/hooks';
-import { LogInIcon, UserPlusIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import AuthButtons from './AuthButtons';
 import Logo from './Logo';
 import NavItem from './NavItem';
 import navLinks from './navLinks';
@@ -14,10 +12,10 @@ import Sidebar from './Sidebar';
 
 const Navbar = () => {
   const user = useAppSelector((state) => state.auth.user);
-
   const [visible, setVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
 
+  // Hide navbar on scroll down and show on scroll up
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
@@ -42,11 +40,11 @@ const Navbar = () => {
         }
       )}
     >
-      {/* Left (All Devices) */}
+      {/* Navbar Content: Left */}
       <Logo />
 
-      {/* Center (Desktop) */}
-      <div className="hidden md:flex gap-8">
+      {/* Navbar Content: Center (Desktop) */}
+      <div className="hidden md:flex gap-8 justify-center items-center basis-1/3">
         {navLinks.map((item) => (
           <NavItem key={item.path} to={item.path}>
             {item.text}
@@ -54,32 +52,15 @@ const Navbar = () => {
         ))}
       </div>
 
-      {/* Right (Desktop) */}
-      <div className="hidden md:flex gap-2 items-center">
+      {/* Navbar Content: Right (Desktop) */}
+      <div className="hidden md:flex gap-2 justify-end items-center basis-1/3">
         <ModeToggle />
-        {user ? (
-          <UserDropdown />
-        ) : (
-          <>
-            <Separator orientation="vertical" className="h-8" />
-            <Link to="/login">
-              <Button variant="outline" className="flex items-center gap-2">
-                <LogInIcon size={16} />
-                Login
-              </Button>
-            </Link>
-            <Link to="/signup">
-              <Button className="flex items-center gap-2">
-                <UserPlusIcon size={16} />
-                Signup
-              </Button>
-            </Link>
-          </>
-        )}
+        <Separator orientation="vertical" className="h-8" />
+        {user ? <UserDropdown /> : <AuthButtons />}
       </div>
 
-      {/* Right (Mobile) */}
-      <div className="flex gap-2 items-center md:hidden">
+      {/* Navbar Content: Right (Mobile) */}
+      <div className="flex gap-2 items-center justify-end md:hidden basis-1/3">
         <ModeToggle />
         {user && <UserDropdown />}
         <Sidebar />

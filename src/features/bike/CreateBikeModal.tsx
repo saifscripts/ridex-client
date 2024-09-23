@@ -80,14 +80,17 @@ export default function CreateBikeModal() {
           <span className="hidden mn:inline">Add Bike</span>
         </Button>
       </DialogTrigger>
+
       <DialogContent className="sm:max-w-[500px] max-h-[90svh] overflow-y-auto">
         <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
           <DialogHeader>
             <DialogTitle>Add New Bike</DialogTitle>
+
             <DialogDescription>
               Add a new the bike with proper information!
             </DialogDescription>
           </DialogHeader>
+
           <AppForm onSubmit={onSubmit} schema={FormSchema}>
             <AppInput name="name" label="Name" placeholder="Enter bike name" />
             <AppTextarea

@@ -31,7 +31,6 @@ export default function Login() {
 
   const onSubmit: SubmitHandler<FieldValues> = async (credentials) => {
     const result = (await login(credentials)) as IResponse<unknown>;
-
     showToast(result, 'Login successful!');
 
     if (result?.data?.success) {

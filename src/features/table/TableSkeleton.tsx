@@ -1,7 +1,7 @@
 import { Skeleton } from '@/components/ui/skeleton';
 import { TableBody, TableCell, TableRow } from '@/components/ui/table';
 
-export default function DataTableSkeleton({ colSpan }: { colSpan: number }) {
+export default function TableSkeleton({ colSpan }: { colSpan: number }) {
   return (
     <TableBody>
       <TableRow>
