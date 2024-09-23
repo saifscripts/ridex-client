@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 import AppForm from '@/components/form/AppForm';
-import AppInput from '@/components/form/AppInput';
+import AppPasswordInput from '@/components/form/AppPasswordInput';
 import Submit from '@/components/form/Submit';
 import { IResponse } from '@/interfaces';
 import { showToast } from '@/lib/utils';
@@ -47,16 +47,14 @@ export default function ChangePassword() {
         Change Password
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <AppInput
+        <AppPasswordInput
           name="currentPassword"
           label="Current Password"
-          type="password"
           placeholder="Enter current password"
         />
-        <AppInput
+        <AppPasswordInput
           name="newPassword"
           label="New Password"
-          type="password"
           placeholder="Enter new password"
         />
       </div>
