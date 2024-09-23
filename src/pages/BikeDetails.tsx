@@ -86,34 +86,34 @@ export default function BikeDetails() {
 function BikeDetailsSkeleton() {
   return (
     <Container className="min-h-[calc(100svh-64px)] sm:flex items-center justify-center py-4">
-      <div className="bg-white border w-full rounded-xl grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 sm:p-8 lg:p-16">
+      <div className="border w-full rounded-xl grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 sm:p-8 lg:p-16">
         <div className="flex justify-center items-center">
-          <Skeleton className="h-64 w-[80%] bg-gray-200 rounded-lg" />
+          <Skeleton className="aspect-square w-[80%] bg-foreground/20 rounded-lg" />
         </div>
         <div className="flex justify-center items-center">
-          <div className="w-full space-y-4">
-            <Skeleton className="h-10 w-3/4 rounded-lg bg-gray-200" />
-            <Skeleton className="h-20 w-full rounded-lg bg-gray-200" />
+          <div className="w-full space-y-4 flex flex-col items-center lg:items-start">
+            <Skeleton className="h-10 w-3/4 rounded-lg bg-foreground/20" />
+            <Skeleton className="h-20 w-full rounded-lg bg-foreground/20" />
             <div className="flex items-center gap-2">
-              <Skeleton className="h-6 w-24 rounded-lg bg-gray-200" />
-              <Skeleton className="h-6 w-24 rounded-lg bg-gray-200" />
+              <Skeleton className="h-6 w-24 rounded-lg bg-foreground/20" />
+              <Skeleton className="h-6 w-24 rounded-lg bg-foreground/20" />
             </div>
             <Table className="my-8">
               <TableBody>
                 {[...Array(4)].map((_, index) => (
                   <TableRow key={index}>
                     <TableCell className="w-1/4">
-                      <Skeleton className="h-6 w-full rounded-lg bg-gray-200" />
+                      <Skeleton className="h-6 w-full rounded-lg bg-foreground/20" />
                     </TableCell>
                     <TableCell>
-                      <Skeleton className="h-6 w-full rounded-lg bg-gray-200" />
+                      <Skeleton className="h-6 w-full rounded-lg bg-foreground/20" />
                     </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
             </Table>
             <div className="flex justify-center lg:justify-start">
-              <Skeleton className="h-10 w-32 rounded-lg bg-gray-200" />
+              <Skeleton className="h-10 w-32 rounded-lg bg-foreground/20" />
             </div>
           </div>
         </div>

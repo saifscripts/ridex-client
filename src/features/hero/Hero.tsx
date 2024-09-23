@@ -14,7 +14,7 @@ export default function Hero() {
         <SearchFilters />
       </div>
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      <div className="absolute inset-0 bg-black/50 dark:bg-background/70"></div>
     </div>
   );
 }

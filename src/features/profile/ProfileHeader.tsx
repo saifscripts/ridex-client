@@ -68,7 +68,7 @@ export default function ProfileHeader() {
 function Loader() {
   return (
     <div className="absolute inset-0 bg-black opacity-50 rounded-full flex items-center justify-center z-10">
-      <Loader2Icon className="size-6 animate-spin text-white" />
+      <Loader2Icon className="size-6 animate-spin text-background dark:text-foreground" />
     </div>
   );
 }

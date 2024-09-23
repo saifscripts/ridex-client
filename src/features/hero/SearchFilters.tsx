@@ -32,7 +32,7 @@ export default function SearchFilters() {
       className="flex justify-center items-center flex-1 h-[calc(100svh-64px)] pb-20 md:pb-0"
       data-aos="fade-left"
     >
-      <div className="w-full max-w-sm bg-black bg-opacity-30 rounded-lg p-4 space-y-4">
+      <div className="w-full max-w-sm bg-black/40 dark:bg-background/60 rounded-lg p-4 space-y-4">
         <div className="relative">
           <Input
             value={searchTerm}
