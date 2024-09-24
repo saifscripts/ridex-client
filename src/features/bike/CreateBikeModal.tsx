@@ -4,7 +4,6 @@ import AppInput from '@/components/form/AppInput';
 import AppSelect from '@/components/form/AppSelect';
 import AppTextarea from '@/components/form/AppTextarea';
 import Submit from '@/components/form/Submit';
-import ProtectedRoute from '@/components/layout/ProtectedRoute';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -14,7 +13,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { bikeBrandOptions, USER_ROLE } from '@/constants';
+import { bikeBrandOptions } from '@/constants';
 import { IBike, IResponse } from '@/interfaces';
 import { showToast } from '@/lib/utils';
 import { isNormalNumber, isPositiveNumber, isValidYear } from '@/lib/validate';
@@ -82,64 +81,58 @@ export default function CreateBikeModal() {
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-[500px] max-h-[90svh] overflow-y-auto">
-        <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
-          <DialogHeader>
-            <DialogTitle>Add New Bike</DialogTitle>
+        <DialogHeader>
+          <DialogTitle>Add New Bike</DialogTitle>
 
-            <DialogDescription>
-              Add a new the bike with proper information!
-            </DialogDescription>
-          </DialogHeader>
+          <DialogDescription>
+            Add a new the bike with proper information!
+          </DialogDescription>
+        </DialogHeader>
 
-          <AppForm onSubmit={onSubmit} schema={FormSchema}>
-            <AppInput name="name" label="Name" placeholder="Enter bike name" />
-            <AppTextarea
-              name="description"
-              label="Description"
-              placeholder="Enter bike description"
-            />
-            <AppInput
-              name="pricePerHour"
-              label="Price/Hour"
-              type="number"
-              placeholder="Enter price/hour"
-            />
-            <AppSelect
-              name="brand"
-              label="Brand"
-              placeholder="Select a brand"
-              options={bikeBrandOptions}
-            />
-            <AppInput
-              name="model"
-              label="Model"
-              placeholder="Enter bike modal"
-            />
-            <AppInput
-              name="year"
-              label="Year"
-              type="number"
-              placeholder="Enter bike year"
-            />
-            <AppInput
-              name="cc"
-              label="CC"
-              type="number"
-              placeholder="Enter bike CC"
-            />
-            <AppFileInput
-              name="image"
-              label="Image"
-              placeholder="Enter bike image"
-              accept="image/*"
-              onChange={handleImageChange}
-            />
-            <Submit className="w-full flex items-center gap-2">
-              <PlusCircleIcon size={16} />
-              Add New Bike
-            </Submit>
-          </AppForm>
-        </ProtectedRoute>
+        <AppForm onSubmit={onSubmit} schema={FormSchema}>
+          <AppInput name="name" label="Name" placeholder="Enter bike name" />
+          <AppTextarea
+            name="description"
+            label="Description"
+            placeholder="Enter bike description"
+          />
+          <AppInput
+            name="pricePerHour"
+            label="Price/Hour"
+            type="number"
+            placeholder="Enter price/hour"
+          />
+          <AppSelect
+            name="brand"
+            label="Brand"
+            placeholder="Select a brand"
+            options={bikeBrandOptions}
+          />
+          <AppInput name="model" label="Model" placeholder="Enter bike modal" />
+          <AppInput
+            name="year"
+            label="Year"
+            type="number"
+            placeholder="Enter bike year"
+          />
+          <AppInput
+            name="cc"
+            label="CC"
+            type="number"
+            placeholder="Enter bike CC"
+          />
+          <AppFileInput
+            name="image"
+            label="Image"
+            placeholder="Enter bike image"
+            accept="image/*"
+            onChange={handleImageChange}
+          />
+          <Submit className="w-full flex items-center gap-2">
+            <PlusCircleIcon size={16} />
+            Add New Bike
+          </Submit>
+        </AppForm>
       </DialogContent>
     </Dialog>
   );

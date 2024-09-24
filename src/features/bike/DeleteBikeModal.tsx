@@ -1,4 +1,3 @@
-import ProtectedRoute from '@/components/layout/ProtectedRoute';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -15,7 +14,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { USER_ROLE } from '@/constants';
 import { IBike, IResponse } from '@/interfaces';
 import { showToast } from '@/lib/utils';
 import { useDeleteBikeMutation } from '@/redux/features/bike/bikeApi';
@@ -60,35 +58,33 @@ export default function DeleteBikeModal({ bike }: DeleteBikeModalProps) {
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-[425px]">
-        <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
-          <DialogHeader>
-            <DialogTitle>
-              Delete {bike.brand} {bike.model} {bike.year}
-            </DialogTitle>
+        <DialogHeader>
+          <DialogTitle>
+            Delete {bike.brand} {bike.model} {bike.year}
+          </DialogTitle>
 
-            <DialogDescription>
-              Are you sure you want to delete{' '}
-              <b>
-                {bike.brand} {bike.model} {bike.year}
-              </b>
-              ?
-            </DialogDescription>
-          </DialogHeader>
+          <DialogDescription>
+            Are you sure you want to delete{' '}
+            <b>
+              {bike.brand} {bike.model} {bike.year}
+            </b>
+            ?
+          </DialogDescription>
+        </DialogHeader>
 
-          <DialogFooter className="gap-2 sm:space-x-0">
-            <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
-            </DialogClose>
+        <DialogFooter className="gap-2 sm:space-x-0">
+          <DialogClose asChild>
+            <Button variant="outline">Cancel</Button>
+          </DialogClose>
 
-            <Button
-              variant="destructive"
-              disabled={isLoading}
-              onClick={handleDelete}
-            >
-              Delete
-            </Button>
-          </DialogFooter>
-        </ProtectedRoute>
+          <Button
+            variant="destructive"
+            disabled={isLoading}
+            onClick={handleDelete}
+          >
+            Delete
+          </Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
