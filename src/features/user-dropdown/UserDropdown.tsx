@@ -70,17 +70,15 @@ export default function UserDropdown() {
           Profile
         </DropdownMenuItem>
 
-        {user?.role === USER_ROLE.USER && (
-          <DropdownMenuItem
-            className="cursor-pointer text-base gap-2"
-            onClick={() => {
-              navigate('/dashboard/my-rentals');
-            }}
-          >
-            <ListTreeIcon size={16} />
-            My Rentals
-          </DropdownMenuItem>
-        )}
+        <DropdownMenuItem
+          className="cursor-pointer text-base gap-2"
+          onClick={() => {
+            navigate('/dashboard/my-rentals');
+          }}
+        >
+          <ListTreeIcon size={16} />
+          My Rentals
+        </DropdownMenuItem>
 
         {user?.role === USER_ROLE.ADMIN && (
           <DropdownMenuItem
