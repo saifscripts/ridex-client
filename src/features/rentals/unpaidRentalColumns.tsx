@@ -1,9 +1,7 @@
-import { RENTAL_STATUS } from '@/constants';
 import { IRental } from '@/interfaces';
 import { ColumnDef } from '@tanstack/react-table';
-import { CreditCardIcon } from 'lucide-react';
 import moment from 'moment';
-import PayButton from './PayButton';
+import { PaymentModal } from './PaymentModal';
 
 export const unpaidRentalColumns: ColumnDef<IRental>[] = [
   {
@@ -57,26 +55,9 @@ export const unpaidRentalColumns: ColumnDef<IRental>[] = [
     id: 'actions',
     header: () => <div className="text-right mr-2">Action</div>,
     cell: ({ row }) => {
-      const rentalId = row.original._id;
-      const rentalStatus = row.getValue('rentalStatus');
-      const totalCost = row.getValue('totalCost') as number;
-      const paidAmount = row.getValue('paidAmount') as number;
-      const unpaidAmount = totalCost - paidAmount;
-
-      const formatted = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'BDT',
-      }).format(unpaidAmount > 0 ? unpaidAmount : 0);
-
       return (
         <div className="flex justify-end">
-          <PayButton
-            rentalId={rentalId}
-            disabled={rentalStatus === RENTAL_STATUS.ONGOING}
-          >
-            <CreditCardIcon size={16} />
-            Pay {formatted}
-          </PayButton>
+          <PaymentModal rental={row.original} />
         </div>
       );
     },

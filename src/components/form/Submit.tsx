@@ -14,6 +14,7 @@ interface SubmitProps {
     | 'secondary'
     | 'ghost'
     | 'link';
+  size?: 'default' | 'sm' | 'lg' | 'icon' | null | undefined;
 }
 
 export default function Submit({
@@ -21,6 +22,7 @@ export default function Submit({
   className,
   disabled,
   variant,
+  size,
 }: SubmitProps) {
   const {
     formState: { isSubmitting },
@@ -32,6 +34,7 @@ export default function Submit({
       disabled={disabled || isSubmitting}
       className={cn(className)}
       variant={variant}
+      size={size}
     >
       {children}
     </Button>

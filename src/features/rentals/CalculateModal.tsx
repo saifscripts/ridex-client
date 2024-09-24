@@ -1,7 +1,6 @@
 import { AppDateTimePicker } from '@/components/form/AppDateTimePicker';
 import AppForm from '@/components/form/AppForm';
 import Submit from '@/components/form/Submit';
-import ProtectedRoute from '@/components/layout/ProtectedRoute';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -11,7 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { RENTAL_STATUS, USER_ROLE } from '@/constants';
+import { RENTAL_STATUS } from '@/constants';
 import { IRental, IResponse } from '@/interfaces';
 import { showToast } from '@/lib/utils';
 import { useReturnBikeMutation } from '@/redux/features/rental/rentalApi';
@@ -66,30 +65,28 @@ export function CalculateModal({ rental }: CalculateModalProps) {
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-[425px]">
-        <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
-          <DialogHeader>
-            <DialogTitle>Calculate Total Cost</DialogTitle>
+        <DialogHeader>
+          <DialogTitle>Calculate Total Cost</DialogTitle>
 
-            <DialogDescription>
-              Select returned time to calculate cost and click on Return Bike to
-              return the bike!
-            </DialogDescription>
-          </DialogHeader>
+          <DialogDescription>
+            Select returned time to calculate cost and click on Return Bike to
+            return the bike!
+          </DialogDescription>
+        </DialogHeader>
 
-          <AppForm
-            onSubmit={onSubmit}
-            schema={FormSchema}
-            defaultValues={defaultValues}
-          >
-            <AppDateTimePicker disabled name="startTime" label="Start Time" />
-            <AppDateTimePicker name="returnTime" label="Return Time" />
-            <CalculatedInvoice rental={rental} />
-            <Submit className="w-full flex items-center gap-2">
-              <FilePenLineIcon size={16} />
-              Return bike
-            </Submit>
-          </AppForm>
-        </ProtectedRoute>
+        <AppForm
+          onSubmit={onSubmit}
+          schema={FormSchema}
+          defaultValues={defaultValues}
+        >
+          <AppDateTimePicker disabled name="startTime" label="Start Time" />
+          <AppDateTimePicker name="returnTime" label="Return Time" />
+          <CalculatedInvoice rental={rental} />
+          <Submit className="w-full flex items-center gap-2">
+            <FilePenLineIcon size={16} />
+            Return bike
+          </Submit>
+        </AppForm>
       </DialogContent>
     </Dialog>
   );
