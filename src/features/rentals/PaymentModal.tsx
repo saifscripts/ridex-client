@@ -18,11 +18,10 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { RENTAL_STATUS, USER_ROLE } from '@/constants';
-import { IRental } from '@/interfaces';
-import { cn } from '@/lib/utils';
-import { CreditCardIcon, ListPlus } from 'lucide-react';
-
+import { IRental, IResponse } from '@/interfaces';
+import { cn, showToast } from '@/lib/utils';
 import { useInitiateRemainingPaymentMutation } from '@/redux/features/rental/rentalApi';
+import { CreditCardIcon, ListPlus } from 'lucide-react';
 import { useState } from 'react';
 
 interface RentNowModalProps {
@@ -33,19 +32,27 @@ interface RentNowModalProps {
 export function PaymentModal({ rental, className }: RentNowModalProps) {
   const [initiatePayment] = useInitiateRemainingPaymentMutation();
   const [isLoading, setIsLoading] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const onSubmit = async () => {
     setIsLoading(true);
-    const result = await initiatePayment(rental._id);
-    if (result?.data?.success) {
-      window.location.href = result?.data?.data?.payment_url;
+    const result = (await initiatePayment(rental._id)) as IResponse<{
+      payment_url: string;
+    }>;
+
+    showToast(result);
+
+    const paymentURL = result?.data?.data?.payment_url;
+    if (paymentURL) {
+      window.location.href = paymentURL;
     } else {
       setIsLoading(false);
+      setDialogOpen(false);
     }
   };
 
   return (
-    <Dialog>
+    <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
       <DialogTrigger asChild>
         <Button
           size="sm"

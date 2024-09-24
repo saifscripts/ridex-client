@@ -11,11 +11,11 @@ export function cn(...inputs: ClassValue[]) {
  * The function showToast displays a success message with a given title or an error message from the
  * response data.
  */
-export function showToast(result: IResponse<unknown>, title: string) {
+export function showToast(result: IResponse<unknown>, title?: string) {
   if (result?.error) {
     toast.error(result?.error?.data?.message);
   } else {
-    toast.success(title);
+    toast.success(title || result?.data?.message);
   }
 }
 

@@ -15,6 +15,7 @@ export const rentalApi = baseApi.injectEndpoints({
         url: `/rentals/${rentalId}/pay-remaining`,
         method: 'PUT',
       }),
+      invalidatesTags: ['Rental'],
     }),
     getMyRentals: builder.query({
       query: (params = {}) => ({
