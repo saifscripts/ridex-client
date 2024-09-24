@@ -1,5 +1,6 @@
 import { IBike } from '@/interfaces';
 
+import { Button } from '@/components/ui/button';
 import { bikeAvailabilityOptions, bikeBrandOptions } from '@/constants';
 import {
   CheckboxFilter,
@@ -7,6 +8,12 @@ import {
   RadioButtonFilter,
 } from '@/features/table/';
 import { IMetaData } from '@/interfaces';
+import { cn } from '@/lib/utils';
+import {
+  clearSelectedBikes,
+  setIsComparing,
+} from '@/redux/features/comparison/comparisonSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import {
   ColumnFiltersState,
   SortingState,
@@ -16,11 +23,13 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import { BikeIcon, SearchCheckIcon } from 'lucide-react';
+import { BikeIcon, LayersIcon, SearchCheckIcon, XIcon } from 'lucide-react';
 import { useState } from 'react';
+import { toast } from 'sonner';
 import ActiveFilters from './ActiveFilters';
 import BikeCards from './BikeCards';
 import { columns } from './columns';
+import CompareBikesModal from './CompareBikesModal';
 import SearchInput from './SearchInput';
 
 interface BikeDataProps {
@@ -64,12 +73,17 @@ export default function BikeData({ data, meta, isLoading }: BikeDataProps) {
 }
 
 function FilterOptions() {
+  const dispatch = useAppDispatch();
+  const isComparing = useAppSelector((state) => state.comparison.isComparing);
+  const selectedBikes = useAppSelector(
+    (state) => state.comparison.selectedBikes
+  );
+
   return (
     <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-4 p-3 bg-background border rounded-md">
-      <SearchInput />
-
+      {/* Filter Options */}
       <div className="flex items-center gap-2 w-full lg:w-auto">
-        <p>Filters:</p>
+        <SearchInput />
         <CheckboxFilter columnId="brand" filters={bikeBrandOptions}>
           <BikeIcon size={16} />
           <span className="hidden sm:inline">Brand</span>
@@ -81,6 +95,50 @@ function FilterOptions() {
           <SearchCheckIcon size={16} />
           <span className="hidden sm:inline">Availability</span>
         </RadioButtonFilter>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="flex items-center justify-end gap-2 w-full lg:w-auto">
+        {/* Selected Bikes */}
+        {isComparing && (
+          <span className="text-sm text-muted-foreground">
+            {selectedBikes.length} bike{selectedBikes.length > 1 ? 's' : ''}{' '}
+            selected
+          </span>
+        )}
+
+        {/* Cancel Button */}
+        {isComparing && (
+          <Button
+            variant="outline"
+            className="gap-2"
+            onClick={() => {
+              dispatch(clearSelectedBikes());
+              dispatch(setIsComparing(false));
+            }}
+          >
+            <XIcon size={16} />
+            <span className="hidden mn:inline">Cancel</span>
+          </Button>
+        )}
+        {/* Compare Button */}
+        {selectedBikes.length < 2 ? (
+          <Button
+            disabled={isComparing}
+            className="gap-2"
+            onClick={() => {
+              dispatch(setIsComparing(true));
+              toast.info('Please select 2-4 bikes to compare');
+            }}
+          >
+            <LayersIcon size={16} className="-rotate-90" />
+            <span className={cn('mn:inline', { hidden: isComparing })}>
+              Compare <span className="hidden sm:inline">Bikes</span>
+            </span>
+          </Button>
+        ) : (
+          <CompareBikesModal />
+        )}
       </div>
     </div>
   );

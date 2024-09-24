@@ -1,11 +1,8 @@
 import { Button } from '@/components/ui/button';
-import { useAppSelector } from '@/redux/hooks';
-import { ListPlus, ListTreeIcon, UserPlusIcon } from 'lucide-react';
+import { LayersIcon, ListPlus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function HeroIntro() {
-  const user = useAppSelector((state) => state.auth.user);
-
   return (
     <div
       className="text-background dark:text-foreground flex flex-col justify-center gap-8 text-center md:text-left flex-1 h-[calc(100svh-64px)] pt-20 md:pt-0"
@@ -29,29 +26,16 @@ export default function HeroIntro() {
           </Button>
         </Link>
 
-        {user ? (
-          <Link to="/dashboard/my-rentals" className="w-[70%] xs:w-auto">
-            <Button
-              variant="secondary"
-              size="lg"
-              className="w-full flex items-center gap-2"
-            >
-              <ListTreeIcon size={16} />
-              My Rentals
-            </Button>
-          </Link>
-        ) : (
-          <Link to="/signup" className="w-[70%] xs:w-auto">
-            <Button
-              variant="secondary"
-              size="lg"
-              className="w-full flex items-center gap-2"
-            >
-              <UserPlusIcon size={16} />
-              Sign Up for Free
-            </Button>
-          </Link>
-        )}
+        <Link
+          to="/bikes"
+          className="w-[70%] xs:w-auto"
+          state={{ isComparing: true }}
+        >
+          <Button variant="secondary" className="gap-2">
+            <LayersIcon size={16} className="-rotate-90" />
+            Compare Bikes
+          </Button>
+        </Link>
       </div>
     </div>
   );

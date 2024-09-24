@@ -1,5 +1,3 @@
-import { ColumnDef, Table as ITable, flexRender } from '@tanstack/react-table';
-
 import {
   Table,
   TableBody,
@@ -8,6 +6,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import { ColumnDef, Table as ITable, flexRender } from '@tanstack/react-table';
 import TableSkeleton from './TableSkeleton';
 
 interface DataTableProps<TData, TValue> {

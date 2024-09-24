@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/dialog';
 import { USER_ROLE } from '@/constants';
 import { IBike } from '@/interfaces';
+import { cn } from '@/lib/utils';
 import { useCreateRentalMutation } from '@/redux/features/rental/rentalApi';
 import { CreditCardIcon, ListPlus } from 'lucide-react';
 import moment from 'moment';
@@ -35,9 +36,10 @@ const defaultValues = {
 
 interface RentNowModalProps {
   bike: IBike;
+  className?: string;
 }
 
-export function RentNowModal({ bike }: RentNowModalProps) {
+export function RentNowModal({ bike, className }: RentNowModalProps) {
   const [createRental] = useCreateRentalMutation();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -58,7 +60,7 @@ export function RentNowModal({ bike }: RentNowModalProps) {
         <Button
           size="lg"
           disabled={!bike.isAvailable}
-          className="flex items-center gap-2 w-60"
+          className={cn('flex items-center gap-2 w-60', className)}
         >
           <ListPlus size={16} />
           Rent Now
