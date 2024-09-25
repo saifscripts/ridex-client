@@ -31,7 +31,7 @@ export default function HeroIntro() {
           className="w-[70%] xs:w-auto"
           state={{ isComparing: true }}
         >
-          <Button variant="secondary" className="gap-2">
+          <Button variant="secondary" className="w-full gap-2">
             <LayersIcon size={16} className="-rotate-90" />
             Compare Bikes
           </Button>

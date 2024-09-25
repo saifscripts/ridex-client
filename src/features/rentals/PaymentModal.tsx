@@ -77,7 +77,6 @@ export function PaymentModal({ rental, className }: RentNowModalProps) {
           </DialogHeader>
 
           <Table>
-            {/* TODO: Add Total Hours and Price Per Hour */}
             <TableBody>
               <TableRow>
                 <TableCell className="font-semibold">Total Bill</TableCell>

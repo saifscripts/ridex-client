@@ -4,6 +4,7 @@ import ErrorPage from '@/components/layout/ErrorPage';
 import ProtectedRoute from '@/components/layout/ProtectedRoute';
 import PublicRoute from '@/components/layout/PublicRoute';
 import { USER_ROLE } from '@/constants';
+import CouponWheel from '@/features/coupon/CouponWheel';
 import AboutUs from '@/pages/AboutUs';
 import AllBikes from '@/pages/AllBikes';
 import BikeDetails from '@/pages/BikeDetails';
@@ -18,6 +19,7 @@ import Signup from '@/pages/Signup';
 import { createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
+  { path: '/spin', element: <CouponWheel /> },
   {
     path: '/',
     element: <CommonLayout />,
