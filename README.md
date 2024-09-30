@@ -6,7 +6,7 @@
 
 ## Introduction
 
-RideX is an intuitive bike rental booking system providing users with an easy way to rent bikes, manage rentals, and apply discounts.
+RiderX offers an intuitive booking system for renting bikes, managing rentals, and applying discounts to rentals.
 
 ## Project Description
 
