@@ -5,7 +5,7 @@ import SearchFilters from './SearchFilters';
 export default function Hero() {
   return (
     <div
-      className="bg-cover bg-center min-h-[calc(100svh-64px)] relative"
+      className="bg-cover bg-center min-h-[70svh] relative"
       style={{ backgroundImage: `url(${banner})` }}
     >
       {/* Content */}

@@ -29,7 +29,7 @@ export default function SearchFilters() {
 
   return (
     <div
-      className="flex justify-center items-center flex-1 h-[calc(100svh-64px)] pb-20 md:pb-0"
+      className="flex justify-center md:justify-end items-center flex-1 h-[70svh] pb-20 md:pb-0"
       data-aos="fade-left"
     >
       {/* Search Bar */}
