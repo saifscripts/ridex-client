@@ -1,6 +1,7 @@
 import { CommonLayout } from '@/components/layout/common-layout';
 import { DashboardLayout } from '@/components/layout/dashboard-layout';
 import ErrorPage from '@/components/layout/ErrorPage';
+import { DashboardLayout as NewDashboardLayout } from '@/components/layout/new-dashboard-layout';
 import ProtectedRoute from '@/components/layout/ProtectedRoute';
 import PublicRoute from '@/components/layout/PublicRoute';
 import { USER_ROLE } from '@/constants';
@@ -117,6 +118,65 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/manage-users',
+        element: (
+          <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN]}>
+            <ManageUsers />
+          </ProtectedRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: '/new-dashboard',
+    element: (
+      <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
+        <NewDashboardLayout />
+      </ProtectedRoute>
+    ),
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: (
+          <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
+            <Profile />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/new-dashboard/bikes',
+        element: (
+          <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
+            <AllBikes />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/new-dashboard/my-rentals',
+        element: (
+          <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN, USER_ROLE.USER]}>
+            <MyRentals />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/new-dashboard/manage-bikes',
+        element: (
+          <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN]}>
+            <ManageBikes />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/new-dashboard/manage-rentals',
+        element: (
+          <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN]}>
+            <ManageRentals />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/new-dashboard/manage-users',
         element: (
           <ProtectedRoute authorizedRoles={[USER_ROLE.ADMIN]}>
             <ManageUsers />
