@@ -1,7 +1,8 @@
-import illustration1 from '@/assets/illustrations/bike_ride_7xit.svg';
-import illustration3 from '@/assets/illustrations/online_friends_re_eqaj.svg';
-import illustration2 from '@/assets/illustrations/online_payments_re_y8f2.svg';
-import Container, { ContainerMd } from '@/components/layout/Container';
+import bike_ride from '@/assets/illustrations/bike_ride_7xit.svg';
+import online_friends from '@/assets/illustrations/online_friends_re_eqaj.svg';
+import online_payments from '@/assets/illustrations/online_payments_re_y8f2.svg';
+import booking from '@/assets/illustrations/undraw_booking_re_gw4j.svg';
+import Container from '@/components/layout/Container';
 import {
   Section,
   SectionDescription,
@@ -16,21 +17,28 @@ const features = [
     title: 'Premium Bikes',
     description:
       'A wide range of premium bikes are ready for all needs — road and mountain to electric bike.',
-    illustration: illustration1,
+    illustration: bike_ride,
   },
   {
     id: 2,
     title: 'Affordable Rates',
     description:
       'Enjoy competitive pricing with flexible rental plans that fit your budget, schedule and needs.',
-    illustration: illustration2,
+    illustration: online_payments,
   },
   {
     id: 3,
+    title: 'Easy Booking',
+    description:
+      'Experience hassle-free booking with our user-friendly platform, its quick and simple.',
+    illustration: booking,
+  },
+  {
+    id: 4,
     title: '24/7 Support',
     description:
-      'Our customer support team is available around the clock to assist you whenever you need help.',
-    illustration: illustration3,
+      'Our support team is available around the clock to assist you whenever you need help.',
+    illustration: online_friends,
   },
 ];
 
@@ -52,10 +60,11 @@ export default function WhyChooseUs() {
       <Container>
         <SectionTitle>Why Choose Us?</SectionTitle>
         <SectionDescription>
-          We are dedicated to offering the premium bikes, affordable rates, and
-          the 24/7 customer support through our bike rental service.
+          We are dedicated to offering the premium bikes, affordable rates, easy
+          booking, and the 24/7 customer support through our bike rental
+          service.
         </SectionDescription>
-        <ContainerMd className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {features.map((feature, index) => (
             <div
               key={feature.id}
@@ -72,7 +81,7 @@ export default function WhyChooseUs() {
               <p className="text-foreground/70">{feature.description}</p>
             </div>
           ))}
-        </ContainerMd>
+        </div>
       </Container>
     </Section>
   );
