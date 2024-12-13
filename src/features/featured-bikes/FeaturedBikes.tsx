@@ -1,3 +1,4 @@
+import Container from '@/components/layout/Container';
 import {
   Section,
   SectionDescription,
@@ -32,24 +33,26 @@ export default function FeaturedBikes() {
   ]);
 
   return (
-    <Section className="container">
-      <SectionTitle>Featured Bikes</SectionTitle>
+    <Section className="bg-gradient-to-r to-background from-foreground/5">
+      <Container>
+        <SectionTitle>Featured Bikes</SectionTitle>
 
-      <SectionDescription>
-        Discover our most popular bikes, ready for your next adventure.
-      </SectionDescription>
+        <SectionDescription>
+          Discover our most popular bikes, ready for your next adventure.
+        </SectionDescription>
 
-      <BikeCards bikes={data?.data || []} isLoading={isFetching} />
+        <BikeCards bikes={data?.data || []} isLoading={isFetching} />
 
-      {/* View All Bikes Button */}
-      <div className="mt-8 flex justify-center">
-        <Link to="/bikes">
-          <Button size="sm" className="flex items-center gap-2">
-            <ArrowRightIcon size={16} />
-            View All Bikes
-          </Button>
-        </Link>
-      </div>
+        {/* View All Bikes Button */}
+        <div className="mt-8 flex justify-center">
+          <Link to="/bikes">
+            <Button size="sm" className="flex items-center gap-2">
+              View All Bikes
+              <ArrowRightIcon size={16} />
+            </Button>
+          </Link>
+        </div>
+      </Container>
     </Section>
   );
 }

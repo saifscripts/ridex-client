@@ -8,7 +8,7 @@ import { CheckCircleIcon } from 'lucide-react';
 
 export default function Mission() {
   return (
-    <Section className="container">
+    <Section className="bg-gradient-to-r to-background from-foreground/5">
       <SectionTitle>Our Mission</SectionTitle>
       <SectionDescription>
         Transforming Cities, One Ride at a Time.
@@ -24,7 +24,7 @@ export default function Mission() {
             <h2 className="text-2xl font-bold mb-4 text-center lg:text-left">
               Transforming Urban Mobility
             </h2>
-            <p className="mb-2 text-center lg:text-left">
+            <p className="mb-4 text-center lg:text-left">
               RideX aims to transform urban mobility with innovative
               bike-sharing solutions, envisioning cities that are livable,
               sustainable, and connected.

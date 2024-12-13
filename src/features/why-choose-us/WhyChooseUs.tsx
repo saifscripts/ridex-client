@@ -56,7 +56,7 @@ export default function WhyChooseUs() {
   }, [screenSize.width]);
 
   return (
-    <Section>
+    <Section className="bg-gradient-to-r from-background to-foreground/5">
       <Container>
         <SectionTitle>Why Choose Us?</SectionTitle>
         <SectionDescription>
@@ -68,7 +68,7 @@ export default function WhyChooseUs() {
           {features.map((feature, index) => (
             <div
               key={feature.id}
-              className="p-6 rounded-lg shadow flex flex-col justify-end border"
+              className="p-6 rounded-lg shadow flex flex-col justify-end bg-background"
               data-aos="zoom-in"
               data-aos-delay={(index % cardsInARow) * 100}
             >

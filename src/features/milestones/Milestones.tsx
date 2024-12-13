@@ -1,3 +1,4 @@
+import Container from '@/components/layout/Container';
 import {
   Section,
   SectionDescription,
@@ -43,40 +44,42 @@ export const Milestones = () => {
   }, [screenSize.width]);
 
   return (
-    <Section className="container">
-      <SectionTitle>Our Journey</SectionTitle>
+    <Section className="bg-gradient-to-r from-background to-foreground/5">
+      <Container>
+        <SectionTitle>Our Journey</SectionTitle>
 
-      <SectionDescription>
-        From humble beginnings to becoming a leading platform for bike rentals,
-        we are proud of the milestones we’ve achieved along the way.
-      </SectionDescription>
+        <SectionDescription>
+          From humble beginnings to becoming a leading platform for bike
+          rentals, we are proud of the milestones we’ve achieved along the way.
+        </SectionDescription>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {milestones.map((milestone, index) => (
-          <div
-            key={milestone.year}
-            className="p-8 shadow-lg rounded-lg text-center transition-all duration-300 hover:shadow-xl border"
-            data-aos="zoom-in"
-            data-aos-delay={(index % cardsInARow) * 100}
-          >
-            <div className="flex justify-center items-center mb-6">
-              {milestone.icon}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {milestones.map((milestone, index) => (
+            <div
+              key={milestone.year}
+              className="p-8 shadow-lg rounded-lg text-center transition-all duration-300 hover:shadow-xl border"
+              data-aos="zoom-in"
+              data-aos-delay={(index % cardsInARow) * 100}
+            >
+              <div className="flex justify-center items-center mb-6">
+                {milestone.icon}
+              </div>
+
+              <h3 className="text-3xl font-bold text-primary mb-4">
+                {milestone.year}
+              </h3>
+
+              <h4 className="text-xl font-semibold text-foreground/80 mb-3">
+                {milestone.title}
+              </h4>
+
+              <p className="text-foreground/60 leading-relaxed">
+                {milestone.description}
+              </p>
             </div>
-
-            <h3 className="text-3xl font-bold text-primary mb-4">
-              {milestone.year}
-            </h3>
-
-            <h4 className="text-xl font-semibold text-foreground/80 mb-3">
-              {milestone.title}
-            </h4>
-
-            <p className="text-foreground/60 leading-relaxed">
-              {milestone.description}
-            </p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Container>
     </Section>
   );
 };

@@ -10,7 +10,7 @@ import CouponSteps from './CouponSteps';
 
 export default function Coupon() {
   return (
-    <Section className="bg-foreground/5">
+    <Section className="bg-gradient-to-r from-background to-foreground/5">
       <Container>
         <SectionTitle>Get A Coupon</SectionTitle>
         <SectionDescription>

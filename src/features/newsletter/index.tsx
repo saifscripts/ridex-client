@@ -17,7 +17,7 @@ export default function NewsLetter() {
   };
 
   return (
-    <Section className="bg-foreground/5 w-full relative">
+    <Section className="bg-gradient-to-r from-background to-foreground/5 w-full relative">
       <Container className="flex flex-col md:flex-row gap-20 md:gap-8 justify-center items-center relative z-10 overflow-y-auto hide-scrollbar">
         <div
           className="flex flex-col justify-center gap-8 text-center md:text-left flex-1 pt-20 md:pt-0"
