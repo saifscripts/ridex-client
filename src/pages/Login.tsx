@@ -1,6 +1,7 @@
 import AppInput from '@/components/form/AppInput';
 import AppPasswordInput from '@/components/form/AppPasswordInput';
 import Submit from '@/components/form/Submit';
+import { Button } from '@/components/ui/button';
 import { AuthContainer } from '@/features/auth';
 import { IResponse } from '@/interfaces';
 import { showToast } from '@/lib/utils';
@@ -8,7 +9,7 @@ import { useLoginMutation } from '@/redux/features/auth/authApi';
 import { setUser } from '@/redux/features/auth/authSlice';
 import { useAppDispatch } from '@/redux/hooks';
 import { LogInIcon } from 'lucide-react';
-import { FieldValues, SubmitHandler } from 'react-hook-form';
+import { FieldValues, SubmitHandler, useFormContext } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 
@@ -62,6 +63,47 @@ export default function Login() {
         <LogInIcon size={16} />
         Login
       </Submit>
+
+      <Credentials />
     </AuthContainer>
+  );
+}
+
+function Credentials() {
+  const { reset } = useFormContext();
+
+  const handleUserCredential = () => {
+    reset({
+      email: 'user@ridex.com',
+      password: '123456',
+    });
+  };
+
+  const handleAdminCredential = () => {
+    reset({
+      email: 'admin@ridex.com',
+      password: '123456',
+    });
+  };
+
+  return (
+    <div className="flex justify-center gap-4 items-center">
+      <Button
+        asChild
+        variant="secondary"
+        className="cursor-pointer"
+        onClick={handleUserCredential}
+      >
+        <span>User Credential</span>
+      </Button>
+      <Button
+        asChild
+        variant="secondary"
+        className="cursor-pointer"
+        onClick={handleAdminCredential}
+      >
+        <span>Admin Credential</span>
+      </Button>
+    </div>
   );
 }
