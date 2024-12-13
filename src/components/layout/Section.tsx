@@ -3,11 +3,17 @@ import { cn } from '@/lib/utils';
 export function Section({
   children,
   className,
+  ...props
 }: {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties | undefined;
 }) {
-  return <section className={cn('py-12', className)}>{children}</section>;
+  return (
+    <section className={cn('py-12', className)} {...props}>
+      {children}
+    </section>
+  );
 }
 
 export function SectionTitle({
