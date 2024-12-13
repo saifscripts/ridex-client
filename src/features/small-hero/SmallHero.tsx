@@ -1,10 +1,14 @@
-import aboutHero from '@/assets/about-hero.jpg';
-
-export default function AboutHero() {
+export default function SmallHero({
+  backgroundImage,
+}: {
+  backgroundImage: string;
+}) {
   return (
     <section
       className="relative h-96 bg-cover bg-center flex items-center justify-center"
-      style={{ backgroundImage: `url(${aboutHero})` }}
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+      }}
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-50"></div>
