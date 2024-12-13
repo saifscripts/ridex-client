@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 
 const teamMembers = [
   {
-    name: 'Saif Elham',
+    name: 'Md Saif Ullah',
     role: 'CEO & Founder',
     avatar: ceo,
     description:
