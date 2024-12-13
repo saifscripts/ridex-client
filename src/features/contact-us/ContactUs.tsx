@@ -1,4 +1,4 @@
-import { ContainerMd } from '@/components/layout/Container';
+import Container from '@/components/layout/Container';
 import {
   Section,
   SectionDescription,
@@ -17,10 +17,10 @@ export default function ContactUs() {
         to you as soon as possible.
       </SectionDescription>
 
-      <ContainerMd>
+      <Container>
         <ContactInfo />
         <ContactForm />
-      </ContainerMd>
+      </Container>
     </Section>
   );
 }

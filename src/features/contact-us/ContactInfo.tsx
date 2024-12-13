@@ -1,10 +1,8 @@
-import useScreenSize from '@/hooks/useScreenSize';
 import {
   MailCheckIcon,
   MapPinCheckInsideIcon,
   PhoneCallIcon,
 } from 'lucide-react';
-import { useEffect, useState } from 'react';
 
 const contactInfo = [
   {
@@ -25,27 +23,14 @@ const contactInfo = [
 ];
 
 export default function ContactInfo() {
-  const [cardsInARow, setCardsInARow] = useState(1);
-  const screenSize = useScreenSize();
-
-  useEffect(() => {
-    if (screenSize.width >= 768) {
-      setCardsInARow(3);
-    } else {
-      setCardsInARow(1);
-    }
-  }, [screenSize.width]);
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 w-full mx-auto">
-      {contactInfo.map((item, index) => (
+      {contactInfo.map((item) => (
         <a
           href={item.link}
           target="_blank"
           key={item.link}
-          className="flex flex-col justify-center items-center gap-4 p-6 rounded-lg transition-all duration-300 hover:bg-foreground/5"
-          data-aos="zoom-in"
-          data-aos-delay={(index % cardsInARow) * 100}
+          className="flex flex-col justify-center items-center gap-4 p-6 rounded-lg transition-all duration-300 hover:bg-foreground/5 border-border border"
         >
           {item.icon}
           <p>{item.text}</p>

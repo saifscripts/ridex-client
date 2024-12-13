@@ -7,6 +7,7 @@ import { USER_ROLE } from '@/constants';
 import AboutUs from '@/pages/AboutUs';
 import AllBikes from '@/pages/AllBikes';
 import BikeDetails from '@/pages/BikeDetails';
+import ContactUs from '@/pages/ContactUs';
 import ManageBikes from '@/pages/dashboard/ManageBikes';
 import ManageRentals from '@/pages/dashboard/ManageRentals';
 import ManageUsers from '@/pages/dashboard/ManageUsers';
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: 'about-us',
         element: <AboutUs />,
+      },
+      {
+        path: 'contact-us',
+        element: <ContactUs />,
       },
       {
         path: 'login',

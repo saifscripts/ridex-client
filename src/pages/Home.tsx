@@ -1,4 +1,3 @@
-import { ContactUs } from '@/features/contact-us';
 import { Coupon } from '@/features/coupon';
 import { FeaturedBikes } from '@/features/featured-bikes';
 import { Hero } from '@/features/hero';
@@ -12,7 +11,6 @@ const Home = () => {
       <FeaturedBikes />
       <WhyChooseUs />
       <Testimonials />
-      <ContactUs />
     </>
   );
 };
