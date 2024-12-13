@@ -45,7 +45,7 @@ const Navbar = () => {
         <Logo />
 
         {/* Navbar Content: Center (Desktop) */}
-        <div className="hidden md:flex gap-8 justify-center items-center basis-1/3">
+        <div className="hidden lg:flex gap-8 justify-center items-center basis-1/2">
           {navLinks.map((item) => (
             <NavItem key={item.path} to={item.path}>
               {item.text}
@@ -54,14 +54,14 @@ const Navbar = () => {
         </div>
 
         {/* Navbar Content: Right (Desktop) */}
-        <div className="hidden md:flex gap-2 justify-end items-center basis-1/3">
+        <div className="hidden lg:flex gap-2 justify-end items-center basis-1/3">
           <ModeToggle />
           <Separator orientation="vertical" className="h-8" />
           {user ? <UserDropdown /> : <AuthButtons />}
         </div>
 
         {/* Navbar Content: Right (Mobile) */}
-        <div className="flex gap-2 items-center justify-end md:hidden basis-1/3">
+        <div className="flex gap-2 items-center justify-end lg:hidden basis-1/3">
           <ModeToggle />
           {user && <UserDropdown />}
           <Sidebar />
