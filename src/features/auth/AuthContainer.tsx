@@ -8,6 +8,8 @@ interface IAuthContainerProps {
   onSubmit: SubmitHandler<FieldValues>;
   title: string;
   schema: ZodType;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  defaultValues?: any;
 }
 
 export default function AuthContainer({
@@ -15,6 +17,7 @@ export default function AuthContainer({
   onSubmit,
   title,
   schema,
+  defaultValues,
 }: IAuthContainerProps) {
   return (
     <Container className="min-h-[calc(100svh-64px)] flex justify-center items-center py-4">
@@ -24,6 +27,7 @@ export default function AuthContainer({
         schema={schema}
         data-aos="fade-left"
         data-aos-delay="100"
+        defaultValues={defaultValues}
       >
         <h1 className="text-3xl font-semibold text-center">{title}</h1>
         {children}

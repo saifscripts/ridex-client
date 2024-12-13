@@ -40,8 +40,18 @@ export default function Login() {
     }
   };
 
+  const defaultValues = {
+    email: 'admin@ridex.com',
+    password: '123456',
+  };
+
   return (
-    <AuthContainer title="Login" onSubmit={onSubmit} schema={FormSchema}>
+    <AuthContainer
+      title="Login"
+      defaultValues={defaultValues}
+      onSubmit={onSubmit}
+      schema={FormSchema}
+    >
       <AppInput name="email" placeholder="Enter your email" label="Email" />
       <AppPasswordInput
         name="password"
