@@ -1,4 +1,4 @@
-import { ContainerMd } from '@/components/layout/Container';
+import Container from '@/components/layout/Container';
 import { Card } from '@/components/ui/card';
 import {
   Carousel,
@@ -95,7 +95,7 @@ const testimonials = [
 
 export function TestimonialContent() {
   return (
-    <ContainerMd>
+    <Container>
       <Carousel
         opts={{
           align: 'start',
@@ -108,13 +108,13 @@ export function TestimonialContent() {
           }),
         ]}
       >
-        <CarouselContent className="-ml-6">
+        <CarouselContent className="-ml-6 items-stretch">
           {testimonials.map((review) => (
             <CarouselItem
               key={review.id}
-              className="md:basis-1/2 lg:basis-1/3 pl-6"
+              className="md:basis-1/2 lg:basis-1/4 pl-6"
             >
-              <Card className="rounded-lg p-6 text-center flex flex-col justify-between">
+              <Card className="rounded-lg p-6 text-center flex flex-col justify-between h-full">
                 <div>
                   <img
                     src={review.avatar}
@@ -134,9 +134,9 @@ export function TestimonialContent() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="-left-4" />
-        <CarouselNext className="-right-4" />
+        <CarouselPrevious className="left-0" />
+        <CarouselNext className="right-0" />
       </Carousel>
-    </ContainerMd>
+    </Container>
   );
 }
