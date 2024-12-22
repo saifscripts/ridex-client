@@ -17,8 +17,8 @@ const contactInfo = [
   },
   {
     icon: <MailCheckIcon size={32} className="text-primary" />,
-    text: 'mdsaifullah1302@gmail.com',
-    link: 'mailto:mdsaifullah1302@gmail.com',
+    text: 'contact@mdsaifullah.dev',
+    link: 'mailto:contact@mdsaifullah.dev',
   },
 ];
 

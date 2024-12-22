@@ -71,7 +71,7 @@ const columns = [
 const socialLinks = [
   {
     icon: <MailIcon size={24} />,
-    url: 'mailto:mdsaifullah1302@gmail.com',
+    url: 'mailto:contact@mdsaifullah.dev',
   },
   {
     icon: <LinkedinIcon size={24} />,
