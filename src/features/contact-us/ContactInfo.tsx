@@ -12,7 +12,7 @@ const contactInfo = [
   },
   {
     icon: <PhoneCallIcon size={32} className="text-primary" />,
-    text: '+88 01766 637772',
+    text: '+88 01766637772',
     link: 'tel:+8801766637772',
   },
   {
